@@ -1,4 +1,4 @@
-# <p align="center">VIVEK SHARMA</p>
+
 
 <p align="center">
   <img src="./assets/banner.png" alt="VisionOS Banner" width="100%">
