@@ -1,7 +1,5 @@
 # VIVEK SHARMA
 
-![Banner](https://raw.githubusercontent.com/vivekcyr25/vivekcyr25/main/assets/banner.png)
-
 Architecting minimal, high-performance intelligent systems. Focused on the intersection of AI orchestration and cinematic user interfaces.
 
 ---
