@@ -1,5 +1,3 @@
-
-
 <p align="center">
   <img src="./assets/banner.png" alt="VisionOS Banner" width="100%">
 </p>
@@ -11,7 +9,10 @@
 </p>
 
 <p align="center">
-  <b>Building cinematic intelligent interfaces with VisionOS-inspired design language. Focused on AI orchestration and modern system architecture.</b>
+  <b>
+    Building cinematic intelligent interfaces with VisionOS-inspired design language.
+    Focused on AI orchestration and modern system architecture.
+  </b>
 </p>
 
 <br/>
@@ -41,8 +42,9 @@
 ### <p align="center">📊 SYSTEM DIAGNOSTICS</p>
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=vivekcyr25&show_icons=true&theme=tokyonight&hide_border=true&title_color=00F2FF&icon_color=BC13FE&text_color=FFFFFF&bg_color=050816" alt="Stats" height="150px">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=vivekcyr25&layout=compact&theme=tokyonight&hide_border=true&title_color=00F2FF&text_color=FFFFFF&bg_color=050816" alt="Languages" height="150px">
+  <img src="https://github-readme-stats-git-masterrstaa-rickstaa.vercel.app/api?username=vivekcyr25&show_icons=true&theme=tokyonight&hide_border=true&title_color=00F2FF&icon_color=BC13FE&text_color=FFFFFF&bg_color=050816" alt="Stats" height="150px">
+
+  <img src="https://github-readme-stats-git-masterrstaa-rickstaa.vercel.app/api/top-langs/?username=vivekcyr25&layout=compact&theme=tokyonight&hide_border=true&title_color=00F2FF&text_color=FFFFFF&bg_color=050816" alt="Languages" height="150px">
 </p>
 
 <p align="center">
@@ -64,21 +66,24 @@
     <tr>
       <td width="50%" align="center">
         <a href="https://github.com/vivekcyr25/space-portfolio">
-          <img src="./assets/neural-portfolio.png" alt="Neural Portfolio" width="100%">
+          <img src="./assets/cinematic-ui.png" alt="Neural Portfolio" width="100%">
         </a>
       </td>
+
       <td width="50%" align="center">
         <a href="https://github.com/vivekcyr25/APIS-Academic-Intelligence-System">
           <img src="./assets/ai-utility.png" alt="AI Utility Platform" width="100%">
         </a>
       </td>
     </tr>
+
     <tr>
       <td width="50%" align="center">
         <a href="https://github.com/vivekcyr25">
           <img src="./assets/experimental-system.png" alt="Experimental Systems" width="100%">
         </a>
       </td>
+
       <td width="50%" align="center">
         <a href="https://github.com/vivekcyr25">
           <img src="./assets/cinematic-ui.png" alt="Cinematic UI Framework" width="100%">
@@ -116,10 +121,12 @@
   <a href="https://www.linkedin.com/in/vivek-sharma-2bba8b398/">
     <img src="https://img.shields.io/badge/LinkedIn-00F2FF?style=for-the-badge&logo=linkedin&logoColor=050816" alt="LinkedIn">
   </a>
+
   <a href="mailto:viveklpu008@gmail.com">
     <img src="https://img.shields.io/badge/Email-BC13FE?style=for-the-badge&logo=gmail&logoColor=050816" alt="Email">
   </a>
-  <a href="https://viveksharma.dev">
+
+  <a href="https://github.com/vivekcyr25">
     <img src="https://img.shields.io/badge/Portfolio-00F2FF?style=for-the-badge&logo=googlechrome&logoColor=050816" alt="Portfolio">
   </a>
 </p>
