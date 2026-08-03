@@ -23,6 +23,24 @@
 
 <br>
 
+<h3 align="center">🧑‍🚀 OPERATOR PROFILE</h3>
+
+<p align="center">
+  🔭 Currently working on: <a href="https://github.com/vivekcyr25/APIS-Academic-Intelligence-System">APIS</a> — an ambient-intelligence academic memory system (Vite · React · Gemini AI · Firebase)<br>
+  🌱 Currently learning: AI orchestration patterns, React + TypeScript, and full-stack system architecture<br>
+  🤝 Open to collaborating on: AI-powered tools, cinematic UI projects, and open-source web applications<br>
+  🎓 Studying: B.Tech Computer Science &amp; Engineering<br>
+  💬 Ask me about: Python, JavaScript, React, Next.js, Firebase, and building clean, intelligent interfaces
+</p>
+
+<br>
+
+<p align="center">
+  <img src="./assets/separator.svg" width="60%">
+</p>
+
+<br>
+
 <h3 align="center">🛰️ SYSTEM STACK</h3>
 
 <p align="center">
@@ -129,6 +147,18 @@
 
 <a href="https://github.com/vivekcyr25">
   <img src="https://img.shields.io/badge/Portfolio-00F2FF?style=for-the-badge&logo=googlechrome&logoColor=050816" alt="Portfolio">
+</a>
+
+<a href="https://www.hackerrank.com/profile/viveklpu008">
+  <img src="https://img.shields.io/badge/HackerRank-00F2FF?style=for-the-badge&logo=hackerrank&logoColor=050816" alt="HackerRank">
+</a>
+
+<a href="https://www.hackerearth.com/@viveklpu008/">
+  <img src="https://img.shields.io/badge/HackerEarth-BC13FE?style=for-the-badge&logo=hackerearth&logoColor=050816" alt="HackerEarth">
+</a>
+
+<a href="https://orcid.org/0009-0006-5078-9881">
+  <img src="https://img.shields.io/badge/ORCID-00F2FF?style=for-the-badge&logo=orcid&logoColor=050816" alt="ORCID">
 </a>
 
 </p>
