@@ -60,7 +60,7 @@
 <h3 align="center">📊 SYSTEM DIAGNOSTICS</h3>
 
 <p align="center">
-  <img src="./assets/stats-dashboard.png" width="100%">
+  <img src="./assets/stats-dashboard.svg" width="100%">
 </p>
 
 <br>
