@@ -122,7 +122,11 @@
 <h3 align="center">🏆 ACHIEVEMENTS</h3>
 
 <p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=vivekcyr25&theme=tokyonight&no-frame=true&column=4&margin-w=15" alt="Trophies">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=vivekcyr25&bg_color=050816&color=00F2FF&line=BC13FE&point=00F2FF&area=true&hide_border=true" width="100%" alt="Contribution Activity Graph">
+</p>
+
+<p align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com?user=vivekcyr25&theme=dark&ring=00F2FF&fire=BC13FE&currStreakLabel=00F2FF&background=050816&border=00F2FF&stroke=00F2FF&sideLabels=00F2FF&hide_border=true" alt="GitHub Streak Stats">
 </p>
 
 <br>
