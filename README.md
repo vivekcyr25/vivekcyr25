@@ -80,7 +80,7 @@
 
 <td width="50%" align="center">
 <a href="https://github.com/vivekcyr25/space-portfolio">
-<img src="./assets/cinematic-ui.png" alt="Neural Portfolio" width="100%">
+<img src="./assets/space-portfolio.svg" alt="Neural Portfolio" width="100%">
 </a>
 </td>
 
@@ -96,13 +96,13 @@
 
 <td width="50%" align="center">
 <a href="https://github.com/vivekcyr25">
-<img src="./assets/experimental-system.png" alt="Experimental Systems" width="100%">
+<img src="./assets/experimental-systems.svg" alt="Experimental Systems" width="100%">
 </a>
 </td>
 
 <td width="50%" align="center">
 <a href="https://github.com/vivekcyr25">
-<img src="./assets/cinematic-ui.png" alt="Cinematic UI Framework" width="100%">
+<img src="./assets/cinematic-ui.svg" alt="Cinematic UI Framework" width="100%">
 </a>
 </td>
 

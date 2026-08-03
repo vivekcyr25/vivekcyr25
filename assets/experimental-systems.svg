@@ -1,0 +1,253 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="expBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040a16" />
+      <stop offset="50%" stop-color="#060f22" />
+      <stop offset="100%" stop-color="#0b0826" />
+    </linearGradient>
+
+    <!-- Glowing Filters -->
+    <filter id="expCyanGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3.5" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="expPurpleGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Glass Panel Fill -->
+    <linearGradient id="expGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#08142c" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#040918" stop-opacity="0.9" />
+    </linearGradient>
+
+    <!-- Border Gradient -->
+    <linearGradient id="expBorderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F2FF" stroke-opacity="0.8" />
+      <stop offset="60%" stop-color="#5533FF" stroke-opacity="0.4" />
+      <stop offset="100%" stop-color="#BC13FE" stroke-opacity="0.8" />
+    </linearGradient>
+
+    <linearGradient id="barCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00F2FF" />
+      <stop offset="100%" stop-color="#00FF88" />
+    </linearGradient>
+
+    <linearGradient id="barPurple" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7000FF" />
+      <stop offset="100%" stop-color="#BC13FE" />
+    </linearGradient>
+  </defs>
+
+  <!-- 1. BACKGROUND -->
+  <rect width="800" height="400" fill="url(#expBg)" rx="10" />
+
+  <!-- Subtle Tech Grid -->
+  <g stroke="#00F2FF" stroke-width="0.5" opacity="0.07">
+    <line x1="40" y1="0" x2="40" y2="400" />
+    <line x1="120" y1="0" x2="120" y2="400" />
+    <line x1="200" y1="0" x2="200" y2="400" />
+    <line x1="280" y1="0" x2="280" y2="400" />
+    <line x1="360" y1="0" x2="360" y2="400" />
+    <line x1="440" y1="0" x2="440" y2="400" />
+    <line x1="520" y1="0" x2="520" y2="400" />
+    <line x1="600" y1="0" x2="600" y2="400" />
+    <line x1="680" y1="0" x2="680" y2="400" />
+    <line x1="760" y1="0" x2="760" y2="400" />
+    <line x1="0" y1="40" x2="800" y2="40" />
+    <line x1="0" y1="120" x2="800" y2="120" />
+    <line x1="0" y1="200" x2="800" y2="200" />
+    <line x1="0" y1="280" x2="800" y2="280" />
+    <line x1="0" y1="360" x2="800" y2="360" />
+  </g>
+
+  <!-- Outer Frame -->
+  <rect x="12" y="12" width="776" height="376" rx="8" fill="none" stroke="url(#expBorderGrad)" stroke-width="1.2" filter="url(#expCyanGlow)" />
+
+  <!-- Corner Tech Brackets -->
+  <path d="M 12 30 L 12 12 L 30 12" fill="none" stroke="#00F2FF" stroke-width="2.5" />
+  <path d="M 788 30 L 788 12 L 770 12" fill="none" stroke="#00F2FF" stroke-width="2.5" />
+  <path d="M 12 370 L 12 388 L 30 388" fill="none" stroke="#BC13FE" stroke-width="2.5" />
+  <path d="M 788 370 L 788 388 L 770 388" fill="none" stroke="#BC13FE" stroke-width="2.5" />
+
+  <!-- 2. LEFT MAIN PANEL: EXPERIMENTAL SYSTEMS -->
+  <g transform="translate(35, 45)">
+    <!-- Glass Box -->
+    <rect x="0" y="0" width="375" height="305" rx="10" fill="url(#expGlass)" stroke="url(#expBorderGrad)" stroke-width="1.5" filter="url(#expCyanGlow)" />
+
+    <!-- Active Research Badge -->
+    <g transform="translate(20, 20)">
+      <circle cx="5" cy="5" r="4" fill="#00FF88" filter="url(#expCyanGlow)">
+        <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite" />
+      </circle>
+      <text x="16" y="8" font-family="'Courier New', monospace" font-size="8.5" font-weight="bold" fill="#00FF88" letter-spacing="1.5">ACTIVE RESEARCH</text>
+    </g>
+
+    <!-- Main Title -->
+    <text x="20" y="62" font-family="'Orbitron', 'Segoe UI', sans-serif" font-size="22" font-weight="900" fill="#FFFFFF" letter-spacing="1">
+      EXPERIMENTAL
+    </text>
+    <text x="20" y="85" font-family="'Orbitron', 'Segoe UI', sans-serif" font-size="20" font-weight="900" fill="#00F2FF" letter-spacing="1.5">
+      SYSTEMS
+    </text>
+
+    <!-- Subtitle -->
+    <text x="20" y="112" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#8FA0C5">
+      VisionOS glassmorphism &amp; futuristic
+    </text>
+    <text x="20" y="128" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#8FA0C5">
+      frontend R&amp;D laboratory
+    </text>
+
+    <!-- Stat Metric Boxes -->
+    <!-- Metric 1: v2.4 BUILD -->
+    <g transform="translate(20, 155)">
+      <rect x="0" y="0" width="95" height="60" rx="6" fill="#061126" stroke="#122548" stroke-width="1" />
+      <text x="12" y="28" font-family="'Orbitron', sans-serif" font-size="16" font-weight="bold" fill="#00F2FF">v2.4</text>
+      <text x="12" y="46" font-family="'Courier New', monospace" font-size="8" fill="#8FA0C5">BUILD</text>
+    </g>
+
+    <!-- Metric 2: 247 STARS -->
+    <g transform="translate(130, 155)">
+      <rect x="0" y="0" width="95" height="60" rx="6" fill="#061126" stroke="#122548" stroke-width="1" />
+      <text x="12" y="28" font-family="'Orbitron', sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF">247</text>
+      <text x="12" y="46" font-family="'Courier New', monospace" font-size="8" fill="#8FA0C5">STARS</text>
+    </g>
+
+    <!-- Metric 3: 98% UPTIME -->
+    <g transform="translate(240, 155)">
+      <rect x="0" y="0" width="110" height="60" rx="6" fill="#061126" stroke="#122548" stroke-width="1" />
+      <text x="12" y="28" font-family="'Orbitron', sans-serif" font-size="16" font-weight="bold" fill="#00FF88">98%</text>
+      <text x="12" y="46" font-family="'Courier New', monospace" font-size="8" fill="#8FA0C5">UPTIME</text>
+    </g>
+
+    <!-- Tags Row -->
+    <g transform="translate(20, 245)">
+      <rect x="0" y="0" width="85" height="24" rx="12" fill="#091833" stroke="#00F2FF" stroke-width="1" />
+      <text x="42.5" y="15" font-family="'Courier New', monospace" font-size="8.5" font-weight="bold" fill="#00F2FF" text-anchor="middle">VISIONOS</text>
+
+      <rect x="95" y="0" width="85" height="24" rx="12" fill="#091833" stroke="#BC13FE" stroke-width="1" />
+      <text x="137.5" y="15" font-family="'Courier New', monospace" font-size="8.5" font-weight="bold" fill="#BC13FE" text-anchor="middle">NEURAL UI</text>
+
+      <rect x="190" y="0" width="60" height="24" rx="12" fill="#091833" stroke="#00FF88" stroke-width="1" />
+      <text x="220" y="15" font-family="'Courier New', monospace" font-size="8.5" font-weight="bold" fill="#00FF88" text-anchor="middle">R&amp;D</text>
+    </g>
+  </g>
+
+  <!-- Connecting line -->
+  <path d="M 410 190 L 440 190" stroke="#00F2FF" stroke-width="1" stroke-dasharray="3,3" opacity="0.6">
+    <animate attributeName="stroke-dashoffset" values="0;-12" dur="1s" repeatCount="indefinite" />
+  </path>
+  <circle cx="440" cy="190" r="3" fill="#00F2FF" filter="url(#expCyanGlow)" />
+
+  <!-- 3. RIGHT SIDE PANELS -->
+  <!-- Top Right Open Source Badge -->
+  <g transform="translate(645, 45)">
+    <rect x="0" y="0" width="120" height="24" rx="12" fill="#091833" stroke="#00F2FF" stroke-width="1" />
+    <circle cx="15" cy="12" r="3.5" fill="#00F2FF" />
+    <text x="26" y="16" font-family="'Courier New', monospace" font-size="8.5" font-weight="bold" fill="#00F2FF" letter-spacing="1">OPEN SOURCE</text>
+  </g>
+
+  <!-- Widget 1: SYSTEM MATRIX -->
+  <g transform="translate(440, 85)">
+    <rect x="0" y="0" width="325" height="115" rx="8" fill="url(#expGlass)" stroke="#122548" stroke-width="1" />
+    <text x="14" y="20" font-family="'Courier New', monospace" font-size="8.5" fill="#00F2FF" letter-spacing="1.5">SYSTEM MATRIX</text>
+
+    <!-- Bar 1: Neural Layer Alpha -->
+    <text x="14" y="42" font-family="'Courier New', monospace" font-size="7.5" fill="#8FA0C5">Neural Layer Alpha</text>
+    <rect x="14" y="46" width="220" height="4" rx="2" fill="#081226" />
+    <rect x="14" y="46" width="175" height="4" rx="2" fill="url(#barCyan)">
+      <animate attributeName="width" values="140;185;160;175" dur="3s" repeatCount="indefinite" />
+    </rect>
+
+    <!-- Bar 2: Glass Render Engine -->
+    <text x="14" y="66" font-family="'Courier New', monospace" font-size="7.5" fill="#8FA0C5">Glass Render Engine</text>
+    <rect x="14" y="70" width="220" height="4" rx="2" fill="#081226" />
+    <rect x="14" y="70" width="195" height="4" rx="2" fill="url(#barCyan)">
+      <animate attributeName="width" values="160;210;190;195" dur="2.5s" repeatCount="indefinite" />
+    </rect>
+
+    <!-- Bar 3: Spatial Depth Map -->
+    <text x="14" y="90" font-family="'Courier New', monospace" font-size="7.5" fill="#8FA0C5">Spatial Depth Map</text>
+    <rect x="14" y="94" width="220" height="4" rx="2" fill="#081226" />
+    <rect x="14" y="94" width="140" height="4" rx="2" fill="url(#barPurple)">
+      <animate attributeName="width" values="110;160;130;140" dur="3.5s" repeatCount="indefinite" />
+    </rect>
+  </g>
+
+  <!-- Widget 2: INTERFACE & CONNECTIONS -->
+  <g transform="translate(440, 212)">
+    <rect x="0" y="0" width="150" height="138" rx="8" fill="url(#expGlass)" stroke="#122548" stroke-width="1" />
+    <text x="12" y="18" font-family="'Courier New', monospace" font-size="8" fill="#8FA0C5">INTERFACE</text>
+
+    <!-- Network Node Graphic -->
+    <g transform="translate(35, 45)">
+      <circle cx="40" cy="20" r="18" fill="none" stroke="#00F2FF" stroke-width="1" stroke-dasharray="2,2">
+        <animateTransform attributeName="transform" type="rotate" from="0 40 20" to="360 40 20" dur="8s" repeatCount="indefinite" />
+      </circle>
+      <circle cx="40" cy="20" r="6" fill="#00FF88" filter="url(#expCyanGlow)">
+        <animate attributeName="r" values="5;7;5" dur="1.5s" repeatCount="indefinite" />
+      </circle>
+    </g>
+
+    <text x="12" y="98" font-family="'Courier New', monospace" font-size="7.5" fill="#00FF88" font-weight="bold">ACTIVE NODE</text>
+    <text x="12" y="114" font-family="'Orbitron', sans-serif" font-size="11" fill="#FFFFFF" font-weight="bold">12/16</text>
+    <text x="12" y="126" font-family="'Courier New', monospace" font-size="7" fill="#8FA0C5">CONNECTIONS</text>
+  </g>
+
+  <!-- Widget 3: FREQ ANALYSIS -->
+  <g transform="translate(600, 212)">
+    <rect x="0" y="0" width="165" height="138" rx="8" fill="url(#expGlass)" stroke="#122548" stroke-width="1" />
+    <text x="14" y="18" font-family="'Courier New', monospace" font-size="8" fill="#8FA0C5">FREQ ANALYSIS</text>
+
+    <!-- Animated Equalizer Bars Grid -->
+    <g transform="translate(20, 45)" fill="#00F2FF">
+      <rect x="0" y="0" width="6" height="35" rx="1.5">
+        <animate attributeName="height" values="15;42;10;35" dur="1.1s" repeatCount="indefinite" />
+        <animate attributeName="y" values="27;0;32;7" dur="1.1s" repeatCount="indefinite" />
+      </rect>
+      <rect x="12" y="0" width="6" height="35" rx="1.5">
+        <animate attributeName="height" values="35;12;45;20" dur="1.3s" repeatCount="indefinite" />
+        <animate attributeName="y" values="7;30;0;22" dur="1.3s" repeatCount="indefinite" />
+      </rect>
+      <rect x="24" y="0" width="6" height="35" rx="1.5">
+        <animate attributeName="height" values="20;45;15;38" dur="0.9s" repeatCount="indefinite" />
+        <animate attributeName="y" values="22;0;27;4" dur="0.9s" repeatCount="indefinite" />
+      </rect>
+      <rect x="36" y="0" width="6" height="35" rx="1.5">
+        <animate attributeName="height" values="42;18;35;12" dur="1.4s" repeatCount="indefinite" />
+        <animate attributeName="y" values="0;24;7;30" dur="1.4s" repeatCount="indefinite" />
+      </rect>
+      <rect x="48" y="0" width="6" height="35" rx="1.5">
+        <animate attributeName="height" values="12;38;22;45" dur="1.2s" repeatCount="indefinite" />
+        <animate attributeName="y" values="30;4;20;0" dur="1.2s" repeatCount="indefinite" />
+      </rect>
+      <rect x="60" y="0" width="6" height="35" rx="1.5">
+        <animate attributeName="height" values="30;10;40;25" dur="1.0s" repeatCount="indefinite" />
+        <animate attributeName="y" values="12;32;2;17" dur="1.0s" repeatCount="indefinite" />
+      </rect>
+      <rect x="72" y="0" width="6" height="35" rx="1.5">
+        <animate attributeName="height" values="45;25;12;38" dur="1.5s" repeatCount="indefinite" />
+        <animate attributeName="y" values="0;17;30;4" dur="1.5s" repeatCount="indefinite" />
+      </rect>
+      <rect x="84" y="0" width="6" height="35" rx="1.5">
+        <animate attributeName="height" values="18;35;42;15" dur="1.1s" repeatCount="indefinite" />
+        <animate attributeName="y" values="24;7;0;27" dur="1.1s" repeatCount="indefinite" />
+      </rect>
+    </g>
+
+    <text x="14" y="114" font-family="'Courier New', monospace" font-size="7.5" fill="#BC13FE" font-weight="bold">SIGNAL DEPTH</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="35" y="375" font-family="'Courier New', monospace" font-size="8" fill="#40557d" letter-spacing="1">SYS 2026 // NEURAL INTERFACE LAB</text>
+</svg>

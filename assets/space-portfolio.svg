@@ -1,0 +1,221 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="100%" height="100%">
+  <defs>
+    <!-- Dark Background Gradient -->
+    <linearGradient id="spBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040916" />
+      <stop offset="50%" stop-color="#060c20" />
+      <stop offset="100%" stop-color="#0c0726" />
+    </linearGradient>
+
+    <!-- Glowing filters -->
+    <filter id="spCyanGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="spPurpleGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Glass Panel Fill -->
+    <linearGradient id="glassPanel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#09142b" stop-opacity="0.65" />
+      <stop offset="100%" stop-color="#050a18" stop-opacity="0.85" />
+    </linearGradient>
+
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F2FF" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#7000FF" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#BC13FE" stop-opacity="0.9" />
+    </linearGradient>
+
+    <linearGradient id="btnGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00F2FF" />
+      <stop offset="100%" stop-color="#7000FF" />
+    </linearGradient>
+  </defs>
+
+  <!-- 1. BACKGROUND -->
+  <rect width="800" height="400" fill="url(#spBg)" rx="10" />
+
+  <!-- Grid lines -->
+  <g stroke="#00F2FF" stroke-width="0.5" opacity="0.07">
+    <line x1="40" y1="0" x2="40" y2="400" />
+    <line x1="120" y1="0" x2="120" y2="400" />
+    <line x1="200" y1="0" x2="200" y2="400" />
+    <line x1="280" y1="0" x2="280" y2="400" />
+    <line x1="360" y1="0" x2="360" y2="400" />
+    <line x1="440" y1="0" x2="440" y2="400" />
+    <line x1="520" y1="0" x2="520" y2="400" />
+    <line x1="600" y1="0" x2="600" y2="400" />
+    <line x1="680" y1="0" x2="680" y2="400" />
+    <line x1="760" y1="0" x2="760" y2="400" />
+    <line x1="0" y1="40" x2="800" y2="40" />
+    <line x1="0" y1="120" x2="800" y2="120" />
+    <line x1="0" y1="200" x2="800" y2="200" />
+    <line x1="0" y1="280" x2="800" y2="280" />
+    <line x1="0" y1="360" x2="800" y2="360" />
+  </g>
+
+  <!-- Outer Frame -->
+  <rect x="12" y="12" width="776" height="376" rx="8" fill="none" stroke="url(#borderGrad)" stroke-width="1.2" filter="url(#spCyanGlow)" />
+
+  <!-- Corner Brackets -->
+  <path d="M 12 30 L 12 12 L 30 12" fill="none" stroke="#00F2FF" stroke-width="2.5" />
+  <path d="M 788 30 L 788 12 L 770 12" fill="none" stroke="#00F2FF" stroke-width="2.5" />
+  <path d="M 12 370 L 12 388 L 30 388" fill="none" stroke="#BC13FE" stroke-width="2.5" />
+  <path d="M 788 370 L 788 388 L 770 388" fill="none" stroke="#BC13FE" stroke-width="2.5" />
+
+  <!-- Floating ambient light node -->
+  <circle cx="200" cy="150" r="120" fill="#00F2FF" opacity="0.03" filter="url(#spCyanGlow)">
+    <animate attributeName="r" values="120;140;120" dur="6s" repeatCount="indefinite" />
+  </circle>
+
+  <!-- 2. LEFT SIDE DASHBOARD PANELS -->
+
+  <!-- Widget 1: Render Engine (144 FPS) -->
+  <g transform="translate(35, 45)">
+    <rect x="0" y="0" width="180" height="105" rx="8" fill="url(#glassPanel)" stroke="#122448" stroke-width="1" />
+    <text x="14" y="20" font-family="'Courier New', monospace" font-size="8.5" fill="#00F2FF" letter-spacing="1.5">RENDER ENGINE</text>
+    <text x="14" y="48" font-family="'Orbitron', sans-serif" font-size="22" font-weight="900" fill="#FFFFFF">144 <tspan font-size="11" fill="#00F2FF">FPS</tspan></text>
+    <text x="14" y="64" font-family="'Courier New', monospace" font-size="8" fill="#00FF88">PEAK PERFORMANCE</text>
+
+    <!-- Animated Audio/Frequency Equalizer Bars -->
+    <g transform="translate(14, 75)" fill="#00F2FF">
+      <rect x="0" y="0" width="4" height="16" rx="1">
+        <animate attributeName="height" values="8;20;6;18;8" dur="1.2s" repeatCount="indefinite" />
+        <animate attributeName="y" values="8;0;10;0;8" dur="1.2s" repeatCount="indefinite" />
+      </rect>
+      <rect x="7" y="0" width="4" height="16" rx="1">
+        <animate attributeName="height" values="18;6;22;10;18" dur="1.4s" repeatCount="indefinite" />
+        <animate attributeName="y" values="0;10;0;6;0" dur="1.4s" repeatCount="indefinite" />
+      </rect>
+      <rect x="14" y="0" width="4" height="16" rx="1">
+        <animate attributeName="height" values="10;22;8;18;10" dur="1.1s" repeatCount="indefinite" />
+        <animate attributeName="y" values="6;0;8;0;6" dur="1.1s" repeatCount="indefinite" />
+      </rect>
+      <rect x="21" y="0" width="4" height="16" rx="1">
+        <animate attributeName="height" values="22;10;16;6;22" dur="1.3s" repeatCount="indefinite" />
+        <animate attributeName="y" values="0;6;0;10;0" dur="1.3s" repeatCount="indefinite" />
+      </rect>
+      <rect x="28" y="0" width="4" height="16" rx="1">
+        <animate attributeName="height" values="12;24;10;18;12" dur="1.5s" repeatCount="indefinite" />
+        <animate attributeName="y" values="4;0;6;0;4" dur="1.5s" repeatCount="indefinite" />
+      </rect>
+      <rect x="35" y="0" width="4" height="16" rx="1">
+        <animate attributeName="height" values="16;8;20;10;16" dur="1.2s" repeatCount="indefinite" />
+        <animate attributeName="y" values="0;8;0;6;0" dur="1.2s" repeatCount="indefinite" />
+      </rect>
+    </g>
+  </g>
+
+  <!-- Widget 2: Latency (3.2 MS) -->
+  <g transform="translate(145, 160)">
+    <rect x="0" y="0" width="135" height="85" rx="8" fill="url(#glassPanel)" stroke="#122448" stroke-width="1" />
+    <text x="14" y="18" font-family="'Courier New', monospace" font-size="8" fill="#8FA0C5">LATENCY</text>
+    <text x="14" y="42" font-family="'Orbitron', sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">3.2 <tspan font-size="9" fill="#BC13FE">MS AVG</tspan></text>
+
+    <!-- Animated Line Graph with Pulsing Point -->
+    <path d="M 14 65 Q 35 48 55 60 T 95 50 T 115 58" fill="none" stroke="#00F2FF" stroke-width="1.8" filter="url(#spCyanGlow)" />
+    <circle cx="95" cy="50" r="3.5" fill="#00FF88" filter="url(#spCyanGlow)">
+      <animate attributeName="cy" values="50;45;52;48;50" dur="2s" repeatCount="indefinite" />
+    </circle>
+  </g>
+
+  <!-- Widget 3: Layer Composition (8 Active Layers) -->
+  <g transform="translate(35, 260)">
+    <rect x="0" y="0" width="200" height="90" rx="8" fill="url(#glassPanel)" stroke="#122448" stroke-width="1" />
+    <text x="14" y="18" font-family="'Courier New', monospace" font-size="8" fill="#8FA0C5">LAYER COMPOSITION</text>
+
+    <!-- 10 Node Grid Dots -->
+    <g transform="translate(14, 30)" fill="#00F2FF">
+      <circle cx="0" cy="0" r="2.5" opacity="0.9" />
+      <circle cx="12" cy="0" r="2.5" opacity="0.9" />
+      <circle cx="24" cy="0" r="2.5" opacity="0.9" />
+      <circle cx="36" cy="0" r="2.5" opacity="0.9" />
+      <circle cx="48" cy="0" r="2.5" opacity="0.9" />
+      <circle cx="60" cy="0" r="2.5" opacity="0.4" />
+
+      <circle cx="0" cy="10" r="2.5" opacity="0.9" />
+      <circle cx="12" cy="10" r="2.5" opacity="0.9" />
+      <circle cx="24" cy="10" r="2.5" opacity="0.9" />
+      <circle cx="36" cy="10" r="2.5" opacity="0.4" />
+    </g>
+
+    <text x="14" y="58" font-family="'Orbitron', sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">8 Active Layers</text>
+    <text x="14" y="74" font-family="'Courier New', monospace" font-size="7.5" fill="#8FA0C5">DEPTH COMPOSITED</text>
+  </g>
+
+  <!-- Connector Line from Widgets to Main Panel -->
+  <path d="M 280 200 L 410 200" stroke="#00F2FF" stroke-width="1" stroke-dasharray="3,3" opacity="0.5">
+    <animate attributeName="stroke-dashoffset" values="0;-12" dur="1s" repeatCount="indefinite" />
+  </path>
+  <circle cx="410" cy="200" r="3" fill="#00F2FF" filter="url(#spCyanGlow)" />
+
+  <!-- 3. RIGHT MAIN PANEL: NEURAL PORTFOLIO / CINEMATIC UI FRAMEWORK -->
+  <g transform="translate(410, 45)">
+    <!-- Main Glass Card Container -->
+    <rect x="0" y="0" width="355" height="305" rx="10" fill="url(#glassPanel)" stroke="url(#borderGrad)" stroke-width="1.5" filter="url(#spCyanGlow)" />
+
+    <!-- Status Pill Badge Top -->
+    <g transform="translate(225, 20)">
+      <rect x="0" y="0" width="115" height="22" rx="11" fill="#091b38" stroke="#BC13FE" stroke-width="1" />
+      <circle cx="14" cy="11" r="3.5" fill="#BC13FE" filter="url(#spPurpleGlow)">
+        <animate attributeName="opacity" values="1;0.3;1" dur="1.8s" repeatCount="indefinite" />
+      </circle>
+      <text x="24" y="15" font-family="'Courier New', monospace" font-size="8.5" font-weight="bold" fill="#BC13FE" letter-spacing="0.8">PRODUCTION READY</text>
+    </g>
+
+    <!-- Main Title -->
+    <text x="25" y="60" font-family="'Orbitron', 'Segoe UI', sans-serif" font-size="22" font-weight="900" fill="#FFFFFF" letter-spacing="1">
+      SPACE PORTFOLIO
+    </text>
+    <text x="25" y="82" font-family="'Orbitron', 'Segoe UI', sans-serif" font-size="15" font-weight="800" fill="#00F2FF" letter-spacing="1.5">
+      CINEMATIC UI SYSTEM
+    </text>
+
+    <!-- Description -->
+    <text x="25" y="112" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8FA0C5">
+      Immersive interface system for futuristic
+    </text>
+    <text x="25" y="128" font-family="'Segoe UI', sans-serif" font-size="11" fill="#8FA0C5">
+      interactions and spatial computing.
+    </text>
+
+    <!-- Feature Bullets -->
+    <g transform="translate(25, 155)">
+      <!-- Bullet 1 -->
+      <circle cx="4" cy="4" r="3" fill="#00F2FF" />
+      <text x="16" y="7" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#CBE0FF">VisionOS-inspired glass panels &amp; depth blur</text>
+
+      <!-- Bullet 2 -->
+      <circle cx="4" cy="28" r="3" fill="#00F2FF" />
+      <text x="16" y="31" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#CBE0FF">Neural ambient lighting with dynamic glow</text>
+
+      <!-- Bullet 3 -->
+      <polygon points="4,48 7,54 1,54" fill="#00FF88" />
+      <text x="16" y="53" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#CBE0FF">60fps cinematic transition system</text>
+    </g>
+
+    <!-- Action Button: EXPLORE -->
+    <g transform="translate(25, 235)">
+      <rect x="0" y="0" width="95" height="32" rx="16" fill="url(#btnGrad)" />
+      <text x="47.5" y="20" font-family="'Orbitron', sans-serif" font-size="10" font-weight="bold" fill="#050a18" text-anchor="middle" letter-spacing="1">EXPLORE</text>
+    </g>
+
+    <!-- Meta Badges -->
+    <text x="135" y="255" font-family="'Courier New', monospace" font-size="9" font-weight="bold" fill="#00F2FF" letter-spacing="1">★ 1.2K STARS</text>
+    <text x="235" y="255" font-family="'Courier New', monospace" font-size="9" font-weight="bold" fill="#BC13FE" letter-spacing="1">TYPESCRIPT</text>
+  </g>
+
+  <!-- Footer Info -->
+  <text x="35" y="375" font-family="'Courier New', monospace" font-size="8" fill="#40557d" letter-spacing="1">SYS V3.0 - 2026 // NEURAL INTERFACE LAB</text>
+  <text x="765" y="375" font-family="'Courier New', monospace" font-size="8" fill="#00F2FF" text-anchor="end" letter-spacing="1">GUI // V3.0-2026</text>
+</svg>
