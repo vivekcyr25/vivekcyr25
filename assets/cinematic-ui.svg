@@ -160,8 +160,8 @@
     <rect x="0" y="0" width="415" height="340" rx="10" fill="url(#cuiGlassPanel)" stroke="url(#cuiBorderGrad)" stroke-width="1.5" filter="url(#cuiCyanGlow)" />
 
     <!-- Status Pill Badge Top Right -->
-    <g transform="translate(245, 20)">
-      <rect x="0" y="0" width="155" height="26" rx="13" fill="#091b38" stroke="#BC13FE" stroke-width="1" />
+    <g transform="translate(215, 20)">
+      <rect x="0" y="0" width="185" height="26" rx="13" fill="#091b38" stroke="#BC13FE" stroke-width="1" />
       <circle cx="15" cy="13" r="4" fill="#BC13FE" filter="url(#cuiPurpleGlow)">
         <animate attributeName="opacity" values="1;0.3;1" dur="1.8s" repeatCount="indefinite" />
       </circle>
