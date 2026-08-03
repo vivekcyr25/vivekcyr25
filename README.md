@@ -44,9 +44,7 @@
 <h3 align="center">🛰️ SYSTEM STACK</h3>
 
 <p align="center">
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=python,js,react,nextjs,tailwind,nodejs,firebase,git,linux,vscode,c&perline=11" />
-  </a>
+  <img src="./assets/system-stack.svg" alt="System Stack" width="100%">
 </p>
 
 <br>
