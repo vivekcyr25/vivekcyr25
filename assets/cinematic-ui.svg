@@ -26,8 +26,8 @@
 
     <!-- Glass Panel Fill -->
     <linearGradient id="cuiGlassPanel" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#09142b" stop-opacity="0.65" />
-      <stop offset="100%" stop-color="#050a18" stop-opacity="0.85" />
+      <stop offset="0%" stop-color="#09142b" stop-opacity="0.75" />
+      <stop offset="100%" stop-color="#050a18" stop-opacity="0.9" />
     </linearGradient>
 
     <linearGradient id="cuiBorderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -82,7 +82,7 @@
     <text x="14" y="48" font-family="'Orbitron', sans-serif" font-size="22" font-weight="900" fill="#FFFFFF">144 <tspan font-size="11" fill="#00F2FF">FPS</tspan></text>
     <text x="14" y="64" font-family="'Courier New', monospace" font-size="8" fill="#00FF88">PEAK PERFORMANCE</text>
 
-    <!-- Animated Frequency Equalizer Bars -->
+    <!-- Animated Equalizer Bars -->
     <g transform="translate(14, 75)" fill="#00F2FF">
       <rect x="0" y="0" width="4" height="16" rx="1">
         <animate attributeName="height" values="8;20;6;18;8" dur="1.2s" repeatCount="indefinite" />
@@ -149,30 +149,30 @@
   </g>
 
   <!-- Connector Line -->
-  <path d="M 280 200 L 410 200" stroke="#00F2FF" stroke-width="1" stroke-dasharray="3,3" opacity="0.5">
+  <path d="M 280 200 L 400 200" stroke="#00F2FF" stroke-width="1" stroke-dasharray="3,3" opacity="0.5">
     <animate attributeName="stroke-dashoffset" values="0;-12" dur="1s" repeatCount="indefinite" />
   </path>
-  <circle cx="410" cy="200" r="3" fill="#00F2FF" filter="url(#cuiCyanGlow)" />
+  <circle cx="400" cy="200" r="3" fill="#00F2FF" filter="url(#cuiCyanGlow)" />
 
   <!-- 3. RIGHT MAIN PANEL: CINEMATIC UI FRAMEWORK -->
-  <g transform="translate(410, 45)">
-    <!-- Main Glass Card Container -->
-    <rect x="0" y="0" width="355" height="305" rx="10" fill="url(#cuiGlassPanel)" stroke="url(#cuiBorderGrad)" stroke-width="1.5" filter="url(#cuiCyanGlow)" />
+  <g transform="translate(400, 45)">
+    <!-- Main Glass Card Container (width 365) -->
+    <rect x="0" y="0" width="365" height="305" rx="10" fill="url(#cuiGlassPanel)" stroke="url(#cuiBorderGrad)" stroke-width="1.5" filter="url(#cuiCyanGlow)" />
 
-    <!-- Status Pill Badge -->
-    <g transform="translate(225, 20)">
-      <rect x="0" y="0" width="115" height="22" rx="11" fill="#091b38" stroke="#BC13FE" stroke-width="1" />
-      <circle cx="14" cy="11" r="3.5" fill="#BC13FE" filter="url(#cuiPurpleGlow)">
+    <!-- Status Pill Badge Top Right (WIDER PILL: width=145 so text fits cleanly with padding) -->
+    <g transform="translate(205, 18)">
+      <rect x="0" y="0" width="145" height="24" rx="12" fill="#091b38" stroke="#BC13FE" stroke-width="1" />
+      <circle cx="14" cy="12" r="3.5" fill="#BC13FE" filter="url(#cuiPurpleGlow)">
         <animate attributeName="opacity" values="1;0.3;1" dur="1.8s" repeatCount="indefinite" />
       </circle>
-      <text x="24" y="15" font-family="'Courier New', monospace" font-size="8.5" font-weight="bold" fill="#BC13FE" letter-spacing="0.8">PRODUCTION READY</text>
+      <text x="26" y="16" font-family="'Segoe UI', sans-serif" font-size="8.5" font-weight="bold" fill="#BC13FE" letter-spacing="0.5">PRODUCTION READY</text>
     </g>
 
     <!-- Main Title -->
-    <text x="25" y="60" font-family="'Orbitron', 'Segoe UI', sans-serif" font-size="22" font-weight="900" fill="#FFFFFF" letter-spacing="1">
+    <text x="25" y="60" font-family="'Orbitron', 'Segoe UI', sans-serif" font-size="21" font-weight="900" fill="#FFFFFF" letter-spacing="1">
       CINEMATIC UI
     </text>
-    <text x="25" y="82" font-family="'Orbitron', 'Segoe UI', sans-serif" font-size="16" font-weight="800" fill="#00F2FF" letter-spacing="1.5">
+    <text x="25" y="82" font-family="'Orbitron', 'Segoe UI', sans-serif" font-size="15" font-weight="800" fill="#00F2FF" letter-spacing="1.5">
       FRAMEWORK
     </text>
 
@@ -200,14 +200,14 @@
     </g>
 
     <!-- Action Button: EXPLORE -->
-    <g transform="translate(25, 235)">
-      <rect x="0" y="0" width="95" height="32" rx="16" fill="url(#cuiBtnGrad)" />
-      <text x="47.5" y="20" font-family="'Orbitron', sans-serif" font-size="10" font-weight="bold" fill="#050a18" text-anchor="middle" letter-spacing="1">EXPLORE</text>
+    <g transform="translate(25, 238)">
+      <rect x="0" y="0" width="95" height="30" rx="15" fill="url(#cuiBtnGrad)" />
+      <text x="47.5" y="19" font-family="'Orbitron', sans-serif" font-size="9.5" font-weight="bold" fill="#050a18" text-anchor="middle" letter-spacing="1">EXPLORE</text>
     </g>
 
     <!-- Meta Badges -->
-    <text x="135" y="255" font-family="'Courier New', monospace" font-size="9" font-weight="bold" fill="#00F2FF" letter-spacing="1">★ 1.2K STARS</text>
-    <text x="235" y="255" font-family="'Courier New', monospace" font-size="9" font-weight="bold" fill="#BC13FE" letter-spacing="1">TYPESCRIPT</text>
+    <text x="135" y="257" font-family="'Courier New', monospace" font-size="9" font-weight="bold" fill="#00F2FF" letter-spacing="1">★ 1.2K STARS</text>
+    <text x="245" y="257" font-family="'Courier New', monospace" font-size="9" font-weight="bold" fill="#BC13FE" letter-spacing="1">TYPESCRIPT</text>
   </g>
 
   <!-- Footer Info -->
