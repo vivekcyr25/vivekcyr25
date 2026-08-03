@@ -160,12 +160,12 @@
     <rect x="0" y="0" width="415" height="340" rx="10" fill="url(#cuiGlassPanel)" stroke="url(#cuiBorderGrad)" stroke-width="1.5" filter="url(#cuiCyanGlow)" />
 
     <!-- Status Pill Badge Top Right -->
-    <g transform="translate(215, 20)">
-      <rect x="0" y="0" width="185" height="26" rx="13" fill="#091b38" stroke="#BC13FE" stroke-width="1" />
-      <circle cx="15" cy="13" r="4" fill="#BC13FE" filter="url(#cuiPurpleGlow)">
+    <g transform="translate(252, 20)">
+      <rect x="0" y="0" width="148" height="26" rx="13" fill="#091b38" stroke="#BC13FE" stroke-width="1" />
+      <circle cx="14" cy="13" r="3.5" fill="#BC13FE" filter="url(#cuiPurpleGlow)">
         <animate attributeName="opacity" values="1;0.3;1" dur="1.8s" repeatCount="indefinite" />
       </circle>
-      <text x="28" y="17" font-family="'Segoe UI', sans-serif" font-size="9" font-weight="bold" fill="#BC13FE" letter-spacing="0.5">PRODUCTION READY</text>
+      <text x="26" y="17" font-family="'Segoe UI', sans-serif" font-size="8.5" font-weight="bold" fill="#BC13FE" letter-spacing="0.35">PRODUCTION READY</text>
     </g>
 
     <!-- Main Title -->
