@@ -26,11 +26,9 @@
 <h3 align="center">🧑‍🚀 OPERATOR PROFILE</h3>
 
 <p align="center">
-  🔭 Currently working on: <a href="https://github.com/vivekcyr25/APIS-Academic-Intelligence-System">APIS</a> — an ambient-intelligence academic memory system (Vite · React · Gemini AI · Firebase)<br>
-  🌱 Currently learning: AI orchestration patterns, React + TypeScript, and full-stack system architecture<br>
-  🤝 Open to collaborating on: AI-powered tools, cinematic UI projects, and open-source web applications<br>
-  🎓 Studying: B.Tech Computer Science &amp; Engineering<br>
-  💬 Ask me about: Python, JavaScript, React, Next.js, Firebase, and building clean, intelligent interfaces
+  <a href="https://github.com/vivekcyr25/APIS-Academic-Intelligence-System">
+    <img src="./assets/operator-profile.svg" alt="Operator Profile" width="100%">
+  </a>
 </p>
 
 <br>
