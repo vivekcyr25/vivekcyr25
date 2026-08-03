@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/banner-neural-growth.svg" alt="VisionOS Banner" width="100%">
+  <img src="./assets/banner-web-once.svg" alt="VisionOS Banner" width="100%">
 </p>
 
 <p align="center">
