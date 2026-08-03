@@ -85,8 +85,8 @@
 </td>
 
 <td width="50%" align="center">
-<a href="https://github.com/vivekcyr25/APIS-Academic-Intelligence-System">
-<img src="./assets/ai-utility.png" alt="AI Utility Platform" width="100%">
+<a href="https://github.com/vivekcyr25/AI-Video-Restoration-Pipeline">
+<img src="./assets/ai-video-restoration.svg" alt="AI Video Restoration Pipeline" width="100%">
 </a>
 </td>
 
@@ -101,8 +101,8 @@
 </td>
 
 <td width="50%" align="center">
-<a href="https://github.com/vivekcyr25/AI-Video-Restoration-Pipeline">
-<img src="./assets/ai-video-restoration.svg" alt="AI Video Restoration Pipeline" width="100%">
+<a href="https://github.com/vivekcyr25">
+<img src="./assets/cinematic-ui.png" alt="Cinematic UI Framework" width="100%">
 </a>
 </td>
 
