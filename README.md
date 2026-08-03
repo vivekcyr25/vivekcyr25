@@ -122,7 +122,11 @@
 <h3 align="center">🏆 ACHIEVEMENTS</h3>
 
 <p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=vivekcyr25&bg_color=050816&color=00F2FF&line=BC13FE&point=00F2FF&area=true&hide_border=true" width="100%" alt="Contribution Activity Graph">
+  <picture>
+    <source media="(prefers-color-scheme: dark)"  srcset="./assets/github-contribution-grid-snake-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="./assets/github-contribution-grid-snake.svg">
+    <img alt="Snake eating contributions" src="./assets/github-contribution-grid-snake-dark.svg" width="100%">
+  </picture>
 </p>
 
 <p align="center">
