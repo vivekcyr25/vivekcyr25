@@ -27,7 +27,7 @@
 
 <p align="center">
   <a href="https://github.com/vivekcyr25/APIS-Academic-Intelligence-System">
-    <img src="./assets/operator-profile.svg" alt="Operator Profile" width="100%">
+    <img src="./assets/operator-profile-hud.svg" alt="Operator Profile" width="100%">
   </a>
 </p>
 
