@@ -91,14 +91,14 @@
 <tr>
 
 <td width="50%" align="center">
-<a href="https://github.com/vivekcyr25">
-<img src="./assets/experimental-systems.svg" alt="Experimental Systems" width="100%">
+<a href="https://github.com/vivekcyr25/Personal-website">
+<img src="./assets/ai-portfolio-maker.svg" alt="AI Portfolio Maker" width="100%">
 </a>
 </td>
 
 <td width="50%" align="center">
-<a href="https://github.com/vivekcyr25">
-<img src="./assets/cinematic-ui.svg" alt="Cinematic UI Framework" width="100%">
+<a href="https://github.com/vivekcyr25/APIS-Academic-Intelligence-System">
+<img src="./assets/apis.svg" alt="APIS Academic Intelligence System" width="100%">
 </a>
 </td>
 
