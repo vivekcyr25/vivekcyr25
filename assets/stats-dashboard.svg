@@ -7,7 +7,7 @@
     <stop offset="100%" stop-color="#040914"/>
   </linearGradient>
 
-  <!-- Wave fill gradients (userSpaceOnUse so they stay fixed while waves scroll) -->
+  <!-- Wave fill gradients -->
   <linearGradient id="cyanArea" x1="0" y1="248" x2="0" y2="432" gradientUnits="userSpaceOnUse">
     <stop offset="0%"   stop-color="#00F2FF" stop-opacity="0.48"/>
     <stop offset="100%" stop-color="#00F2FF" stop-opacity="0"/>
@@ -22,6 +22,12 @@
   <linearGradient id="barGrad" x1="0" y1="0" x2="1" y2="0">
     <stop offset="0%"   stop-color="#00F2FF"/>
     <stop offset="55%"  stop-color="#5544EE"/>
+    <stop offset="100%" stop-color="#BC13FE"/>
+  </linearGradient>
+
+  <!-- Streak ring -->
+  <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%"   stop-color="#00F2FF"/>
     <stop offset="100%" stop-color="#BC13FE"/>
   </linearGradient>
 
@@ -41,7 +47,7 @@
 <!-- ════════════════════ BACKGROUND ════════════════════ -->
 <rect width="900" height="480" fill="url(#bg)"/>
 
-<!-- Subtle horizontal lines for depth -->
+<!-- Subtle horizontal lines -->
 <g stroke="#0a1530" stroke-width="0.6" opacity="0.6">
   <line x1="0" y1="160" x2="900" y2="160"/>
   <line x1="0" y1="320" x2="900" y2="320"/>
@@ -66,6 +72,12 @@
       font-size="17" font-weight="bold"
       fill="#ffffff" letter-spacing="3">SYSTEM DIAGNOSTICS</text>
 
+<!-- Last synced timestamp -->
+<text x="450" y="78"
+      font-family="'Courier New',Courier,monospace"
+      font-size="7" fill="#00F2FF" letter-spacing="1" opacity="0.5"
+      text-anchor="middle">⟳ SYNCED 2026-08-04 18:37 UTC</text>
+
 <!-- ════════════════════ LEFT PANEL ════════════════════ -->
 
 <!-- Header: pulse dot + label -->
@@ -87,18 +99,16 @@
       font-family="'Courier New',Courier,monospace"
       font-size="8" fill="#00F2FF" letter-spacing="1.2">NODE_ACTIVE</text>
 
-<!-- ── Stat cards ── -->
-
-<!-- CONTRIBUTIONS -->
+<!-- ── CONTRIBUTIONS card ── -->
 <rect x="10" y="132" width="133" height="78" rx="6" fill="#060e28" stroke="#101f3e" stroke-width="1"/>
 <text x="18" y="151"
       font-family="'Courier New',Courier,monospace"
       font-size="7.5" fill="#00F2FF" letter-spacing="2" opacity="0.75">CONTRIBUTIONS</text>
 <text x="18" y="192"
       font-family="'Courier New',Courier,monospace"
-      font-size="32" font-weight="bold" fill="#00F2FF" filter="url(#glow)">151</text>
+      font-size="32" font-weight="bold" fill="#00F2FF" filter="url(#glow)">819</text>
 
-<!-- SYSTEMS -->
+<!-- ── REPOS card ── -->
 <rect x="153" y="132" width="133" height="78" rx="6" fill="#060e28" stroke="#101f3e" stroke-width="1"/>
 <text x="161" y="151"
       font-family="'Courier New',Courier,monospace"
@@ -107,35 +117,35 @@
       font-family="'Courier New',Courier,monospace"
       font-size="32" font-weight="bold" fill="#BC13FE" filter="url(#glow)">12</text>
 
-<!-- STREAK -->
+<!-- ── STREAK card ── -->
 <rect x="10" y="220" width="133" height="78" rx="6" fill="#060e28" stroke="#101f3e" stroke-width="1"/>
 <text x="18" y="239"
       font-family="'Courier New',Courier,monospace"
-      font-size="7.5" fill="#00FF88" letter-spacing="2" opacity="0.75">STREAK</text>
+      font-size="7.5" fill="#00FF88" letter-spacing="2" opacity="0.75">CUR STREAK</text>
 <text x="18" y="280"
       font-family="'Courier New',Courier,monospace"
-      font-size="32" font-weight="bold" fill="#00FF88" filter="url(#glow)">7<tspan font-size="19" dy="4">d</tspan></text>
+      font-size="32" font-weight="bold" fill="#00FF88" filter="url(#glow)">2<tspan font-size="19" dy="4">d</tspan></text>
 
-<!-- UPTIME -->
+<!-- ── LONGEST STREAK card ── -->
 <rect x="153" y="220" width="133" height="78" rx="6" fill="#060e28" stroke="#101f3e" stroke-width="1"/>
 <text x="161" y="239"
       font-family="'Courier New',Courier,monospace"
-      font-size="7.5" fill="#8899bb" letter-spacing="2" opacity="0.85">UPTIME</text>
+      font-size="7.5" fill="#8899bb" letter-spacing="2" opacity="0.85">MAX STREAK</text>
 <text x="161" y="278"
       font-family="'Courier New',Courier,monospace"
-      font-size="25" font-weight="bold" fill="#ffffff">99.9<tspan font-size="14">%</tspan></text>
+      font-size="25" font-weight="bold" fill="#ffffff">12<tspan font-size="14">d</tspan></text>
 
-<!-- RUNTIME STABILITY -->
+<!-- ── RUNTIME STABILITY / Contribution progress bar ── -->
 <text x="10" y="320"
       font-family="'Courier New',Courier,monospace"
       font-size="8" fill="#00F2FF" letter-spacing="2">RUNTIME STABILITY</text>
 
 <!-- Progress track -->
 <rect x="10" y="329" width="266" height="12" rx="6" fill="#060e28" stroke="#101f3e" stroke-width="1"/>
-<!-- Animated fill (0 → 98% of 260px = 255px) -->
+<!-- Animated fill -->
 <rect x="10" y="329" width="1" height="12" rx="6" fill="url(#barGrad)">
   <animate attributeName="width"
-           from="1" to="255"
+           from="1" to="260"
            dur="1.8s"
            calcMode="spline" keySplines="0.4 0 0.2 1"
            fill="freeze"/>
@@ -143,7 +153,7 @@
 <!-- Glow on bar -->
 <rect x="10" y="329" width="1" height="12" rx="6" fill="url(#barGrad)" opacity="0.4" filter="url(#glow)">
   <animate attributeName="width"
-           from="1" to="255"
+           from="1" to="260"
            dur="1.8s"
            calcMode="spline" keySplines="0.4 0 0.2 1"
            fill="freeze"/>
@@ -151,7 +161,20 @@
 
 <text x="281" y="340"
       font-family="'Courier New',Courier,monospace"
-      font-size="10" font-weight="bold" fill="#00F2FF">98%</text>
+      font-size="10" font-weight="bold" fill="#00F2FF">100%</text>
+
+<!-- Streak date range label -->
+<text x="10" y="360"
+      font-family="'Courier New',Courier,monospace"
+      font-size="7.5" fill="#00FF88" letter-spacing="1" opacity="0.7">Aug 3 – Aug 4</text>
+
+<!-- Commits / PRs micro-stats -->
+<text x="10" y="385"
+      font-family="'Courier New',Courier,monospace"
+      font-size="7.5" fill="#00F2FF" letter-spacing="1" opacity="0.8">COMMITS: 804</text>
+<text x="10" y="400"
+      font-family="'Courier New',Courier,monospace"
+      font-size="7.5" fill="#BC13FE" letter-spacing="1" opacity="0.8">PULL REQUESTS: 0</text>
 
 <!-- ════════════════════ CENTER PANEL ════════════════════ -->
 
@@ -175,21 +198,20 @@
 <!-- Chart inner box -->
 <rect x="309" y="130" width="320" height="320" rx="4" fill="#020710" stroke="#101f3e" stroke-width="1"/>
 
-<!-- Chart horizontal grid -->
+<!-- Chart grid -->
 <g stroke="#0c1a2e" stroke-width="1">
   <line x1="310" y1="196" x2="628" y2="196"/>
   <line x1="310" y1="255" x2="628" y2="255"/>
   <line x1="310" y1="314" x2="628" y2="314"/>
   <line x1="310" y1="373" x2="628" y2="373"/>
 </g>
-<!-- Chart vertical grid -->
 <g stroke="#0c1a2e" stroke-width="1">
   <line x1="388" y1="131" x2="388" y2="449"/>
   <line x1="466" y1="131" x2="466" y2="449"/>
   <line x1="544" y1="131" x2="544" y2="449"/>
 </g>
 
-<!-- HIGH / LOW axis labels -->
+<!-- HIGH / LOW labels -->
 <text x="313" y="207" font-family="'Courier New',Courier,monospace" font-size="7" fill="#00F2FF" opacity="0.4">HIGH</text>
 <text x="313" y="444" font-family="'Courier New',Courier,monospace" font-size="7" fill="#00F2FF" opacity="0.4">LOW</text>
 
@@ -201,20 +223,12 @@
     <animateTransform attributeName="transform" type="translate"
                       from="0,0" to="-400,0"
                       dur="7s" repeatCount="indefinite"/>
-    <!-- fill -->
-    <path d="M 310,348
-             S 360,384 410,348 S 460,312 510,348
-             S 560,384 610,348 S 660,312 710,348
-             S 760,384 810,348 S 860,312 910,348
-             S 960,384 1010,348 S 1060,312 1110,348
+    <path d="M 310,348 S 360,384 410,348 S 460,312 510,348 S 560,384 610,348 S 660,312 710,348
+             S 760,384 810,348 S 860,312 910,348 S 960,384 1010,348 S 1060,312 1110,348
              L 1110,432 L 310,432 Z"
           fill="url(#purpleArea)"/>
-    <!-- line -->
-    <path d="M 310,348
-             S 360,384 410,348 S 460,312 510,348
-             S 560,384 610,348 S 660,312 710,348
-             S 760,384 810,348 S 860,312 910,348
-             S 960,384 1010,348 S 1060,312 1110,348"
+    <path d="M 310,348 S 360,384 410,348 S 460,312 510,348 S 560,384 610,348 S 660,312 710,348
+             S 760,384 810,348 S 860,312 910,348 S 960,384 1010,348 S 1060,312 1110,348"
           fill="none" stroke="#BC13FE" stroke-width="2" filter="url(#glow)"/>
   </g>
 
@@ -223,78 +237,91 @@
     <animateTransform attributeName="transform" type="translate"
                       from="0,0" to="-400,0"
                       dur="4.5s" repeatCount="indefinite"/>
-    <!-- fill -->
-    <path d="M 310,288
-             S 360,249 410,288 S 460,327 510,288
-             S 560,249 610,288 S 660,327 710,288
-             S 760,249 810,288 S 860,327 910,288
-             S 960,249 1010,288 S 1060,327 1110,288
+    <path d="M 310,288 S 360,249 410,288 S 460,327 510,288 S 560,249 610,288 S 660,327 710,288
+             S 760,249 810,288 S 860,327 910,288 S 960,249 1010,288 S 1060,327 1110,288
              L 1110,432 L 310,432 Z"
           fill="url(#cyanArea)"/>
-    <!-- line -->
-    <path d="M 310,288
-             S 360,249 410,288 S 460,327 510,288
-             S 560,249 610,288 S 660,327 710,288
-             S 760,249 810,288 S 860,327 910,288
-             S 960,249 1010,288 S 1060,327 1110,288"
+    <path d="M 310,288 S 360,249 410,288 S 460,327 510,288 S 560,249 610,288 S 660,327 710,288
+             S 760,249 810,288 S 860,327 910,288 S 960,249 1010,288 S 1060,327 1110,288"
           fill="none" stroke="#00F2FF" stroke-width="2.5" filter="url(#glow)"/>
   </g>
 
 </g>
 
-<!-- Cursor dashed line at wave right edge -->
+<!-- Cursor dashed line -->
 <line x1="624" y1="196" x2="624" y2="432"
       stroke="#00F2FF" stroke-width="0.8"
       stroke-dasharray="3,4" opacity="0.2"/>
 
 <!-- ════════════════════ RIGHT PANEL ════════════════════ -->
 
-<text x="651" y="116"
+<!-- STREAK RING (center) -->
+<text x="769" y="116"
       font-family="'Courier New',Courier,monospace"
-      font-size="8.5" fill="#00F2FF" letter-spacing="1.5">NEURAL ACTIVITY</text>
+      font-size="8.5" fill="#00F2FF" letter-spacing="1.5"
+      text-anchor="middle">NEURAL ACTIVITY</text>
 
-<!-- Legend row macro: dot + label + colored line -->
+<!-- Ring background -->
+<circle cx="769" cy="200" r="42"
+        fill="none" stroke="#0c1530" stroke-width="8"/>
+<!-- Ring progress arc -->
+<circle cx="769" cy="200" r="42"
+        fill="none" stroke="url(#ringGrad)" stroke-width="8"
+        stroke-linecap="round"
+        stroke-dasharray="17.6 246.3"
+        transform="rotate(-90 769 200)"
+        filter="url(#glow)">
+  <animate attributeName="stroke-dasharray"
+           from="0 263.9"
+           to="17.6 246.3"
+           dur="1.8s" calcMode="spline" keySplines="0.4 0 0.2 1"
+           fill="freeze"/>
+</circle>
+<!-- Ring center text -->
+<text x="769" y="196"
+      font-family="'Courier New',Courier,monospace"
+      font-size="22" font-weight="bold" fill="#00F2FF"
+      text-anchor="middle" filter="url(#glow)">2</text>
+<text x="769" y="212"
+      font-family="'Courier New',Courier,monospace"
+      font-size="7.5" fill="#00F2FF" letter-spacing="1"
+      text-anchor="middle">DAY STREAK</text>
 
-<!-- CORE_AI -->
-<circle cx="659" cy="162" r="3.5" fill="#00F2FF">
+<!-- Legend items -->
+<circle cx="659" cy="280" r="3.5" fill="#00F2FF">
   <animate attributeName="opacity" values="1;0.5;1" dur="2.4s" repeatCount="indefinite"/>
 </circle>
-<text x="668" y="166" font-family="'Courier New',Courier,monospace" font-size="8.5" fill="#00F2FF" letter-spacing="1">CORE_AI</text>
-<line x1="738" y1="162" x2="778" y2="162" stroke="#00F2FF" stroke-width="2.5"/>
+<text x="668" y="284" font-family="'Courier New',Courier,monospace" font-size="8.5" fill="#00F2FF" letter-spacing="1">CORE_AI</text>
+<line x1="738" y1="280" x2="778" y2="280" stroke="#00F2FF" stroke-width="2.5"/>
 
-<!-- DEPLOY -->
-<circle cx="659" cy="196" r="3.5" fill="#BC13FE">
+<circle cx="659" cy="310" r="3.5" fill="#BC13FE">
   <animate attributeName="opacity" values="1;0.5;1" dur="1.85s" repeatCount="indefinite"/>
 </circle>
-<text x="668" y="200" font-family="'Courier New',Courier,monospace" font-size="8.5" fill="#BC13FE" letter-spacing="1">DEPLOY</text>
-<line x1="738" y1="196" x2="778" y2="196" stroke="#BC13FE" stroke-width="2.5"/>
+<text x="668" y="314" font-family="'Courier New',Courier,monospace" font-size="8.5" fill="#BC13FE" letter-spacing="1">DEPLOY</text>
+<line x1="738" y1="310" x2="778" y2="310" stroke="#BC13FE" stroke-width="2.5"/>
 
-<!-- INFRA -->
-<circle cx="659" cy="230" r="3.5" fill="#00FF88">
+<circle cx="659" cy="340" r="3.5" fill="#00FF88">
   <animate attributeName="opacity" values="1;0.5;1" dur="2.9s" repeatCount="indefinite"/>
 </circle>
-<text x="668" y="234" font-family="'Courier New',Courier,monospace" font-size="8.5" fill="#00FF88" letter-spacing="1">INFRA</text>
-<line x1="738" y1="230" x2="778" y2="230" stroke="#00FF88" stroke-width="2.5"/>
+<text x="668" y="344" font-family="'Courier New',Courier,monospace" font-size="8.5" fill="#00FF88" letter-spacing="1">INFRA</text>
+<line x1="738" y1="340" x2="778" y2="340" stroke="#00FF88" stroke-width="2.5"/>
 
-<!-- API_OPS -->
-<circle cx="659" cy="264" r="3.5" fill="#FF6B9D">
+<circle cx="659" cy="370" r="3.5" fill="#FF6B9D">
   <animate attributeName="opacity" values="1;0.5;1" dur="2.1s" repeatCount="indefinite"/>
 </circle>
-<text x="668" y="268" font-family="'Courier New',Courier,monospace" font-size="8.5" fill="#FF6B9D" letter-spacing="1">API_OPS</text>
-<line x1="738" y1="264" x2="778" y2="264" stroke="#FF6B9D" stroke-width="2.5"/>
+<text x="668" y="374" font-family="'Courier New',Courier,monospace" font-size="8.5" fill="#FF6B9D" letter-spacing="1">API_OPS</text>
+<line x1="738" y1="370" x2="778" y2="370" stroke="#FF6B9D" stroke-width="2.5"/>
 
-<!-- MONITOR -->
-<circle cx="659" cy="298" r="3.5" fill="#FFB800">
+<circle cx="659" cy="400" r="3.5" fill="#FFB800">
   <animate attributeName="opacity" values="1;0.5;1" dur="3.2s" repeatCount="indefinite"/>
 </circle>
-<text x="668" y="302" font-family="'Courier New',Courier,monospace" font-size="8.5" fill="#FFB800" letter-spacing="1">MONITOR</text>
-<line x1="738" y1="298" x2="778" y2="298" stroke="#FFB800" stroke-width="2.5"/>
+<text x="668" y="404" font-family="'Courier New',Courier,monospace" font-size="8.5" fill="#FFB800" letter-spacing="1">MONITOR</text>
+<line x1="738" y1="400" x2="778" y2="400" stroke="#FFB800" stroke-width="2.5"/>
 
-<!-- ML_TRAIN -->
-<circle cx="659" cy="332" r="3.5" fill="#4499FF">
+<circle cx="659" cy="430" r="3.5" fill="#4499FF">
   <animate attributeName="opacity" values="1;0.5;1" dur="2.6s" repeatCount="indefinite"/>
 </circle>
-<text x="668" y="336" font-family="'Courier New',Courier,monospace" font-size="8.5" fill="#4499FF" letter-spacing="1">ML_TRAIN</text>
-<line x1="738" y1="332" x2="778" y2="332" stroke="#4499FF" stroke-width="2.5"/>
+<text x="668" y="434" font-family="'Courier New',Courier,monospace" font-size="8.5" fill="#4499FF" letter-spacing="1">ML_TRAIN</text>
+<line x1="738" y1="430" x2="778" y2="430" stroke="#4499FF" stroke-width="2.5"/>
 
 </svg>
