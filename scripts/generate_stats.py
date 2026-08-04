@@ -16,17 +16,10 @@ GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
 # ─── GitHub GraphQL Query ───────────────────────────────────────────────────
 
 GRAPHQL_QUERY = """
-query($login: String!) {
+query($login: String!, $from: DateTime!, $to: DateTime!) {
   user(login: $login) {
-    repositoriesContributedTo(
-      first: 1
-      contributionTypes: [COMMIT, PULL_REQUEST, REPOSITORY, PULL_REQUEST_REVIEW]
-    ) { totalCount }
-    pullRequests(first: 1) { totalCount }
-    openIssues:   issues(states: OPEN)   { totalCount }
-    closedIssues: issues(states: CLOSED) { totalCount }
     repositories(ownerAffiliations: OWNER, isFork: false, first: 1) { totalCount }
-    contributionsCollection {
+    contributionsCollection(from: $from, to: $to) {
       totalCommitContributions
       totalPullRequestContributions
       totalIssueContributions
@@ -63,7 +56,14 @@ def github_graphql(query: str, variables: dict) -> dict:
 
 
 def calculate_streaks(weeks: list) -> tuple[int, int, str, str]:
-    """Returns (current_streak, longest_streak, streak_start, streak_end)"""
+    """Returns (current_streak, longest_streak, streak_start, streak_end)
+
+    Matches GitHub's streak logic exactly:
+    - If today (IST) has contributions → count from today backwards
+    - If today (IST) has 0 contributions (day not over yet) → skip today,
+      count from yesterday backwards (streak stays alive!)
+    - Break only when a fully-past day has 0 contributions
+    """
     days = []
     for week in weeks:
         for day in week["contributionDays"]:
@@ -75,20 +75,31 @@ def calculate_streaks(weeks: list) -> tuple[int, int, str, str]:
     # Only include days up to today
     days = [(d, c) for d, c in days if d <= today]
 
-    # Current streak — count backwards from today
+    # ── Current streak (GitHub-style) ──────────────────────────
+    # If today is in the list and has 0 contributions, skip it —
+    # the day isn't over; the streak is still alive from yesterday.
+    days_rev = list(reversed(days))
+    skip_today = (
+        days_rev
+        and days_rev[0][0] == today
+        and days_rev[0][1] == 0
+    )
+    if skip_today:
+        days_rev = days_rev[1:]   # drop today's empty slot
+
     current = 0
     streak_end = ""
     streak_start = ""
-    for date, count in reversed(days):
+    for date, count in days_rev:
         if count > 0:
             if current == 0:
                 streak_end = date
             streak_start = date
             current += 1
         else:
-            break
+            break   # hit a genuinely empty past day → streak over
 
-    # Longest streak
+    # ── Longest streak ─────────────────────────────────────────
     longest = 0
     run = 0
     for _, count in days:
@@ -133,12 +144,30 @@ def fetch_stats() -> dict:
             "prs": 0,
         }
 
-    data = github_graphql(GRAPHQL_QUERY, {"login": GITHUB_USERNAME})
+    # Use IST boundaries so Aug 5 IST data is always included
+    IST = timezone(timedelta(hours=5, minutes=30))
+    now_ist = datetime.now(IST)
+    today_ist = now_ist.date()
+    # from = Jan 1 this year in UTC midnight
+    from_dt = datetime(today_ist.year, 1, 1, 0, 0, 0, tzinfo=timezone.utc).isoformat()
+    # to   = end of today in IST (convert to UTC)
+    to_dt   = datetime(today_ist.year, today_ist.month, today_ist.day,
+                       23, 59, 59, tzinfo=IST).astimezone(timezone.utc).isoformat()
+
+    data = github_graphql(GRAPHQL_QUERY, {
+        "login": GITHUB_USERNAME,
+        "from":  from_dt,
+        "to":    to_dt,
+    })
     user = data["data"]["user"]
     cc = user["contributionsCollection"]
     cal = cc["contributionCalendar"]
 
     current_streak, longest_streak, streak_start, streak_end = calculate_streaks(cal["weeks"])
+
+    # If streak_end is today, label it 'Today'
+    today_label = fmt_date_safe(today_ist.isoformat())
+    streak_end_display = "Today" if streak_end == fmt_date_safe(today_ist.isoformat()) else fmt_date_safe(streak_end)
 
     return {
         "total_contributions": cal["totalContributions"],
@@ -146,7 +175,7 @@ def fetch_stats() -> dict:
         "current_streak": current_streak,
         "longest_streak": longest_streak,
         "streak_start": fmt_date_safe(streak_start),
-        "streak_end": fmt_date_safe(streak_end),
+        "streak_end": streak_end_display,
         "commits": cc["totalCommitContributions"],
         "prs": cc["totalPullRequestContributions"],
     }
