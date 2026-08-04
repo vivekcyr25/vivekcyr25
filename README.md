@@ -140,7 +140,7 @@
 <h3 align="center">📡 CORE CONNECTIVITY</h3>
 
 <p align="center">
-  <img src="./assets/core-connectivity.svg" alt="Core Connectivity" width="100%">
+  <img src="./assets/core-connectivity-v2.svg" alt="Core Connectivity" width="100%">
 </p>
 
 <p align="center">

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Downloads authentic vector brand logos from jsDelivr (Simple Icons),
-converts to base64, and builds core-connectivity.svg with embedded SVG images.
+converts to base64, and builds core-connectivity-v2.svg with embedded SVG images.
 """
 
 import urllib.request
@@ -34,7 +34,6 @@ def fetch_b64(name: str, url: str) -> str:
         data_str = r.read().decode('utf-8')
     
     color = LOGO_COLORS.get(name, "#FFFFFF")
-    # SimpleIcons SVGs have <path d="..." /> or <path fill="..." d="..." />
     if 'fill="' not in data_str:
         data_str = data_str.replace('<svg ', f'<svg fill="{color}" ')
     else:
@@ -53,7 +52,6 @@ for name, url in LOGOS.items():
         b64[name] = ""
 
 def img_tag(b64_data: str, x: float, y: float, size: float = 34) -> str:
-    """Return an SVG <image> tag with embedded base64 SVG."""
     return (
         f'<image x="{x}" y="{y}" width="{size}" height="{size}" '
         f'href="data:image/svg+xml;base64,{b64_data}" '
@@ -149,7 +147,7 @@ parts.append('\n</svg>')
 
 svg_content = "\n".join(parts)
 
-out = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets", "core-connectivity.svg")
+out = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets", "core-connectivity-v2.svg")
 with open(out, "w", encoding="utf-8") as f:
     f.write(svg_content)
 
