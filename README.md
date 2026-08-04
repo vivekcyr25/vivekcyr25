@@ -69,43 +69,35 @@
 
 <h3 align="center">🚀 FEATURED SYSTEMS</h3>
 
-<div align="center">
+<p align="center">
+  <a href="https://github.com/vivekcyr25/space-portfolio">
+    <img src="./assets/space-portfolio.svg?v=2" alt="Space Portfolio" width="100%">
+  </a>
+</p>
 
-<table width="100%">
-<tr>
+<br>
 
-<td width="50%" align="center">
-<a href="https://github.com/vivekcyr25/space-portfolio">
-<img src="./assets/space-portfolio.svg" alt="Neural Portfolio" width="100%">
-</a>
-</td>
+<p align="center">
+  <a href="https://github.com/vivekcyr25/AI-Video-Restoration-Pipeline">
+    <img src="./assets/ai-video-restoration.svg?v=2" alt="AI Video Restoration Pipeline" width="100%">
+  </a>
+</p>
 
-<td width="50%" align="center">
-<a href="https://github.com/vivekcyr25/AI-Video-Restoration-Pipeline">
-<img src="./assets/ai-video-restoration.svg" alt="AI Video Restoration Pipeline" width="100%">
-</a>
-</td>
+<br>
 
-</tr>
+<p align="center">
+  <a href="https://github.com/vivekcyr25/Personal-website">
+    <img src="./assets/ai-portfolio-maker.svg?v=2" alt="AI Portfolio Maker" width="100%">
+  </a>
+</p>
 
-<tr>
+<br>
 
-<td width="50%" align="center">
-<a href="https://github.com/vivekcyr25/Personal-website">
-<img src="./assets/ai-portfolio-maker.svg" alt="AI Portfolio Maker" width="100%">
-</a>
-</td>
-
-<td width="50%" align="center">
-<a href="https://github.com/vivekcyr25/APIS-Academic-Intelligence-System">
-<img src="./assets/apis.svg" alt="APIS Academic Intelligence System" width="100%">
-</a>
-</td>
-
-</tr>
-</table>
-
-</div>
+<p align="center">
+  <a href="https://github.com/vivekcyr25/APIS-Academic-Intelligence-System">
+    <img src="./assets/apis.svg?v=2" alt="APIS Academic Intelligence System" width="100%">
+  </a>
+</p>
 
 <br>
 
