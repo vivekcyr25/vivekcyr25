@@ -70,7 +70,8 @@ def calculate_streaks(weeks: list) -> tuple[int, int, str, str]:
             days.append((day["date"], day["contributionCount"]))
     days.sort(key=lambda x: x[0])
 
-    today = datetime.now(timezone.utc).date().isoformat()
+    IST = timezone(timedelta(hours=5, minutes=30))
+    today = datetime.now(IST).date().isoformat()
     # Only include days up to today
     days = [(d, c) for d, c in days if d <= today]
 
@@ -179,7 +180,8 @@ def generate_svg(s: dict) -> str:
     streak_dash = CIRC * streak_pct / 100
     streak_gap = CIRC - streak_dash
 
-    now_utc = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    IST = timezone(timedelta(hours=5, minutes=30))
+    now_utc = datetime.now(IST).strftime("%Y-%m-%d %H:%M IST")
 
     svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480">
 <defs>
