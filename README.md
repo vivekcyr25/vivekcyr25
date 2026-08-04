@@ -140,27 +140,7 @@
 <h3 align="center">📡 CORE CONNECTIVITY</h3>
 
 <p align="center">
-  <a href="https://www.linkedin.com/in/vivek-sharma-2bba8b398/" target="_blank">
-    <img src="./assets/card-linkedin-v3.svg?v=3" alt="LinkedIn" width="122">
-  </a>
-  <a href="mailto:viveklpu008@gmail.com">
-    <img src="./assets/card-gmail-v3.svg?v=3" alt="Gmail" width="122">
-  </a>
-  <a href="https://github.com/vivekcyr25" target="_blank">
-    <img src="./assets/card-github-v3.svg?v=3" alt="GitHub" width="122">
-  </a>
-  <a href="https://www.figma.com/design/c56fU6I3HMrs1XqEbjFpCx/CA3-Project.?node-id=0-1&t=NgFkNCtlNcaOSasU-1" target="_blank">
-    <img src="./assets/card-figma-v3.svg?v=3" alt="Figma" width="122">
-  </a>
-  <a href="https://www.hackerrank.com/profile/viveklpu008" target="_blank">
-    <img src="./assets/card-hackerrank-v3.svg?v=3" alt="HackerRank" width="122">
-  </a>
-  <a href="https://www.hackerearth.com/@viveklpu008/" target="_blank">
-    <img src="./assets/card-hackerearth-v3.svg?v=3" alt="HackerEarth" width="128">
-  </a>
-  <a href="https://orcid.org/0009-0006-5078-9881" target="_blank">
-    <img src="./assets/card-orcid-v3.svg?v=3" alt="ORCID" width="122">
-  </a>
+  <img src="./assets/core-connectivity-v4.svg?v=4" alt="Core Connectivity" width="100%">
 </p>
 
 <p align="center">

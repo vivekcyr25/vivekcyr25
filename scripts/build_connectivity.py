@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Downloads authentic vector brand logos from jsDelivr (Simple Icons),
-converts to base64, and builds core-connectivity-v3.svg as well as
+converts to base64, and builds core-connectivity-v4.svg as well as
 individual clickable platform card SVGs in assets/.
 """
 
@@ -13,7 +13,6 @@ LOGOS = {
     "linkedin":    "https://cdn.jsdelivr.net/npm/simple-icons@11.0.0/icons/linkedin.svg",
     "gmail":       "https://cdn.jsdelivr.net/npm/simple-icons@11.0.0/icons/gmail.svg",
     "github":      "https://cdn.jsdelivr.net/npm/simple-icons@11.0.0/icons/github.svg",
-    "figma":       "https://cdn.jsdelivr.net/npm/simple-icons@11.0.0/icons/figma.svg",
     "hackerrank":  "https://cdn.jsdelivr.net/npm/simple-icons@11.0.0/icons/hackerrank.svg",
     "hackerearth": "https://cdn.jsdelivr.net/npm/simple-icons@11.0.0/icons/hackerearth.svg",
     "orcid":       "https://cdn.jsdelivr.net/npm/simple-icons@11.0.0/icons/orcid.svg",
@@ -23,7 +22,6 @@ LOGO_COLORS = {
     "linkedin":    "#0A66C2",
     "gmail":       "#EA4335",
     "github":      "#FFFFFF",
-    "figma":       "#F24E1E",
     "hackerrank":  "#00EA64",
     "hackerearth": "#44BCFF",
     "orcid":       "#A6CE39",
@@ -63,31 +61,29 @@ def img_tag(b64_data: str, x: float, y: float, size: float = 34) -> str:
 
 CARDS = [
     # (x, width, stroke_color, name_color, label,       logo_key)
-    (  8, 118, "#0A66C2", "#4da8ff",  "LinkedIn",   "linkedin"),
-    (135, 118, "#EA4335", "#ff7060",  "Gmail",      "gmail"),
-    (262, 118, "#58a6ff", "#c9d1d9",  "GitHub",     "github"),
-    (389, 118, "#F24E1E", "#ff6b4a",  "Figma",      "figma"),
-    (516, 118, "#00EA64", "#00EA64",  "HackerRank", "hackerrank"),
-    (643, 124, "#44BCFF", "#44BCFF",  "HackerEarth","hackerearth"),
-    (774, 118, "#A6CE39", "#b8e04a",  "ORCID",      "orcid"),
+    (  4, 142, "#0A66C2", "#4da8ff",  "LinkedIn",   "linkedin"),
+    (152, 142, "#EA4335", "#ff7060",  "Gmail",      "gmail"),
+    (300, 142, "#58a6ff", "#c9d1d9",  "GitHub",     "github"),
+    (448, 142, "#00EA64", "#00EA64",  "HackerRank", "hackerrank"),
+    (596, 152, "#44BCFF", "#44BCFF",  "HackerEarth","hackerearth"),
+    (754, 142, "#A6CE39", "#b8e04a",  "ORCID",      "orcid"),
 ]
 
 LINK_MAP = {
     "linkedin":    "https://www.linkedin.com/in/vivek-sharma-2bba8b398/",
     "gmail":       "mailto:viveklpu008@gmail.com",
     "github":      "https://github.com/vivekcyr25",
-    "figma":       "https://www.figma.com/design/c56fU6I3HMrs1XqEbjFpCx/CA3-Project.?node-id=0-1&t=NgFkNCtlNcaOSasU-1",
     "hackerrank":  "https://www.hackerrank.com/profile/viveklpu008",
     "hackerearth": "https://www.hackerearth.com/@viveklpu008/",
     "orcid":       "https://orcid.org/0009-0006-5078-9881",
 }
 
-ANIM_DUR  = [3.0, 2.8, 3.2, 2.9, 3.4, 2.6, 3.0]
-ANIM_BEGIN= [0.0, 0.4, 0.8, 0.6, 0.2, 1.0, 1.4]
+ANIM_DUR  = [3.0, 2.8, 3.2, 3.4, 2.6, 3.0]
+ANIM_BEGIN= [0.0, 0.4, 0.8, 0.2, 1.0, 1.4]
 
 assets_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
 
-# ── 1. Build Combined core-connectivity-v3.svg Banner ──
+# ── 1. Build Combined core-connectivity-v4.svg Banner ──
 parts = []
 parts.append('''<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 900 100" width="900" height="100">
 <defs>
@@ -153,7 +149,7 @@ for i, (cx, cw, stroke, label_color, label, key) in enumerate(CARDS):
 parts.append('\n</svg>')
 
 svg_content = "\n".join(parts)
-for banner_name in ["core-connectivity-v3.svg", "core-connectivity-v2.svg"]:
+for banner_name in ["core-connectivity-v4.svg", "core-connectivity-v3.svg", "core-connectivity-v2.svg"]:
     out_banner = os.path.join(assets_dir, banner_name)
     with open(out_banner, "w", encoding="utf-8") as f:
         f.write(svg_content)
@@ -194,7 +190,7 @@ for i, (cx, cw, stroke, label_color, label, key) in enumerate(CARDS):
 </a>
 </svg>'''
 
-    for card_name in [f"card-{key}-v3.svg", f"card-{key}.svg"]:
+    for card_name in [f"card-{key}-v4.svg", f"card-{key}-v3.svg", f"card-{key}.svg"]:
         card_out = os.path.join(assets_dir, card_name)
         with open(card_out, "w", encoding="utf-8") as f:
             f.write(single_svg)
