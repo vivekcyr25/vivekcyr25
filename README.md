@@ -140,31 +140,7 @@
 <h3 align="center">📡 CORE CONNECTIVITY</h3>
 
 <p align="center">
-
-<a href="https://www.linkedin.com/in/vivek-sharma-2bba8b398/">
-  <img src="https://img.shields.io/badge/LinkedIn-00F2FF?style=for-the-badge&logo=linkedin&logoColor=050816" alt="LinkedIn">
-</a>
-
-<a href="mailto:viveklpu008@gmail.com">
-  <img src="https://img.shields.io/badge/Email-BC13FE?style=for-the-badge&logo=gmail&logoColor=050816" alt="Email">
-</a>
-
-<a href="https://github.com/vivekcyr25">
-  <img src="https://img.shields.io/badge/Portfolio-00F2FF?style=for-the-badge&logo=googlechrome&logoColor=050816" alt="Portfolio">
-</a>
-
-<a href="https://www.hackerrank.com/profile/viveklpu008">
-  <img src="https://img.shields.io/badge/HackerRank-00F2FF?style=for-the-badge&logo=hackerrank&logoColor=050816" alt="HackerRank">
-</a>
-
-<a href="https://www.hackerearth.com/@viveklpu008/">
-  <img src="https://img.shields.io/badge/HackerEarth-BC13FE?style=for-the-badge&logo=hackerearth&logoColor=050816" alt="HackerEarth">
-</a>
-
-<a href="https://orcid.org/0009-0006-5078-9881">
-  <img src="https://img.shields.io/badge/ORCID-00F2FF?style=for-the-badge&logo=orcid&logoColor=050816" alt="ORCID">
-</a>
-
+  <img src="./assets/core-connectivity.svg" alt="Core Connectivity" width="100%">
 </p>
 
 <p align="center">
