@@ -1,259 +1,208 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 100" width="900" height="100">
 <defs>
-
   <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
     <stop offset="0%" stop-color="#07111f"/>
     <stop offset="100%" stop-color="#050d18"/>
   </linearGradient>
-
-  <!-- Individual card backgrounds -->
-  <linearGradient id="li-bg" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#071828"/>
-    <stop offset="100%" stop-color="#04101c"/>
-  </linearGradient>
-  <linearGradient id="gm-bg" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#1a0808"/>
-    <stop offset="100%" stop-color="#100404"/>
-  </linearGradient>
-  <linearGradient id="gh-bg" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#0d1117"/>
-    <stop offset="100%" stop-color="#090e14"/>
-  </linearGradient>
-  <linearGradient id="hr-bg" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#031208"/>
-    <stop offset="100%" stop-color="#020c05"/>
-  </linearGradient>
-  <linearGradient id="he-bg" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#04101f"/>
-    <stop offset="100%" stop-color="#030c18"/>
-  </linearGradient>
-  <linearGradient id="or-bg" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#0e1605"/>
-    <stop offset="100%" stop-color="#080f03"/>
-  </linearGradient>
-
-  <!-- Soft glow filters -->
-  <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
-    <feGaussianBlur in="SourceGraphic" stdDeviation="1.8" result="b"/>
+  <filter id="gl" x="-30%" y="-30%" width="160%" height="160%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="b"/>
     <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
   </filter>
-  <filter id="logo-glow" x="-40%" y="-40%" width="180%" height="180%">
-    <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="b"/>
-    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-  </filter>
-
 </defs>
 
-<!-- Panel background -->
 <rect width="900" height="100" fill="url(#bg)" rx="6"/>
 
-<!-- ═══════════════════════════════════════════════
-     CARD 1  —  LinkedIn
-═══════════════════════════════════════════════ -->
+
+<!-- ══════════════════════════════════════
+     CARD 1 — LinkedIn
+══════════════════════════════════════ -->
 <a href="https://www.linkedin.com/in/vivek-sharma-2bba8b398/" target="_blank">
-  <!-- Card body -->
-  <rect x="4" y="6" width="142" height="88" rx="8" fill="url(#li-bg)"/>
-
-  <!-- Animated border glow -->
-  <rect x="4" y="6" width="142" height="88" rx="8" fill="none" stroke="#0A66C2" stroke-width="1.2">
-    <animate attributeName="stroke-opacity" values="0.3;0.9;0.3" dur="3s" repeatCount="indefinite"/>
+  <rect x="4" y="4" width="142" height="92" rx="8" fill="#05101e"/>
+  <rect x="4" y="4" width="142" height="92" rx="8" fill="none" stroke="#0A66C2" stroke-width="1.2">
+    <animate attributeName="stroke-opacity" values="0.25;0.85;0.25" dur="3s" repeatCount="indefinite"/>
   </rect>
-  <!-- Inner subtle highlight line on top -->
-  <rect x="4" y="6" width="142" height="2" rx="1" fill="#0A66C2" opacity="0.5"/>
 
-  <!-- LinkedIn logo: official blue square + "in" -->
-  <g transform="translate(47, 14)">
-    <rect width="48" height="48" rx="9" fill="#0A66C2" filter="url(#logo-glow)"/>
-    <!-- "in" text paths - official letterform -->
+  <!-- LinkedIn logo: official blue square + white "in" -->
+  <g transform="translate(51,12)">
+    <rect width="48" height="48" rx="8" fill="#0A66C2" filter="url(#gl)"/>
     <g fill="white">
-      <!-- capital i dot -->
-      <circle cx="13.5" cy="13.5" r="3.5"/>
-      <!-- capital i stem -->
-      <rect x="10.5" y="19" width="6" height="19" rx="1"/>
+      <!-- i — dot -->
+      <circle cx="14" cy="14" r="4"/>
+      <!-- i — stem -->
+      <rect x="10" y="20.5" width="8" height="18" rx="1"/>
       <!-- n -->
-      <path d="M22,19 h5.5 v3.2 c1.4-2.5,4-3.8,7-3.8 c5.5,0,8,3.8,8,9.5 v9.1 h-6 v-8 c0-2.8-1-4.2-3.2-4.2 c-2.6,0-4.8,1.8-4.8,5.5 v6.7 h-6.5 z"/>
+      <path d="M23,20.5 h7 v3.5 c1.5-3 4.5-4.2 7.5-4.2 c6.5,0,8.5,4,8.5,10 v9.2 h-8 v-7.8 c0-3-1-4.5-3.2-4.5 c-2.8,0-3.8,2-3.8,5 v7.3 h-8 z"/>
     </g>
   </g>
 
-  <!-- Platform name -->
-  <text x="75" y="78" font-family="'Segoe UI',Arial,sans-serif" font-size="10" font-weight="600"
-        fill="#5baaff" letter-spacing="1.5" text-anchor="middle">LinkedIn</text>
+  <text x="75" y="74" font-family="'Segoe UI',Arial,sans-serif" font-size="10.5" font-weight="600"
+        fill="#4da8ff" text-anchor="middle" letter-spacing="0.3">LinkedIn</text>
 </a>
 
 
-<!-- ═══════════════════════════════════════════════
-     CARD 2  —  Gmail / Email
-═══════════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════
+     CARD 2 — Gmail
+     Gmail M: white 48×48 bg, M from x=2..46 y=7..41
+     Valley at (24,25). Dividers at x=13(y=16) and x=35(y=16)
+     4 sections: Red | Blue | Yellow | Green
+══════════════════════════════════════ -->
 <a href="mailto:viveklpu008@gmail.com" target="_blank">
-  <rect x="152" y="6" width="142" height="88" rx="8" fill="url(#gm-bg)"/>
-  <rect x="152" y="6" width="142" height="88" rx="8" fill="none" stroke="#EA4335" stroke-width="1.2">
-    <animate attributeName="stroke-opacity" values="0.3;0.9;0.3" dur="2.8s" repeatCount="indefinite" begin="0.4s"/>
+  <rect x="152" y="4" width="142" height="92" rx="8" fill="#100505"/>
+  <rect x="152" y="4" width="142" height="92" rx="8" fill="none" stroke="#EA4335" stroke-width="1.2">
+    <animate attributeName="stroke-opacity" values="0.25;0.85;0.25" dur="2.8s" repeatCount="indefinite" begin="0.4s"/>
   </rect>
-  <rect x="152" y="6" width="142" height="2" rx="1" fill="#EA4335" opacity="0.5"/>
 
-  <!-- Gmail logo: official M envelope -->
-  <g transform="translate(199, 14)">
-    <!-- White envelope background -->
-    <rect width="50" height="38" rx="4" fill="white"/>
-    <!-- Red left triangle -->
-    <path d="M0,4 L25,24 L50,4 L50,38 L0,38 Z" fill="#fff"/>
-    <!-- Colorful M stripes (official Gmail colors) -->
-    <!-- Red left fold -->
-    <path d="M0,4 L25,23 L50,4 L47,4 L25,21 L3,4 Z" fill="#EA4335"/>
-    <!-- Left border red -->
-    <path d="M0,4 L0,38 L8,38 L8,12 L0,4 Z" fill="#EA4335"/>
-    <!-- Right border green -->
-    <path d="M50,4 L50,38 L42,38 L42,12 L50,4 Z" fill="#34A853"/>
-    <!-- Bottom left yellow -->
-    <path d="M0,38 L8,38 L8,25 L0,38 Z" fill="#FBBC05"/>
-    <!-- Bottom right blue -->
-    <path d="M50,38 L42,38 L42,25 L50,38 Z" fill="#4285F4"/>
-    <!-- Center V shape -->
-    <path d="M8,13 L25,24 L42,13 L42,38 L34,38 L34,22 L25,28 L16,22 L16,38 L8,38 Z" fill="#C5221F"/>
-    <!-- Repaint center clean -->
-    <path d="M8,12 L25,25 L42,12 L42,38 L8,38 Z" fill="white" opacity="0.0"/>
-    <!-- Clean Gmail M -->
-    <path d="M3,5 L25,22 L47,5" fill="none" stroke="#EA4335" stroke-width="3.5" stroke-linecap="round"/>
-    <rect x="0" y="4" width="4" height="33" fill="#EA4335"/>
-    <rect x="46" y="4" width="4" height="33" fill="#34A853"/>
-    <path d="M0,37 L8,37 L8,20 L25,30 L42,20 L42,37 L50,37" fill="none" stroke="none"/>
+  <!-- Gmail logo on white bg -->
+  <g transform="translate(199,12)">
+    <rect width="48" height="48" rx="8" fill="white"/>
+    <!--
+      M occupies x=2..46, y=7..41  (44px wide, 34px tall)
+      Left diagonal:  (2,7)  → (24,25)
+      Right diagonal: (46,7) → (24,25)
+      Vertical cuts at x=13 and x=35
+        x=13 on left diag  → y=7 + 18*(13-2)/22 = 7+9  = 16  → (13,16)
+        x=35 on right diag → y=7 + 18*(46-35)/22 = 7+9  = 16  → (35,16)
+    -->
+    <!-- Red  – left outer leg -->
+    <polygon points="2,7  13,16 13,41 2,41"   fill="#EA4335"/>
+    <!-- Blue – left inner diagonal -->
+    <polygon points="13,16 24,25 24,41 13,41" fill="#4285F4"/>
+    <!-- Yellow – right inner diagonal -->
+    <polygon points="24,25 35,16 35,41 24,41" fill="#FBBC05"/>
+    <!-- Green – right outer leg -->
+    <polygon points="35,16 46,7  46,41 35,41" fill="#34A853"/>
   </g>
 
-  <text x="223" y="78" font-family="'Segoe UI',Arial,sans-serif" font-size="10" font-weight="600"
-        fill="#ff7a6e" letter-spacing="1.5" text-anchor="middle">Gmail</text>
+  <text x="223" y="74" font-family="'Segoe UI',Arial,sans-serif" font-size="10.5" font-weight="600"
+        fill="#ff7060" text-anchor="middle" letter-spacing="0.3">Gmail</text>
 </a>
 
 
-<!-- ═══════════════════════════════════════════════
-     CARD 3  —  GitHub
-═══════════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════
+     CARD 3 — GitHub
+══════════════════════════════════════ -->
 <a href="https://github.com/vivekcyr25" target="_blank">
-  <rect x="300" y="6" width="142" height="88" rx="8" fill="url(#gh-bg)"/>
-  <rect x="300" y="6" width="142" height="88" rx="8" fill="none" stroke="#e6edf3" stroke-width="1.2">
-    <animate attributeName="stroke-opacity" values="0.2;0.75;0.2" dur="3.2s" repeatCount="indefinite" begin="0.8s"/>
+  <rect x="300" y="4" width="142" height="92" rx="8" fill="#0d1117"/>
+  <rect x="300" y="4" width="142" height="92" rx="8" fill="none" stroke="#58a6ff" stroke-width="1.2">
+    <animate attributeName="stroke-opacity" values="0.2;0.7;0.2" dur="3.2s" repeatCount="indefinite" begin="0.8s"/>
   </rect>
-  <rect x="300" y="6" width="142" height="2" rx="1" fill="#e6edf3" opacity="0.4"/>
 
-  <!-- GitHub octocat official path, scaled 48x48 centered -->
-  <g transform="translate(347, 15)">
-    <circle cx="24" cy="24" r="24" fill="#24292e"/>
-    <!-- Official GitHub mark path at 48x48 -->
-    <g transform="translate(6, 5.5) scale(1.5)">
-      <path fill="#f0f6fc" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+  <!-- GitHub octocat — official path scaled to 48×48 -->
+  <g transform="translate(347,12)">
+    <circle cx="24" cy="24" r="24" fill="#1a222c"/>
+    <!-- Scale 24×24 official SVG path by 2× -->
+    <g transform="translate(0,0) scale(2)">
+      <path fill="#e6edf3"
+        d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385
+           .6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61
+           C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729
+           1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998
+           .108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93
+           0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176
+           0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405
+           1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23
+           .645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22
+           0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22
+           0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57
+           C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
     </g>
   </g>
 
-  <text x="371" y="78" font-family="'Segoe UI',Arial,sans-serif" font-size="10" font-weight="600"
-        fill="#c9d1d9" letter-spacing="1.5" text-anchor="middle">GitHub</text>
+  <text x="371" y="74" font-family="'Segoe UI',Arial,sans-serif" font-size="10.5" font-weight="600"
+        fill="#c9d1d9" text-anchor="middle" letter-spacing="0.3">GitHub</text>
 </a>
 
 
-<!-- ═══════════════════════════════════════════════
-     CARD 4  —  HackerRank
-═══════════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════
+     CARD 4 — HackerRank
+══════════════════════════════════════ -->
 <a href="https://www.hackerrank.com/profile/viveklpu008" target="_blank">
-  <rect x="448" y="6" width="142" height="88" rx="8" fill="url(#hr-bg)"/>
-  <rect x="448" y="6" width="142" height="88" rx="8" fill="none" stroke="#00EA64" stroke-width="1.2">
-    <animate attributeName="stroke-opacity" values="0.3;0.9;0.3" dur="3.4s" repeatCount="indefinite" begin="0.2s"/>
+  <rect x="448" y="4" width="142" height="92" rx="8" fill="#021408"/>
+  <rect x="448" y="4" width="142" height="92" rx="8" fill="none" stroke="#00EA64" stroke-width="1.2">
+    <animate attributeName="stroke-opacity" values="0.25;0.85;0.25" dur="3.4s" repeatCount="indefinite" begin="0.2s"/>
   </rect>
-  <rect x="448" y="6" width="142" height="2" rx="1" fill="#00EA64" opacity="0.5"/>
 
-  <!-- HackerRank official logo: green bg, white angular H -->
-  <g transform="translate(495, 14)">
-    <rect width="48" height="48" rx="9" fill="#00EA64" filter="url(#logo-glow)"/>
-    <!-- Official HackerRank angular H shape -->
-    <g fill="#1a1a1a">
-      <!-- Left bar -->
-      <rect x="7" y="7" width="8" height="34" rx="1.5"/>
-      <!-- Right bar -->
-      <rect x="33" y="7" width="8" height="34" rx="1.5"/>
-      <!-- Crossbar -->
-      <rect x="7" y="19.5" width="34" height="9" rx="1.5"/>
+  <!-- HackerRank: green rounded square + dark H -->
+  <g transform="translate(495,12)">
+    <rect width="48" height="48" rx="8" fill="#00EA64" filter="url(#gl)"/>
+    <g fill="#0f0f0f">
+      <rect x="8"  y="8"  width="8" height="32" rx="1.5"/>
+      <rect x="32" y="8"  width="8" height="32" rx="1.5"/>
+      <rect x="8"  y="20" width="32" height="8" rx="1.5"/>
     </g>
   </g>
 
-  <text x="519" y="78" font-family="'Segoe UI',Arial,sans-serif" font-size="10" font-weight="600"
-        fill="#00EA64" letter-spacing="1.5" text-anchor="middle">HackerRank</text>
+  <text x="519" y="74" font-family="'Segoe UI',Arial,sans-serif" font-size="10.5" font-weight="600"
+        fill="#00EA64" text-anchor="middle" letter-spacing="0.3">HackerRank</text>
 </a>
 
 
-<!-- ═══════════════════════════════════════════════
-     CARD 5  —  HackerEarth
-═══════════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════
+     CARD 5 — HackerEarth
+══════════════════════════════════════ -->
 <a href="https://www.hackerearth.com/@viveklpu008/" target="_blank">
-  <rect x="596" y="6" width="152" height="88" rx="8" fill="url(#he-bg)"/>
-  <rect x="596" y="6" width="152" height="88" rx="8" fill="none" stroke="#44BCFF" stroke-width="1.2">
-    <animate attributeName="stroke-opacity" values="0.3;0.9;0.3" dur="2.6s" repeatCount="indefinite" begin="1s"/>
+  <rect x="596" y="4" width="152" height="92" rx="8" fill="#040e1c"/>
+  <rect x="596" y="4" width="152" height="92" rx="8" fill="none" stroke="#44BCFF" stroke-width="1.2">
+    <animate attributeName="stroke-opacity" values="0.25;0.85;0.25" dur="2.6s" repeatCount="indefinite" begin="1s"/>
   </rect>
-  <rect x="596" y="6" width="152" height="2" rx="1" fill="#44BCFF" opacity="0.5"/>
 
-  <!-- HackerEarth official logo: dark navy square, circle with "he" -->
-  <g transform="translate(648, 14)">
-    <rect width="48" height="48" rx="9" fill="#2C3E67"/>
-    <!-- Official HE: bold sans "he" in circle -->
-    <circle cx="24" cy="24" r="16" fill="none" stroke="#44BCFF" stroke-width="3"/>
-    <text x="24" y="29.5" font-family="Arial Black,Arial,sans-serif" font-size="14" font-weight="900"
-          fill="#44BCFF" text-anchor="middle">he</text>
+  <!-- HackerEarth: dark navy square + he in circle -->
+  <g transform="translate(648,12)">
+    <rect width="48" height="48" rx="8" fill="#2C3E67" filter="url(#gl)"/>
+    <circle cx="24" cy="24" r="15" fill="none" stroke="#44BCFF" stroke-width="3"/>
+    <text x="24" y="28.5" font-family="'Arial Black',Arial,sans-serif" font-size="13"
+          font-weight="900" fill="#44BCFF" text-anchor="middle">he</text>
   </g>
 
-  <text x="672" y="78" font-family="'Segoe UI',Arial,sans-serif" font-size="10" font-weight="600"
-        fill="#44BCFF" letter-spacing="1.5" text-anchor="middle">HackerEarth</text>
+  <text x="672" y="74" font-family="'Segoe UI',Arial,sans-serif" font-size="10.5" font-weight="600"
+        fill="#44BCFF" text-anchor="middle" letter-spacing="0.3">HackerEarth</text>
 </a>
 
 
-<!-- ═══════════════════════════════════════════════
-     CARD 6  —  ORCID
-═══════════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════
+     CARD 6 — ORCID
+══════════════════════════════════════ -->
 <a href="https://orcid.org/0009-0006-5078-9881" target="_blank">
-  <rect x="754" y="6" width="142" height="88" rx="8" fill="url(#or-bg)"/>
-  <rect x="754" y="6" width="142" height="88" rx="8" fill="none" stroke="#A6CE39" stroke-width="1.2">
-    <animate attributeName="stroke-opacity" values="0.3;0.9;0.3" dur="3s" repeatCount="indefinite" begin="1.4s"/>
+  <rect x="754" y="4" width="142" height="92" rx="8" fill="#0b1405"/>
+  <rect x="754" y="4" width="142" height="92" rx="8" fill="none" stroke="#A6CE39" stroke-width="1.2">
+    <animate attributeName="stroke-opacity" values="0.25;0.85;0.25" dur="3s" repeatCount="indefinite" begin="1.4s"/>
   </rect>
-  <rect x="754" y="6" width="142" height="2" rx="1" fill="#A6CE39" opacity="0.5"/>
 
-  <!-- ORCID official logo: lime green circle, white "iD" -->
-  <g transform="translate(801, 14)">
-    <circle cx="24" cy="24" r="24" fill="#A6CE39" filter="url(#logo-glow)"/>
-    <!-- Official ORCID iD letterform in white -->
-    <!-- "i" glyph -->
-    <circle cx="13" cy="10.5" r="3" fill="white"/>
-    <rect x="10.5" y="15.5" width="5" height="17" rx="2" fill="white"/>
-    <!-- "D" glyph -->
-    <rect x="20" y="9.5" width="5" height="23" rx="2" fill="white"/>
-    <path d="M24.5,9.5 Q38,9.5 38,21 Q38,32.5 24.5,32.5" fill="none" stroke="white" stroke-width="4.5" stroke-linecap="round"/>
+  <!-- ORCID: lime green circle + official white iD -->
+  <g transform="translate(801,12)">
+    <circle cx="24" cy="24" r="24" fill="#A6CE39" filter="url(#gl)"/>
+    <!-- "i" -->
+    <circle cx="13" cy="10"  r="3.2" fill="white"/>
+    <rect x="10.2" y="15.5" width="5.6" height="17" rx="2" fill="white"/>
+    <!-- "D" -->
+    <rect x="20" y="9" width="5.5" height="24" rx="2" fill="white"/>
+    <path d="M25,9 Q40,9 40,21 Q40,33 25,33"
+          fill="none" stroke="white" stroke-width="5" stroke-linecap="round"/>
   </g>
 
-  <text x="825" y="78" font-family="'Segoe UI',Arial,sans-serif" font-size="10" font-weight="600"
-        fill="#b8e04a" letter-spacing="1.5" text-anchor="middle">ORCID</text>
+  <text x="825" y="74" font-family="'Segoe UI',Arial,sans-serif" font-size="10.5" font-weight="600"
+        fill="#b8e04a" text-anchor="middle" letter-spacing="0.3">ORCID</text>
 </a>
 
 
-<!-- ═══════════════════════════════════════════════
-     Subtle breathing glow under each card
-═══════════════════════════════════════════════ -->
-<!-- LinkedIn glow -->
-<rect x="4" y="6" width="142" height="88" rx="8" fill="none" stroke="#0A66C2" stroke-width="6" opacity="0" filter="url(#soft)">
-  <animate attributeName="opacity" values="0;0.12;0" dur="3s" repeatCount="indefinite"/>
+<!-- Breathing outer glow per card (very subtle) -->
+<rect x="4"   y="4" width="142" height="92" rx="8" fill="none" stroke="#0A66C2" stroke-width="8" opacity="0" filter="url(#gl)">
+  <animate attributeName="opacity" values="0;0.1;0"  dur="3s"   repeatCount="indefinite"/>
 </rect>
-<!-- Gmail glow -->
-<rect x="152" y="6" width="142" height="88" rx="8" fill="none" stroke="#EA4335" stroke-width="6" opacity="0" filter="url(#soft)">
-  <animate attributeName="opacity" values="0;0.12;0" dur="2.8s" repeatCount="indefinite" begin="0.4s"/>
+<rect x="152" y="4" width="142" height="92" rx="8" fill="none" stroke="#EA4335" stroke-width="8" opacity="0" filter="url(#gl)">
+  <animate attributeName="opacity" values="0;0.1;0"  dur="2.8s" repeatCount="indefinite" begin="0.4s"/>
 </rect>
-<!-- GitHub glow -->
-<rect x="300" y="6" width="142" height="88" rx="8" fill="none" stroke="#e6edf3" stroke-width="6" opacity="0" filter="url(#soft)">
+<rect x="300" y="4" width="142" height="92" rx="8" fill="none" stroke="#58a6ff" stroke-width="8" opacity="0" filter="url(#gl)">
   <animate attributeName="opacity" values="0;0.08;0" dur="3.2s" repeatCount="indefinite" begin="0.8s"/>
 </rect>
-<!-- HackerRank glow -->
-<rect x="448" y="6" width="142" height="88" rx="8" fill="none" stroke="#00EA64" stroke-width="6" opacity="0" filter="url(#soft)">
-  <animate attributeName="opacity" values="0;0.12;0" dur="3.4s" repeatCount="indefinite" begin="0.2s"/>
+<rect x="448" y="4" width="142" height="92" rx="8" fill="none" stroke="#00EA64" stroke-width="8" opacity="0" filter="url(#gl)">
+  <animate attributeName="opacity" values="0;0.1;0"  dur="3.4s" repeatCount="indefinite" begin="0.2s"/>
 </rect>
-<!-- HackerEarth glow -->
-<rect x="596" y="6" width="152" height="88" rx="8" fill="none" stroke="#44BCFF" stroke-width="6" opacity="0" filter="url(#soft)">
-  <animate attributeName="opacity" values="0;0.12;0" dur="2.6s" repeatCount="indefinite" begin="1s"/>
+<rect x="596" y="4" width="152" height="92" rx="8" fill="none" stroke="#44BCFF" stroke-width="8" opacity="0" filter="url(#gl)">
+  <animate attributeName="opacity" values="0;0.1;0"  dur="2.6s" repeatCount="indefinite" begin="1s"/>
 </rect>
-<!-- ORCID glow -->
-<rect x="754" y="6" width="142" height="88" rx="8" fill="none" stroke="#A6CE39" stroke-width="6" opacity="0" filter="url(#soft)">
-  <animate attributeName="opacity" values="0;0.12;0" dur="3s" repeatCount="indefinite" begin="1.4s"/>
+<rect x="754" y="4" width="142" height="92" rx="8" fill="none" stroke="#A6CE39" stroke-width="8" opacity="0" filter="url(#gl)">
+  <animate attributeName="opacity" values="0;0.1;0"  dur="3s"   repeatCount="indefinite" begin="1.4s"/>
 </rect>
 
 </svg>
