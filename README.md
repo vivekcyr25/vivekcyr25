@@ -1,11 +1,18 @@
-<p align="center">
+﻿<p align="center">
   <img src="./assets/banner-web-once.svg" alt="VisionOS Banner" width="100%">
 </p>
 
 <p align="center">
   <a href="https://git.io/typing-svg">
     <img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=600&size=24&pause=1000&color=00F2FF&center=true&vCenter=true&width=700&lines=AI+SYSTEMS+DEVELOPER;CINEMATIC+UI+ARCHITECT;VISIONOS+INTERFACE+DESIGNER;FULL+STACK+ENGINEER" alt="Typing SVG"/>
-  </a>
+  <!-- Badges -->
+<p align="center">
+  <img src="https://img.shields.io/badge/License-MIT-00F2FF?style=flat-square&logo=opensourceinitiative&logoColor=white" alt="License">
+  <img src="https://img.shields.io/github/last-commit/vivekcyr25/vivekcyr25?style=flat-square&color=BC13FE&label=Last%20Commit" alt="Last Commit">
+  <img src="https://img.shields.io/github/repo-size/vivekcyr25/vivekcyr25?style=flat-square&color=00FF88&label=Repo%20Size" alt="Repo Size">
+  <img src="https://img.shields.io/badge/Made%20with-Python%20%26%20SVG-FFB800?style=flat-square&logo=python&logoColor=white" alt="Made with Python">
+</p>
+</a>
 </p>
 
 <p align="center">
