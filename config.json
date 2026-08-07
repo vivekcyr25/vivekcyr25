@@ -1,0 +1,28 @@
+﻿{
+  "profile": {
+    "username": "vivekcyr25",
+    "display_name": "Vivek Sharma",
+    "timezone": "Asia/Kolkata",
+    "utc_offset": "+05:30"
+  },
+  "dashboard": {
+    "theme": "visionos-dark",
+    "accent_primary": "#00F2FF",
+    "accent_secondary": "#BC13FE",
+    "accent_success": "#00FF88",
+    "background_start": "#060c1e",
+    "background_end": "#040914",
+    "font_family": "Courier New, Courier, monospace"
+  },
+  "animation": {
+    "wave_speed_fast": "4.5s",
+    "wave_speed_slow": "7s",
+    "pulse_duration": "2.2s",
+    "bar_animation": "1.8s"
+  },
+  "stats": {
+    "max_contributions_scale": 500,
+    "streak_ring_max_days": 30,
+    "bar_max_width_px": 260
+  }
+}
