@@ -1,4 +1,4 @@
-name: 📊 Real-Time Stats Dashboard
+﻿name: 📊 Real-Time Stats Dashboard
 
 on:
   # Run every day at 00:30 UTC (6 AM IST)
@@ -12,12 +12,17 @@ on:
   # Allow manual trigger from GitHub UI
   workflow_dispatch:
 
+concurrency:
+  group: stats-dashboard
+  cancel-in-progress: true
+
 jobs:
   update-stats:
     name: Generate Live Stats SVG
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    timeout-minutes: 10
 
     steps:
       - name: ⬇️ Checkout repository
