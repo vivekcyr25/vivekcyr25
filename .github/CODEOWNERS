@@ -1,0 +1,13 @@
+﻿# Code Owners for the profile README repository
+# These users will be auto-requested for review on PRs
+
+* @vivekcyr25
+
+# Workflow files
+.github/ @vivekcyr25
+
+# SVG assets
+assets/ @vivekcyr25
+
+# Automation scripts
+scripts/ @vivekcyr25
