@@ -1,0 +1,25 @@
+﻿name: 🔍 Validate SVG Assets
+
+on:
+  pull_request:
+    paths:
+      - 'assets/*.svg'
+      - 'scripts/*.py'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    name: Validate SVGs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run SVG validation
+        run: python scripts/validate_svgs.py
