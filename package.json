@@ -1,7 +1,7 @@
 ﻿{
   "name": "vivekcyr25",
   "description": "GitHub Profile README with VisionOS-inspired animated SVG dashboards",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "author": "Vivek Sharma",
   "license": "MIT",
   "repository": {
@@ -14,13 +14,16 @@
     "svg-animation",
     "visionos",
     "dashboard",
-    "github-actions"
+    "github-actions",
+    "automation"
   ],
   "scripts": {
     "stats": "python scripts/generate_stats.py",
     "connectivity": "python scripts/build_connectivity.py",
     "separator": "python scripts/generate_separator.py",
-    "validate": "python scripts/validate_svgs.py"
+    "validate": "python scripts/validate_svgs.py",
+    "optimize": "python scripts/svg_optimizer.py",
+    "test": "python -m pytest tests/ -v"
   },
   "engines": {
     "python": ">=3.10"
