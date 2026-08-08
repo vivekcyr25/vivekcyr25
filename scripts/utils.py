@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Shared utility functions for profile README automation scripts.
 
@@ -46,7 +46,7 @@ def load_config() -> dict:
     """
     config_path = os.path.join(get_project_root(), "config.json")
     if os.path.exists(config_path):
-        with open(config_path, "r", encoding="utf-8") as f:
+        with open(config_path, "r", encoding="utf-8-sig") as f:
             return json.load(f)
     return {}
 

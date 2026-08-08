@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Health Check - Verifies the integrity of the profile README setup.
 
@@ -10,6 +10,9 @@ import json
 import os
 import sys
 import importlib
+
+# Ensure project root is in sys.path when script is executed directly
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from scripts.utils import get_assets_dir, get_project_root, load_config
 
