@@ -1,5 +1,11 @@
-﻿# No external dependencies required - uses Python stdlib only
-# urllib.request - HTTP requests
+﻿# Production Dependencies
+# No external dependencies required - uses Python stdlib only
+# urllib.request - HTTP requests to GitHub API
 # json - JSON parsing
-# base64 - Logo encoding
-# datetime - Timezone calculations
+# base64 - Logo encoding for SVG embedding
+# datetime - IST timezone calculations
+# xml.etree.ElementTree - SVG parsing and validation
+
+# Development Dependencies (install with: pip install -r requirements-dev.txt)
+# pytest - Test framework
+# ruff - Linter and formatter
