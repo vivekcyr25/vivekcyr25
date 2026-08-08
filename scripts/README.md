@@ -1,25 +1,43 @@
 ﻿# Scripts
 
-Automation scripts for the GitHub profile README.
+Automation scripts for generating and maintaining profile README assets.
 
-## `generate_stats.py`
-Fetches live GitHub stats via GraphQL API and generates the
-`assets/stats-dashboard.svg` with animated visualizations.
+## Available Scripts
 
-**Requirements:** `GITHUB_TOKEN` environment variable
+| Script | Description | Command |
+|--------|-------------|---------|
+| generate_stats.py | Generates the live GitHub stats dashboard SVG | make stats |
+| uild_connectivity.py | Builds platform connectivity cards | make connectivity |
+| generate_separator.py | Creates animated section separator | make separator |
+| alidate_svgs.py | Validates all SVG files for integrity | make validate |
+| svg_optimizer.py | Analyzes SVG sizes and suggests optimizations | make optimize |
+| health_check.py | Verifies config, assets, and module imports | python scripts/health_check.py |
 
-## `build_connectivity.py`
-Downloads authentic brand logos from jsDelivr (Simple Icons),
-converts to base64, and builds the `core-connectivity-v4.svg`
-banner and individual platform card SVGs.
+## Shared Modules
+
+| Module | Purpose |
+|--------|---------|
+| colors.py | VisionOS dark theme color palette constants |
+| constants.py | Centralized dimensions, thresholds, and API URLs |
+| utils.py | IST timezone, config loading, date formatting, logging |
 
 ## Usage
 
-```bash
-# Generate stats dashboard
-export GITHUB_TOKEN=your_token
+`ash
+# Generate all assets
+make all
+
+# Run a single generator
 python scripts/generate_stats.py
 
-# Build connectivity cards
-python scripts/build_connectivity.py
-```
+# Analyze asset sizes
+make optimize
+
+# Run health check
+python scripts/health_check.py
+`
+
+## Dependencies
+
+All scripts use **Python standard library only** — no pip install required.
+Minimum Python version: **3.10**
