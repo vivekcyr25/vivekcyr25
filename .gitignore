@@ -1,21 +1,47 @@
 ﻿# Python
 __pycache__/
 *.py[cod]
+*.class
 *.egg-info/
+*.egg
 dist/
 build/
+.eggs/
+*.whl
+
+# Virtual environments
+.venv/
+venv/
+env/
 
 # OS
 .DS_Store
 Thumbs.db
 desktop.ini
+ehthumbs.db
 
 # IDE
 .vscode/
 .idea/
 *.swp
 *.swo
+*.sublime-workspace
+*.sublime-project
+*.code-workspace
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
 
 # Env
 .env
+.env.local
 *.log
+
+# Temporary
+*.tmp
+*.bak
+*~
