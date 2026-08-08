@@ -1,4 +1,4 @@
-﻿.PHONY: stats connectivity separator validate all
+﻿.PHONY: stats connectivity separator validate optimize test lint all clean
 
 # Generate stats dashboard SVG
 stats:
@@ -16,6 +16,24 @@ separator:
 validate:
 	python scripts/validate_svgs.py
 
-# Run all generators
+# Analyze SVG sizes and optimization opportunities
+optimize:
+	python scripts/svg_optimizer.py
+
+# Run all tests
+test:
+	python -m pytest tests/ -v --tb=short
+
+# Run linter
+lint:
+	python -m ruff check scripts/ tests/
+
+# Run all generators and validation
 all: stats connectivity separator validate
 	@echo "✅ All assets generated and validated"
+
+# Remove generated artifacts
+clean:
+	find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true
+	find . -name "*.pyc" -delete 2>/dev/null || true
+	rm -rf .pytest_cache .coverage htmlcov
