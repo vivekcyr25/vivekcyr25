@@ -1,4 +1,4 @@
-﻿.PHONY: stats connectivity separator validate optimize test lint all clean
+.PHONY: stats connectivity separator badge access-check validate optimize test lint all clean
 
 # Generate stats dashboard SVG
 stats:
@@ -11,6 +11,14 @@ connectivity:
 # Generate separator SVG
 separator:
 	python scripts/generate_separator.py
+
+# Generate status badge SVG
+badge:
+	python scripts/generate_badge.py
+
+# Run accessibility audit on SVGs
+access-check:
+	python scripts/inspect_accessibility.py
 
 # Validate all SVG assets
 validate:
@@ -29,7 +37,7 @@ lint:
 	python -m ruff check scripts/ tests/
 
 # Run all generators and validation
-all: stats connectivity separator validate
+all: stats connectivity separator badge access-check validate
 	@echo "✅ All assets generated and validated"
 
 # Remove generated artifacts
