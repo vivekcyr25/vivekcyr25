@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "vivekcyr25-profile"
-version = "2.1.0"
+version = "2.2.0"
 description = "GitHub Profile README with VisionOS-inspired animated SVG dashboards"
 readme = "README.md"
 license = {text = "MIT"}
