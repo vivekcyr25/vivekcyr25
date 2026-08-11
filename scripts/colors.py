@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 VisionOS dark theme color palette constants.
 Centralized color definitions for all SVG generators.
@@ -37,6 +37,13 @@ BRAND_HACKERRANK = "#00EA64"
 BRAND_HACKEREARTH = "#44BCFF"
 BRAND_ORCID = "#A6CE39"
 
+# ── Gradient Definitions ──────────────────────────────────────────────
+GRADIENT_CYAN_PURPLE = (CYAN, PURPLE)
+GRADIENT_AMBER_PINK = (AMBER, PINK)
+GRADIENT_BLUE_GREEN = (BLUE, GREEN)
+GRADIENT_NEON_GLOW = (CYAN, GREEN)
+
 # ── Font Stack ───────────────────────────────────────────────────────
 FONT_MONO = "'Courier New', Courier, monospace"
 FONT_UI = "'Segoe UI', Arial, sans-serif"
+
