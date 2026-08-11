@@ -88,3 +88,19 @@ def log_sync(status: str = "success", engine: str = "generate_stats.py") -> None
         f.write(f"Last sync: {now}\n")
         f.write(f"Status: {status}\n")
         f.write(f"Engine: {engine}\n")
+
+
+def format_number_compact(val: int) -> str:
+    """Format large numbers into compact strings (e.g. 1500 -> '1.5k', 1200000 -> '1.2M').
+
+    Args:
+        val: Integer value to format.
+
+    Returns:
+        Compact string representation.
+    """
+    if val >= 1_000_000:
+        return f"{val / 1_000_000:.1f}M".replace(".0M", "M")
+    elif val >= 1_000:
+        return f"{val / 1_000:.1f}k".replace(".0k", "k")
+    return str(val)
