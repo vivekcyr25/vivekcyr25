@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """Unit tests for scripts/utils.py."""
 
 import os
@@ -11,6 +11,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from scripts.utils import (
     format_date_safe,
+    format_number_compact,
     get_assets_dir,
     get_ist_now,
     get_ist_today_iso,
@@ -18,6 +19,24 @@ from scripts.utils import (
     load_config,
     IST,
 )
+
+
+class TestFormatNumberCompact(unittest.TestCase):
+    """Tests for format_number_compact helper."""
+
+    def test_small_numbers(self):
+        self.assertEqual(format_number_compact(0), "0")
+        self.assertEqual(format_number_compact(999), "999")
+
+    def test_thousands(self):
+        self.assertEqual(format_number_compact(1000), "1k")
+        self.assertEqual(format_number_compact(1500), "1.5k")
+        self.assertEqual(format_number_compact(25000), "25k")
+
+    def test_millions(self):
+        self.assertEqual(format_number_compact(1000000), "1M")
+        self.assertEqual(format_number_compact(2400000), "2.4M")
+
 
 
 class TestFormatDateSafe(unittest.TestCase):
