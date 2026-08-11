@@ -1,6 +1,22 @@
-﻿# Changelog
+# Changelog
 
 All notable changes to the GitHub profile README are documented here.
+
+## [2.2.0] - 2026-08-11
+
+### Added
+- VisionOS SVG badge generator script (`scripts/generate_badge.py`)
+- Animated badge guide documentation (`docs/BADGE_GUIDE.md`)
+- SVG accessibility inspector (`scripts/inspect_accessibility.py`)
+- GitHub Actions workflow for Accessibility auditing (`.github/workflows/accessibility.yml`)
+- Workflow reference documentation (`docs/WORKFLOWS.md`)
+- Markdown table formatter utility (`scripts/generate_table.py`)
+- Profile statistics exporter for JSON & CSV summaries (`scripts/export_stats.py`)
+- Reusable SVG template components (`scripts/templates.py`)
+- Comprehensive test coverage for all new tools (`tests/test_badge.py`, `tests/test_table.py`, `tests/test_accessibility.py`, `tests/test_optimizer.py`, `tests/test_export.py`, `tests/test_templates.py`)
+
+### Fixed
+- Fixed UTF-8 BOM encoding compatibility issue in `pyproject.toml` and `setup.cfg` for Python 3.14.
 
 ## [2.1.0] - 2026-08-08
 
