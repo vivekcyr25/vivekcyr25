@@ -38,16 +38,22 @@ def get_project_root() -> str:
     return os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-def load_config() -> dict:
-    """Load configuration from config.json.
+def load_config(config_file: str = "config.json") -> dict:
+    """Load configuration from config.json or custom JSON file.
+
+    Args:
+        config_file: Base filename or path to configuration JSON file.
 
     Returns:
-        dict: Parsed configuration, or empty dict if file not found.
+        dict: Parsed configuration dictionary, or empty dict if invalid/missing.
     """
-    config_path = os.path.join(get_project_root(), "config.json")
+    config_path = config_file if os.path.isabs(config_file) else os.path.join(get_project_root(), config_file)
     if os.path.exists(config_path):
-        with open(config_path, "r", encoding="utf-8-sig") as f:
-            return json.load(f)
+        try:
+            with open(config_path, "r", encoding="utf-8-sig") as f:
+                return json.load(f)
+        except (json.JSONDecodeError, OSError):
+            return {}
     return {}
 
 
