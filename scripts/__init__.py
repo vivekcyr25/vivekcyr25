@@ -1,4 +1,4 @@
-﻿"""
+"""
 Profile README automation scripts.
 Generates SVG dashboards, connectivity banners, and visual separators
 for the VisionOS-themed GitHub profile.
@@ -10,6 +10,7 @@ __all__ = [
     "build_connectivity",
     "colors",
     "constants",
+    "generate_badge",
     "generate_separator",
     "generate_stats",
     "svg_optimizer",
