@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 SVG Optimizer - Reports size statistics and identifies optimization opportunities.
 
@@ -54,6 +54,23 @@ def analyze_svg(filepath: str) -> dict:
         stats["hints"].append("XML parse error")
 
     return stats
+
+
+def minify_svg_string(svg_content: str) -> str:
+    """Minify SVG content by stripping XML comments and redundant linebreaks.
+
+    Args:
+        svg_content: Raw SVG XML string.
+
+    Returns:
+        Minified SVG string.
+    """
+    import re
+    # Remove XML comments
+    content = re.sub(r"<!--.*?-->", "", svg_content, flags=re.DOTALL)
+    # Collapse multiple spaces
+    lines = [line.strip() for line in content.splitlines() if line.strip()]
+    return "\n".join(lines)
 
 
 def main():
