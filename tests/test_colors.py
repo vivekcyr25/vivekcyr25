@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """Unit tests for scripts/colors.py."""
 
 import os
@@ -57,5 +57,16 @@ class TestFontConstants(unittest.TestCase):
         self.assertIn("sans-serif", colors.FONT_UI)
 
 
+class TestGradients(unittest.TestCase):
+    """Verify gradient tuple constants."""
+
+    def test_gradient_tuples(self):
+        for name in ("GRADIENT_CYAN_PURPLE", "GRADIENT_AMBER_PINK", "GRADIENT_BLUE_GREEN", "GRADIENT_NEON_GLOW"):
+            grad = getattr(colors, name)
+            self.assertEqual(len(grad), 2, f"{name} should be a 2-tuple")
+            self.assertRegex(grad[0], HEX_PATTERN)
+            self.assertRegex(grad[1], HEX_PATTERN)
+
+
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main()
