@@ -103,4 +103,19 @@ def format_number_compact(val: int) -> str:
         return f"{val / 1_000_000:.1f}M".replace(".0M", "M")
     elif val >= 1_000:
         return f"{val / 1_000:.1f}k".replace(".0k", "k")
-    return str(val)
+    return str(val)
+
+
+def sanitize_filename(name: str) -> str:
+    """Sanitize input string for safe use in file names.
+
+    Args:
+        name: Input filename string.
+
+    Returns:
+        Cleaned, alphanumeric filename string.
+    """
+    import re
+    cleaned = re.sub(r'[^\w\.-]', '_', name.strip())
+    return cleaned.lower()
+
