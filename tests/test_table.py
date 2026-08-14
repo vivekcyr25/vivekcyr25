@@ -34,6 +34,13 @@ class TestTableGenerator(unittest.TestCase):
         lines = table.split("\n")
         self.assertEqual(len(lines), 3)
 
+    def test_bold_headers(self):
+        headers = ["Tool"]
+        rows = [["Python"]]
+        table = generate_markdown_table(headers, rows, bold_headers=True)
+        self.assertIn("**Tool**", table)
+
 
 if __name__ == "__main__":
     unittest.main()
+
