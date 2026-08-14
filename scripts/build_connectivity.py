@@ -121,7 +121,7 @@ def build_combined_banner_svg(b64_map: dict[str, str] | None = None) -> str:
 
   <!-- Animated border -->
   <rect x="{cx}" y="4" width="{cw}" height="92" rx="8" fill="none"
-        stroke="{stroke}" stroke-width="1.4">
+        stroke="{stroke}" stroke-width="1.8">
     <animate attributeName="stroke-opacity" values="0.25;0.9;0.25"
              dur="{dur}s" repeatCount="indefinite" begin="{begin}s"/>
   </rect>
@@ -177,7 +177,7 @@ def build_single_card_svg(card_tuple: tuple, b64_map: dict[str, str] | None = No
 </defs>
 <a href="{href}" target="_blank">
   <rect x="2" y="2" width="{w-4}" height="{h-4}" rx="12" fill="#061424" opacity="0.98"/>
-  <rect x="2" y="2" width="{w-4}" height="{h-4}" rx="8" fill="none" stroke="{stroke}" stroke-width="1.4">
+  <rect x="2" y="2" width="{w-4}" height="{h-4}" rx="8" fill="none" stroke="{stroke}" stroke-width="1.8">
     <animate attributeName="stroke-opacity" values="0.25;0.9;0.25" dur="{dur}s" repeatCount="indefinite" begin="{begin}s"/>
   </rect>
   <rect x="2" y="2" width="0" height="2.5" rx="1" fill="{stroke}" opacity="0.7">
