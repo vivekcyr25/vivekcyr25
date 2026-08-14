@@ -110,7 +110,7 @@ def build_combined_banner_svg(b64_map: dict[str, str] | None = None) -> str:
         begin = ANIM_BEGIN[i]
         href  = LINK_MAP.get(key, "#")
 
-        logo_size = 34
+        logo_size = 38
         logo_x = cx + (cw - logo_size) / 2
         logo_y = 16
 
@@ -167,7 +167,7 @@ def build_single_card_svg(card_tuple: tuple, b64_map: dict[str, str] | None = No
 
     w = int(cw)
     h = 92
-    logo_size = 34
+    logo_size = 38
     logo_x = (w - logo_size) / 2
     logo_y = 16
 
