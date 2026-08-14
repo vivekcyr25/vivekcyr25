@@ -137,7 +137,7 @@
 
 <br>
 
-<h3 align="center">📡 CORE CONNECTIVITY</h3>
+<h3 align="center">📡 ⚡ CORE CONNECTIVITY</h3>
 
 <p align="center">
   <img src="./assets/core-connectivity-v4.svg?v=4" alt="Core Connectivity" width="100%">
