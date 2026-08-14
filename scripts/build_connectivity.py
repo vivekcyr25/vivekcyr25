@@ -92,9 +92,10 @@ def build_combined_banner_svg(b64_map: dict[str, str] | None = None) -> str:
     parts = []
     parts.append('''<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 900 100" width="900" height="100">
 <defs>
-  <linearGradient id="panelbg" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#07111f"/>
-    <stop offset="100%" stop-color="#050d18"/>
+  <linearGradient id="panelbg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#071828"/>
+    <stop offset="50%" stop-color="#06101e"/>
+    <stop offset="100%" stop-color="#030c16"/>
   </linearGradient>
   <filter id="gl" x="-30%" y="-30%" width="160%" height="160%">
     <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="b"/>
