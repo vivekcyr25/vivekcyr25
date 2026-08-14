@@ -112,7 +112,7 @@ def build_combined_banner_svg(b64_map: dict[str, str] | None = None) -> str:
 
         logo_size = 38
         logo_x = cx + (cw - logo_size) / 2
-        logo_y = 16
+        logo_y = 13
 
         card_xml = f'''
 <a href="{href}" target="_blank">
@@ -169,7 +169,7 @@ def build_single_card_svg(card_tuple: tuple, b64_map: dict[str, str] | None = No
     h = 92
     logo_size = 38
     logo_x = (w - logo_size) / 2
-    logo_y = 16
+    logo_y = 13
 
     return f'''<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 {w} {h}" width="{w}" height="{h}">
 <defs>
