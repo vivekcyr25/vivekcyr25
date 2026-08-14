@@ -21,6 +21,7 @@ from scripts import (
 def run_cli(args=None) -> int:
     """Parse CLI arguments and dispatch commands."""
     parser = argparse.ArgumentParser(description="Unified VisionOS Profile README CLI")
+    parser.add_argument("--summary-only", action="store_true", help="Print brief execution summary")
     subparsers = parser.add_subparsers(dest="command", help="Available commands")
 
     subparsers.add_parser("build-all", help="Generate stats, connectivity cards, separator, and badge")
@@ -46,7 +47,12 @@ def run_cli(args=None) -> int:
     else:
         parser.print_help()
         return 1
+
+    if parsed.summary_only:
+        print("Summary: Command executed successfully.")
+
     return 0
+
 
 
 def main() -> None:
