@@ -7,10 +7,7 @@
     <img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=600&size=24&pause=1000&color=00F2FF&center=true&vCenter=true&width=700&lines=AI+SYSTEMS+DEVELOPER;CINEMATIC+UI+ARCHITECT;VISIONOS+INTERFACE+DESIGNER;FULL+STACK+ENGINEER" alt="Typing SVG"/>
   <!-- Badges -->
 <p align="center">
-  <img src="https://img.shields.io/badge/License-MIT-00F2FF?style=flat-square&logo=opensourceinitiative&logoColor=white" alt="License">
-  <img src="https://img.shields.io/github/last-commit/vivekcyr25/vivekcyr25?style=flat-square&color=BC13FE&label=Last%20Commit" alt="Last Commit">
-  <img src="https://img.shields.io/github/repo-size/vivekcyr25/vivekcyr25?style=flat-square&color=00FF88&label=Repo%20Size" alt="Repo Size">
-  <img src="https://img.shields.io/badge/Made%20with-Python%20%26%20SVG-FFB800?style=flat-square&logo=python&logoColor=white" alt="Made with Python">
+  <img src="./assets/profile-badges.svg" alt="Profile Badges: License MIT, Last Commit today, Repo Size 1.5 MiB, Made with Python and SVG" width="720">
 </p>
 </a>
 </p>
@@ -144,7 +141,7 @@
 </p>
 
 <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=vivekcyr25&color=00F2FF&style=flat-square&label=SYSTEM+ACCESSES" alt="Visitor Counter">
+  <img src="./assets/system-counter.svg" alt="System Accesses Counter" width="220">
 </p>
 
 <br>
