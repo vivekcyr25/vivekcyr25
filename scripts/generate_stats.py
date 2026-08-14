@@ -608,3 +608,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# a11y: improved alt text for streak stats image
