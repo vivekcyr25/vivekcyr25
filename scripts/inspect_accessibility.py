@@ -49,6 +49,22 @@ def check_svg_accessibility(file_path: str) -> Dict[str, bool]:
     return results
 
 
+import json
+
+
+def export_accessibility_report_json(svg_files: List[str]) -> str:
+    """Generate a JSON summary report of accessibility checks."""
+    report = []
+    for file_path in svg_files:
+        res = check_svg_accessibility(file_path)
+        report.append({
+            "file": os.path.basename(file_path),
+            "checks": res,
+            "accessible": any(res.values())
+        })
+    return json.dumps(report, indent=2)
+
+
 def main() -> None:
     """Inspect all SVGs in assets directory."""
     assets_dir = get_assets_dir()
@@ -70,3 +86,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
