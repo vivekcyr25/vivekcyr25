@@ -50,6 +50,20 @@ def check_readme_assets() -> list:
     return issues
 
 
+def check_workflows_exist() -> list:
+    """Verify GitHub Actions workflow files exist."""
+    issues = []
+    root = get_project_root()
+    workflows_dir = os.path.join(root, ".github", "workflows")
+    if not os.path.isdir(workflows_dir):
+        issues.append(".github/workflows directory missing")
+    else:
+        ymls = [f for f in os.listdir(workflows_dir) if f.endswith(".yml") or f.endswith(".yaml")]
+        if not ymls:
+            issues.append("No workflow files found in .github/workflows")
+    return issues
+
+
 def check_scripts_import() -> list:
     """Try importing all script modules."""
     issues = []
@@ -76,6 +90,7 @@ def main():
     for name, checker in [
         ("Config", check_config),
         ("README Assets", check_readme_assets),
+        ("Workflows", check_workflows_exist),
         ("Script Imports", check_scripts_import),
     ]:
         issues = checker()
@@ -96,4 +111,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main()
