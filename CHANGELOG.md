@@ -59,3 +59,32 @@ All notable changes to the GitHub profile README are documented here.
 
 ### Fixed
 - IST timezone handling in streak calculations
+
+## [Unreleased] - UI Overhaul Batch
+
+### Fixed
+- Truncated 'VISIONOS INTERF' banner title restored to 'VISIONOS INTERFACE'
+- Streak stats card self-hosted to remove external service dependency
+
+### Improved
+- Connectivity card border radius increased to 12px
+- Logo icons scaled to 38px for improved visibility  
+- Animated border stroke-width thickened to 1.8px
+- Platform label font upgraded to 700 weight, 12.5px size
+- Bottom accent lines added to all platform cards
+- Stats dashboard background gradient deepened for contrast
+- Streak ring enhanced with dashed purple accent overlay
+- Section divider opacity improved from 0.25 to 0.35
+
+### Added
+- CARD_SUBTITLES map for platform role descriptions
+- VisionOS color palette constants in scripts/constants.py
+- strip_svg_comments() and normalize_svg_whitespace() in svg_optimizer.py
+- slugify() utility function in scripts/utils.py
+- SVG title and desc elements for screen reader accessibility
+- Footer watermark in streak stats card
+
+### Refactored
+- Brand and label colors moved to scripts/colors.py
+- VisionOS constants imported into generate_stats.py
+- Connectivity banner output normalized with whitespace cleaner
