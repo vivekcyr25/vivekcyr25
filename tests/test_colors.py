@@ -57,16 +57,19 @@ class TestFontConstants(unittest.TestCase):
         self.assertIn("sans-serif", colors.FONT_UI)
 
 
-class TestGradients(unittest.TestCase):
-    """Verify gradient tuple constants."""
+class TestColorContrast(unittest.TestCase):
+    """Test hex_to_rgb and get_contrast_ratio functions."""
 
-    def test_gradient_tuples(self):
-        for name in ("GRADIENT_CYAN_PURPLE", "GRADIENT_AMBER_PINK", "GRADIENT_BLUE_GREEN", "GRADIENT_NEON_GLOW"):
-            grad = getattr(colors, name)
-            self.assertEqual(len(grad), 2, f"{name} should be a 2-tuple")
-            self.assertRegex(grad[0], HEX_PATTERN)
-            self.assertRegex(grad[1], HEX_PATTERN)
+    def test_hex_to_rgb(self):
+        self.assertEqual(colors.hex_to_rgb("#FFFFFF"), (255, 255, 255))
+        self.assertEqual(colors.hex_to_rgb("#000000"), (0, 0, 0))
+        self.assertEqual(colors.hex_to_rgb("#FFF"), (255, 255, 255))
+
+    def test_get_contrast_ratio(self):
+        ratio = colors.get_contrast_ratio("#FFFFFF", "#000000")
+        self.assertGreaterEqual(ratio, 4.5)
 
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main()
+
