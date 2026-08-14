@@ -580,6 +580,7 @@ def generate_streak_svg(stats: dict) -> str:
     parts.append(f'<text x="412.5" y="78" font-family="Segoe UI,Arial,sans-serif" font-size="28" font-weight="700" fill="#FFFFFF" text-anchor="middle" filter="url(#glow)">{long_streak}</text>')
     parts.append('<text x="412.5" y="114" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="600" fill="#00F2FF" text-anchor="middle">Longest Streak</text>')
     parts.append(f'<text x="412.5" y="142" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#8899bb" text-anchor="middle">{s_start} – {s_end}</text>')
+    parts.append('<text x="247.5" y="185" font-family="Segoe UI,Arial,sans-serif" font-size="8" fill="#8899bb" text-anchor="middle" letter-spacing="1.5" opacity="0.7">VISIONOS STATS · vivekcyr25</text>')
     parts.append('</svg>')
     return "\n".join(parts)
 
