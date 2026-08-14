@@ -162,7 +162,7 @@ def build_combined_banner_svg(b64_map: dict[str, str] | None = None) -> str:
 '''
         parts.append(card_xml)
 
-    parts.append('\n</svg>')
+    parts.append('<text x="450" y="88" font-family=\'Segoe UI\',Arial,sans-serif font-size="8" fill="#8899bb" text-anchor="middle" letter-spacing="1.5">DIRECT LINKS TO PLATFORMS</text>\n</svg>')
     return "\n".join(parts)
 
 def build_single_card_svg(card_tuple: tuple, b64_map: dict[str, str] | None = None, dur: float = 3.0, begin: float = 0.0) -> str:
