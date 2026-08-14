@@ -126,6 +126,9 @@ def build_combined_banner_svg(b64_map: dict[str, str] | None = None) -> str:
              dur="{dur}s" repeatCount="indefinite" begin="{begin}s"/>
   </rect>
 
+  <!-- Bottom accent line -->
+  <rect x="{cx}" y="91" width="{cw}" height="2.5" rx="1" fill="{stroke}" opacity="0.45"/>
+
   <!-- Top accent bar -->
   <rect x="{cx}" y="4" width="0" height="2.5" rx="1" fill="{stroke}" opacity="0.7">
     <animate attributeName="width" from="0" to="{cw}"
