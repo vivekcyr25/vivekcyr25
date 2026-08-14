@@ -152,3 +152,5 @@
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0:00F2FF,100:BC13FE&height=100&section=footer"/>
 </p>
+
+<!-- UI_THEME: VISIONOS_V4 -->
