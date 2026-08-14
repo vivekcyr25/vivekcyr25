@@ -119,3 +119,14 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+def strip_svg_comments(svg_str: str) -> str:
+    """Remove XML/SVG comments to reduce file size."""
+    import re
+    return re.sub(r'<!--.*?-->', '', svg_str, flags=re.DOTALL)
+
+
+def normalize_svg_whitespace(svg_str: str) -> str:
+    """Collapse multiple blank lines into a single blank line."""
+    import re
+    return re.sub(r'\n{3,}', '\n\n', svg_str)
