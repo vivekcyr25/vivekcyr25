@@ -29,6 +29,11 @@ class TestProfileCLI(unittest.TestCase):
         code = run_cli(["export"])
         self.assertEqual(code, 0)
 
+    def test_cli_summary_only(self):
+        code = run_cli(["--summary-only", "validate"])
+        self.assertEqual(code, 0)
+
 
 if __name__ == "__main__":
     unittest.main()
+
