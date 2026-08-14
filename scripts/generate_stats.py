@@ -553,6 +553,7 @@ def generate_streak_svg(stats: dict) -> str:
     parts = []
     parts.append('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 495 195" width="495" height="195">')
     parts.append('<title>GitHub Contribution Streak Statistics for vivekcyr25</title>')
+    parts.append('<desc>Shows total contributions, current streak, and longest streak on GitHub.</desc>')
     parts.append('<defs>')
     parts.append('  <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">')
     parts.append('    <stop offset="0%" stop-color="#07111f"/>')
