@@ -217,7 +217,7 @@ def generate_svg(s: dict) -> str:
 
   <!-- Backgrounds -->
   <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%"   stop-color="#060c1e"/>
+    <stop offset="0%"   stop-color="#040b1a"/>
     <stop offset="100%" stop-color="#040914"/>
   </linearGradient>
 
