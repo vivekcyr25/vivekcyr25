@@ -73,6 +73,23 @@ def minify_svg_string(svg_content: str) -> str:
     return "\n".join(lines)
 
 
+def validate_xml_string(svg_content: str) -> bool:
+    """Validate whether an SVG string parses cleanly as XML.
+
+    Args:
+        svg_content: Raw SVG XML string.
+
+    Returns:
+        True if valid XML root element, False otherwise.
+    """
+    try:
+        root = ET.fromstring(svg_content)
+        return "svg" in root.tag.lower()
+    except ET.ParseError:
+        return False
+
+
+
 def main():
     """Analyze all SVGs and print a report."""
     assets_dir = get_assets_dir()
