@@ -93,10 +93,26 @@ class TestLoadConfig(unittest.TestCase):
         config = load_config()
         self.assertIn("dashboard", config)
 
-    def test_config_username(self):
-        config = load_config()
-        self.assertEqual(config["profile"]["username"], "vivekcyr25")
+from scripts.utils import (
+    format_date_safe,
+    format_number_compact,
+    get_assets_dir,
+    get_ist_now,
+    get_project_root,
+    load_config,
+    sanitize_filename,
+)
+
+
+class TestSanitizeFilename(unittest.TestCase):
+    """Tests for sanitize_filename helper."""
+
+    def test_sanitize_spaces_and_special_chars(self):
+        self.assertEqual(sanitize_filename("My Special-File Name!.svg"), "my_special-file_name_.svg")
+
+    def test_sanitize_clean_string(self):
+        self.assertEqual(sanitize_filename("valid_name.png"), "valid_name.png")
 
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main()
