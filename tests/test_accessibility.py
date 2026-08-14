@@ -8,7 +8,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from scripts.inspect_accessibility import check_svg_accessibility
+from scripts.inspect_accessibility import check_svg_accessibility, export_accessibility_report_json
 
 
 class TestAccessibilityInspector(unittest.TestCase):
@@ -39,6 +39,11 @@ class TestAccessibilityInspector(unittest.TestCase):
         finally:
             os.remove(tf_path)
 
+    def test_export_accessibility_report_json(self):
+        report_json = export_accessibility_report_json([])
+        self.assertEqual(report_json, "[]")
+
 
 if __name__ == "__main__":
     unittest.main()
+
