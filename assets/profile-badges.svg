@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 36" width="720" height="36" role="img" aria-label="Profile badges: License MIT, Last Commit today, Repo Size 1.5 MiB, Made with Python and SVG">
+<title>VisionOS Profile Badges</title>
+<defs>
+  <!-- Scanline texture -->
+  <pattern id="scan" width="1" height="2" patternUnits="userSpaceOnUse">
+    <rect width="1" height="1" fill="rgba(255,255,255,0.015)"/>
+  </pattern>
+
+  <!-- Cyan glow filter -->
+  <filter id="glow-c" x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <!-- Purple glow filter -->
+  <filter id="glow-p" x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <!-- Green glow filter -->
+  <filter id="glow-g" x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <!-- Amber glow filter -->
+  <filter id="glow-a" x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+
+  <!-- Pill gradients -->
+  <linearGradient id="grad-c" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#001a2e"/>
+    <stop offset="100%" stop-color="#002840"/>
+  </linearGradient>
+  <linearGradient id="grad-p" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#1a0028"/>
+    <stop offset="100%" stop-color="#280040"/>
+  </linearGradient>
+  <linearGradient id="grad-g" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#001a14"/>
+    <stop offset="100%" stop-color="#002818"/>
+  </linearGradient>
+  <linearGradient id="grad-a" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#1a1000"/>
+    <stop offset="100%" stop-color="#281800"/>
+  </linearGradient>
+</defs>
+
+<!-- ═══ BADGE 1: License MIT ══════════════════════════════════════════════ -->
+<!-- Shell / pill -->
+<rect x="0" y="0" width="122" height="36" rx="10" fill="url(#grad-c)"/>
+<rect x="0" y="0" width="122" height="36" rx="10" fill="url(#scan)"/>
+<!-- Animated border -->
+<rect x="0.75" y="0.75" width="120.5" height="34.5" rx="9.5" fill="none" stroke="#00F2FF" stroke-width="1.2">
+  <animate attributeName="stroke-opacity" values="0.35;1;0.35" dur="3s" repeatCount="indefinite"/>
+</rect>
+<!-- Top accent bar -->
+<rect x="10" y="0.5" width="102" height="2" rx="1" fill="#00F2FF" opacity="0.7">
+  <animate attributeName="opacity" values="0.4;0.9;0.4" dur="3s" repeatCount="indefinite"/>
+</rect>
+<!-- Pulse dot -->
+<circle cx="14" cy="18" r="3.5" fill="#00F2FF" filter="url(#glow-c)">
+  <animate attributeName="r" values="3;4.5;3" dur="2s" repeatCount="indefinite"/>
+  <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+</circle>
+<!-- Label text -->
+<text x="24" y="14" font-family="'Segoe UI',Arial,sans-serif" font-size="8.5" font-weight="600"
+      fill="#8899bb" letter-spacing="1.2" text-anchor="start">LICENSE</text>
+<!-- Value chip -->
+<rect x="22" y="18.5" width="36" height="13" rx="4" fill="#00F2FF" opacity="0.15"/>
+<rect x="22" y="18.5" width="36" height="13" rx="4" fill="none" stroke="#00F2FF" stroke-width="0.8" stroke-opacity="0.6"/>
+<text x="40" y="28.5" font-family="'Segoe UI',Arial,sans-serif" font-size="10" font-weight="800"
+      fill="#00F2FF" text-anchor="middle" filter="url(#glow-c)" letter-spacing="0.5">MIT</text>
+<!-- Scan sweep -->
+<rect x="0" y="0" width="8" height="36" rx="10" fill="url(#grad-c)" opacity="0.6">
+  <animateTransform attributeName="transform" type="translate" from="-8 0" to="130 0"
+    dur="4s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1"/>
+</rect>
+
+<!-- ═══ BADGE 2: Last Commit ════════════════════════════════════════════════ -->
+<rect x="130" y="0" width="148" height="36" rx="10" fill="url(#grad-p)"/>
+<rect x="130" y="0" width="148" height="36" rx="10" fill="url(#scan)"/>
+<rect x="130.75" y="0.75" width="146.5" height="34.5" rx="9.5" fill="none" stroke="#BC13FE" stroke-width="1.2">
+  <animate attributeName="stroke-opacity" values="0.35;1;0.35" dur="3.4s" repeatCount="indefinite" begin="0.5s"/>
+</rect>
+<rect x="140" y="0.5" width="128" height="2" rx="1" fill="#BC13FE" opacity="0.7">
+  <animate attributeName="opacity" values="0.4;0.9;0.4" dur="3.4s" repeatCount="indefinite" begin="0.5s"/>
+</rect>
+<circle cx="144" cy="18" r="3.5" fill="#BC13FE" filter="url(#glow-p)">
+  <animate attributeName="r" values="3;4.5;3" dur="2.4s" repeatCount="indefinite" begin="0.3s"/>
+  <animate attributeName="opacity" values="0.7;1;0.7" dur="2.4s" repeatCount="indefinite" begin="0.3s"/>
+</circle>
+<text x="154" y="14" font-family="'Segoe UI',Arial,sans-serif" font-size="8.5" font-weight="600"
+      fill="#8899bb" letter-spacing="1.2">LAST COMMIT</text>
+<rect x="152" y="18.5" width="50" height="13" rx="4" fill="#BC13FE" opacity="0.15"/>
+<rect x="152" y="18.5" width="50" height="13" rx="4" fill="none" stroke="#BC13FE" stroke-width="0.8" stroke-opacity="0.6"/>
+<text x="177" y="28.5" font-family="'Segoe UI',Arial,sans-serif" font-size="9.5" font-weight="800"
+      fill="#BC13FE" text-anchor="middle" filter="url(#glow-p)" letter-spacing="0.3">today</text>
+<rect x="130" y="0" width="8" height="36" rx="10" fill="url(#grad-p)" opacity="0.6">
+  <animateTransform attributeName="transform" type="translate" from="-8 0" to="160 0"
+    dur="4.5s" repeatCount="indefinite" begin="1s" calcMode="spline" keySplines="0.4 0 0.6 1"/>
+</rect>
+
+<!-- ═══ BADGE 3: Repo Size ══════════════════════════════════════════════════ -->
+<rect x="286" y="0" width="152" height="36" rx="10" fill="url(#grad-g)"/>
+<rect x="286" y="0" width="152" height="36" rx="10" fill="url(#scan)"/>
+<rect x="286.75" y="0.75" width="150.5" height="34.5" rx="9.5" fill="none" stroke="#00FF88" stroke-width="1.2">
+  <animate attributeName="stroke-opacity" values="0.35;1;0.35" dur="2.8s" repeatCount="indefinite" begin="0.8s"/>
+</rect>
+<rect x="296" y="0.5" width="132" height="2" rx="1" fill="#00FF88" opacity="0.7">
+  <animate attributeName="opacity" values="0.4;0.9;0.4" dur="2.8s" repeatCount="indefinite" begin="0.8s"/>
+</rect>
+<circle cx="300" cy="18" r="3.5" fill="#00FF88" filter="url(#glow-g)">
+  <animate attributeName="r" values="3;4.5;3" dur="1.8s" repeatCount="indefinite" begin="0.6s"/>
+  <animate attributeName="opacity" values="0.7;1;0.7" dur="1.8s" repeatCount="indefinite" begin="0.6s"/>
+</circle>
+<text x="310" y="14" font-family="'Segoe UI',Arial,sans-serif" font-size="8.5" font-weight="600"
+      fill="#8899bb" letter-spacing="1.2">REPO SIZE</text>
+<rect x="308" y="18.5" width="58" height="13" rx="4" fill="#00FF88" opacity="0.15"/>
+<rect x="308" y="18.5" width="58" height="13" rx="4" fill="none" stroke="#00FF88" stroke-width="0.8" stroke-opacity="0.6"/>
+<text x="337" y="28.5" font-family="'Segoe UI',Arial,sans-serif" font-size="9.5" font-weight="800"
+      fill="#00FF88" text-anchor="middle" filter="url(#glow-g)" letter-spacing="0.3">1.5 MiB</text>
+<rect x="286" y="0" width="8" height="36" rx="10" fill="url(#grad-g)" opacity="0.6">
+  <animateTransform attributeName="transform" type="translate" from="-8 0" to="162 0"
+    dur="3.8s" repeatCount="indefinite" begin="0.5s" calcMode="spline" keySplines="0.4 0 0.6 1"/>
+</rect>
+
+<!-- ═══ BADGE 4: Made with Python & SVG ════════════════════════════════════ -->
+<rect x="446" y="0" width="274" height="36" rx="10" fill="url(#grad-a)"/>
+<rect x="446" y="0" width="274" height="36" rx="10" fill="url(#scan)"/>
+<rect x="446.75" y="0.75" width="272.5" height="34.5" rx="9.5" fill="none" stroke="#FFB800" stroke-width="1.2">
+  <animate attributeName="stroke-opacity" values="0.35;1;0.35" dur="3.2s" repeatCount="indefinite" begin="1.2s"/>
+</rect>
+<rect x="456" y="0.5" width="254" height="2" rx="1" fill="#FFB800" opacity="0.7">
+  <animate attributeName="opacity" values="0.4;0.9;0.4" dur="3.2s" repeatCount="indefinite" begin="1.2s"/>
+</rect>
+<circle cx="460" cy="18" r="3.5" fill="#FFB800" filter="url(#glow-a)">
+  <animate attributeName="r" values="3;4.5;3" dur="2.2s" repeatCount="indefinite" begin="1s"/>
+  <animate attributeName="opacity" values="0.7;1;0.7" dur="2.2s" repeatCount="indefinite" begin="1s"/>
+</circle>
+<text x="470" y="14" font-family="'Segoe UI',Arial,sans-serif" font-size="8.5" font-weight="600"
+      fill="#8899bb" letter-spacing="1.2">MADE WITH</text>
+<rect x="468" y="18.5" width="102" height="13" rx="4" fill="#FFB800" opacity="0.15"/>
+<rect x="468" y="18.5" width="102" height="13" rx="4" fill="none" stroke="#FFB800" stroke-width="0.8" stroke-opacity="0.6"/>
+<text x="519" y="28.5" font-family="'Segoe UI',Arial,sans-serif" font-size="9.5" font-weight="800"
+      fill="#FFB800" text-anchor="middle" filter="url(#glow-a)" letter-spacing="0.3">Python &amp; SVG</text>
+<!-- Python snake icon hint -->
+<path d="M578 13 Q581 10 584 13 L584 18 Q581 21 578 18 Z" fill="#FFB800" opacity="0.4"/>
+<rect x="446" y="0" width="8" height="36" rx="10" fill="url(#grad-a)" opacity="0.6">
+  <animateTransform attributeName="transform" type="translate" from="-8 0" to="284 0"
+    dur="5s" repeatCount="indefinite" begin="1.5s" calcMode="spline" keySplines="0.4 0 0.6 1"/>
+</rect>
+
+</svg>
