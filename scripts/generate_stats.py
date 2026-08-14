@@ -247,7 +247,7 @@ def generate_svg(s: dict) -> str:
 
   <!-- Glow filter -->
   <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
-    <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="b"/>
+    <feGaussianBlur in="SourceGraphic" stdDeviation="3.5" result="b"/>
     <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
   </filter>
 
@@ -560,7 +560,7 @@ def generate_streak_svg(stats: dict) -> str:
     parts.append('    <stop offset="100%" stop-color="#050d18"/>')
     parts.append('  </linearGradient>')
     parts.append('  <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">')
-    parts.append('    <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="blur"/>')
+    parts.append('    <feGaussianBlur in="SourceGraphic" stdDeviation="3.5" result="blur"/>')
     parts.append('    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>')
     parts.append('  </filter>')
     parts.append('</defs>')
