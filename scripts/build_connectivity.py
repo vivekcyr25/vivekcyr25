@@ -96,7 +96,7 @@ def build_combined_banner_svg(b64_map: dict[str, str] | None = None) -> str:
         b64_map = {k: "" for k in LOGOS}
 
     parts = []
-    parts.append('''<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 900 100" width="900" height="100">
+    parts.append('''<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 900 100" width="900" height="100" role="img" aria-label="Core Connectivity Links">
 <defs>
   <linearGradient id="panelbg" x1="0" y1="0" x2="1" y2="1">
     <stop offset="0%" stop-color="#071828"/>
