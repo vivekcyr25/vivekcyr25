@@ -139,7 +139,7 @@ def build_combined_banner_svg(b64_map: dict[str, str] | None = None) -> str:
   <!-- Platform name -->
   <text x="{cx + cw / 2}" y="75"
         font-family="'Segoe UI',Arial,sans-serif"
-        font-size="11" font-weight="600"
+        font-size="12.5" font-weight="700"
         fill="{label_color}" text-anchor="middle" letter-spacing="0.4">{label}</text>
 
   <!-- Glow layer -->
@@ -184,7 +184,7 @@ def build_single_card_svg(card_tuple: tuple, b64_map: dict[str, str] | None = No
     <animate attributeName="width" from="0" to="{w-4}" dur="1s" fill="freeze" begin="{begin + 0.1:.1f}s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
   </rect>
   {img_tag(b64_map.get(key, ""), logo_x, logo_y, logo_size)}
-  <text x="{w / 2}" y="73" font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="600" fill="{label_color}" text-anchor="middle" letter-spacing="0.4">{label}</text>
+  <text x="{w / 2}" y="73" font-family="'Segoe UI',Arial,sans-serif" font-size="12.5" font-weight="700" fill="{label_color}" text-anchor="middle" letter-spacing="0.4">{label}</text>
   <rect x="2" y="2" width="{w-4}" height="{h-4}" rx="8" fill="none" stroke="{stroke}" stroke-width="8" filter="url(#gl)" opacity="0">
     <animate attributeName="opacity" values="0;0.08;0" dur="{dur}s" repeatCount="indefinite" begin="{begin}s"/>
   </rect>
