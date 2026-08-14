@@ -153,7 +153,7 @@ def fetch_stats() -> dict:
     if not GITHUB_TOKEN:
         print("⚠️  No GITHUB_TOKEN — using fallback values")
         return {
-            "total_contributions": 1069,
+            "total_contributions": 1036,
             "repos": 17,
             "current_streak": 2,
             "longest_streak": 19,
@@ -161,7 +161,7 @@ def fetch_stats() -> dict:
             "streak_end": "Aug 15",
             "longest_start": "Jul 21",
             "longest_end": "Aug 8",
-            "commits": 1055,
+            "commits": 1022,
             "prs": 0,
         }
 
@@ -559,7 +559,7 @@ def generate_svg(s: dict) -> str:
 
 
 def generate_streak_svg(stats: dict) -> str:
-    total_contribs = stats.get("total_contributions") or 1069
+    total_contribs = stats.get("total_contributions") or 1036
     curr_streak = stats.get("current_streak") or 2
     long_streak = stats.get("longest_streak") or 19
     s_start = stats.get("streak_start") or "Aug 14"
