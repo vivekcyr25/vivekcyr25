@@ -1,4 +1,9 @@
-.PHONY: stats connectivity separator badge access-check validate optimize test lint all clean
+.PHONY: stats connectivity separator badge access-check health-check validate optimize test lint all clean
+
+# Run health check integrity suite
+health-check:
+	python scripts/health_check.py
+
 
 # Generate stats dashboard SVG
 stats:
