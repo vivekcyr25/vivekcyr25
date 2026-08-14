@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Generates the animated separator SVG used between README sections.
 Creates a subtle pulsing gradient line matching the VisionOS theme.
@@ -32,16 +32,28 @@ def generate_separator_svg():
 </svg>'''
 
 
-def main():
+import argparse
+from scripts.svg_optimizer import minify_svg
+
+
+def main(args=None):
+    parser = argparse.ArgumentParser(description="Generate animated SVG separator.")
+    parser.add_argument("--minify", action="store_true", help="Minify output SVG")
+    parsed = parser.parse_args(args)
+
     assets_dir = os.path.join(
         os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
         "assets"
     )
     out_path = os.path.join(assets_dir, "separator.svg")
+    content = generate_separator_svg()
+    if parsed.minify:
+        content = minify_svg(content)
     with open(out_path, "w", encoding="utf-8") as f:
-        f.write(generate_separator_svg())
+        f.write(content)
     print(f"✅ Written separator → {out_path}")
 
 
 if __name__ == "__main__":
     main()
+
