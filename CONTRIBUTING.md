@@ -1,4 +1,4 @@
-﻿# Architecture
+# Architecture
 
 This document describes the high-level structure and design of the
 **vivekcyr25** GitHub profile README repository.
@@ -118,9 +118,18 @@ This project follows [Conventional Commits](https://www.conventionalcommits.org/
 - **SVG**: Keep files optimized and readable
 - **Markdown**: Use consistent heading hierarchy
 
+## Pre-Commit Hooks
+
+You can optionally install pre-commit hooks to automatically validate SVGs and run tests before committing:
+
+```bash
+pip install pre-commit
+pre-commit install
+```
+
 ## Reporting Issues
 
 Open an issue using one of the templates. Include:
 - Steps to reproduce
 - Expected vs actual behavior
-- Screenshots if applicable
+- Screenshots if applicable
