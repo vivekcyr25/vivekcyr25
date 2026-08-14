@@ -12,15 +12,15 @@
 <rect width="495" height="195" rx="8" fill="url(#bgGrad)" stroke="#00F2FF" stroke-width="1.2" stroke-opacity="0.6"/>
 <line x1="165" y1="28" x2="165" y2="167" stroke="#00F2FF" stroke-opacity="0.25" stroke-width="1"/>
 <line x1="330" y1="28" x2="330" y2="167" stroke="#00F2FF" stroke-opacity="0.25" stroke-width="1"/>
-<text x="82.5" y="78" font-family="Segoe UI,Arial,sans-serif" font-size="28" font-weight="700" fill="#FFFFFF" text-anchor="middle" filter="url(#glow)">1,035</text>
+<text x="82.5" y="78" font-family="Segoe UI,Arial,sans-serif" font-size="28" font-weight="700" fill="#FFFFFF" text-anchor="middle" filter="url(#glow)">1,033</text>
 <text x="82.5" y="114" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="600" fill="#00F2FF" text-anchor="middle">Total Contributions</text>
 <text x="82.5" y="142" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#8899bb" text-anchor="middle">Aug 20, 2025 – Present</text>
 <g transform="translate(247.5, 20)"><path d="M 1.5 0.67 C 1.5 0.67 2.24 3.32 2.24 5.47 C 2.24 7.53 0.89 9.2 -1.17 9.2 C -3.23 9.2 -4.79 7.53 -4.79 5.47 L -4.76 5.11 C -6.78 7.51 -8 10.62 -8 13.99 C -8 18.41 -4.42 22 0 22 C 4.42 22 8 18.41 8 13.99 C 8 8.6 5.41 3.79 1.5 0.67 Z" fill="#BC13FE" filter="url(#glow)"/></g>
 <circle cx="247.5" cy="71" r="38" fill="none" stroke="#00F2FF" stroke-width="4" filter="url(#glow)"/>
 <text x="247.5" y="78" font-family="Segoe UI,Arial,sans-serif" font-size="26" font-weight="700" fill="#FFFFFF" text-anchor="middle" filter="url(#glow)">1</text>
 <text x="247.5" y="125" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="600" fill="#00F2FF" text-anchor="middle">Current Streak</text>
-<text x="247.5" y="152" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#8899bb" text-anchor="middle">Aug 14 – Today</text>
+<text x="247.5" y="152" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#8899bb" text-anchor="middle">Aug 14 – Aug 14</text>
 <text x="412.5" y="78" font-family="Segoe UI,Arial,sans-serif" font-size="28" font-weight="700" fill="#FFFFFF" text-anchor="middle" filter="url(#glow)">12</text>
 <text x="412.5" y="114" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="600" fill="#00F2FF" text-anchor="middle">Longest Streak</text>
-<text x="412.5" y="142" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#8899bb" text-anchor="middle">Aug 14 – Today</text>
+<text x="412.5" y="142" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#8899bb" text-anchor="middle">Aug 14 – Aug 14</text>
 </svg>
