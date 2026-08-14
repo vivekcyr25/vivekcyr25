@@ -59,7 +59,7 @@ def img_tag(b64_data: str, x: float, y: float, size: float = 34) -> str:
     return (
         f'<image x="{x}" y="{y}" width="{size}" height="{size}" '
         f'href="data:image/svg+xml;base64,{b64_data}" '
-        f'preserveAspectRatio="xMidYMid meet"/>'
+        f'preserveAspectRatio="xMidYMid meet" image-rendering="crisp-edges"/>'
     )
 
 CARDS = [
