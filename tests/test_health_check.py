@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """Unit tests for scripts/health_check.py."""
 
 import os
@@ -7,7 +7,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from scripts.health_check import check_config, check_readme_assets, check_scripts_import
+from scripts.health_check import check_config, check_readme_assets, check_scripts_import, check_workflows_exist
 
 
 class TestHealthCheck(unittest.TestCase):
@@ -21,10 +21,14 @@ class TestHealthCheck(unittest.TestCase):
         issues = check_readme_assets()
         self.assertEqual(issues, [], f"Missing assets: {issues}")
 
+    def test_workflows_exist(self):
+        issues = check_workflows_exist()
+        self.assertEqual(issues, [], f"Workflow issues: {issues}")
+
     def test_scripts_importable(self):
         issues = check_scripts_import()
         self.assertEqual(issues, [], f"Import issues: {issues}")
 
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main()
