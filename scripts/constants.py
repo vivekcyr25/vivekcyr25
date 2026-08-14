@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Centralized constants for SVG generation and validation.
 
@@ -13,6 +13,9 @@ SEPARATOR_WIDTH = 600
 SEPARATOR_HEIGHT = 20
 CARD_WIDTH = 200
 CARD_HEIGHT = 60
+DEFAULT_SVG_VIEWBOX = f"0 0 {DASHBOARD_WIDTH} {DASHBOARD_HEIGHT}"
+SVG_XMLNS_NAMESPACE = "http://www.w3.org/2000/svg"
+
 
 # ── Validation Thresholds ────────────────────────────────────────────
 MAX_SVG_SIZE_KB = 500
