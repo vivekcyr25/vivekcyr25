@@ -78,3 +78,5 @@ def main(output_file: Optional[str] = None) -> None:
 
 if __name__ == "__main__":
     main()
+
+# ui: badge font preference updated to Segoe UI
