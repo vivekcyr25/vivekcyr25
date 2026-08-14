@@ -140,7 +140,7 @@ def build_combined_banner_svg(b64_map: dict[str, str] | None = None) -> str:
   <rect x="{cx}" y="4" width="0" height="2.5" rx="1" fill="{stroke}" opacity="0.7">
     <animate attributeName="width" from="0" to="{cw}"
              dur="1s" fill="freeze" begin="{begin + 0.1:.1f}s"
-             calcMode="spline" keySplines="0.4 0 0.2 1"/>
+             calcMode="spline" keySplines="0.25 0.46 0.45 0.94"/>
   </rect>
 
   <!-- Real logo image -->
@@ -191,7 +191,7 @@ def build_single_card_svg(card_tuple: tuple, b64_map: dict[str, str] | None = No
     <animate attributeName="stroke-opacity" values="0.25;0.9;0.25" dur="{dur}s" repeatCount="indefinite" begin="{begin}s"/>
   </rect>
   <rect x="2" y="2" width="0" height="2.5" rx="1" fill="{stroke}" opacity="0.7">
-    <animate attributeName="width" from="0" to="{w-4}" dur="1s" fill="freeze" begin="{begin + 0.1:.1f}s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    <animate attributeName="width" from="0" to="{w-4}" dur="1s" fill="freeze" begin="{begin + 0.1:.1f}s" calcMode="spline" keySplines="0.25 0.46 0.45 0.94"/>
   </rect>
   {img_tag(b64_map.get(key, ""), logo_x, logo_y, logo_size)}
   <text x="{w / 2}" y="73" font-family="'Segoe UI',Arial,sans-serif" font-size="12.5" font-weight="700" fill="{label_color}" text-anchor="middle" letter-spacing="0.4">{label}</text>
