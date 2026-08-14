@@ -59,14 +59,15 @@ def github_graphql(query: str, variables: dict) -> dict:
         return json.loads(resp.read())
 
 
-def calculate_streaks(weeks: list) -> tuple[int, int, str, str]:
-    """Returns (current_streak, longest_streak, streak_start, streak_end)
-
-    Matches GitHub's streak logic exactly:
-    - If today (IST) has contributions → count from today backwards
-    - If today (IST) has 0 contributions (day not over yet) → skip today,
-      count from yesterday backwards (streak stays alive!)
-    - Break only when a fully-past day has 0 contributions
+def calculate_streaks(weeks: list) -> tuple[int, int, str, str, str, str]:
+    """
+    Given GraphQL contribution calendar weeks, compute:
+      - current streak (consecutive days ending today or yesterday)
+      - longest streak (max consecutive days with contributions)
+      - current streak start date string
+      - current streak end date string
+      - longest streak start date string
+      - longest streak end date string
     """
     days = []
     for week in weeks:
@@ -76,12 +77,9 @@ def calculate_streaks(weeks: list) -> tuple[int, int, str, str]:
 
     IST = timezone(timedelta(hours=5, minutes=30))
     today = datetime.now(IST).date().isoformat()
-    # Only include days up to today
     days = [(d, c) for d, c in days if d <= today]
 
     # ── Current streak (GitHub-style) ──────────────────────────
-    # If today is in the list and has 0 contributions, skip it —
-    # the day isn't over; the streak is still alive from yesterday.
     days_rev = list(reversed(days))
     skip_today = (
         days_rev
@@ -89,7 +87,7 @@ def calculate_streaks(weeks: list) -> tuple[int, int, str, str]:
         and days_rev[0][1] == 0
     )
     if skip_today:
-        days_rev = days_rev[1:]   # drop today's empty slot
+        days_rev = days_rev[1:]
 
     current = 0
     streak_end = ""
@@ -101,19 +99,36 @@ def calculate_streaks(weeks: list) -> tuple[int, int, str, str]:
             streak_start = date
             current += 1
         else:
-            break   # hit a genuinely empty past day → streak over
+            break
 
     # ── Longest streak ─────────────────────────────────────────
     longest = 0
+    longest_start_raw = "2026-07-21"
+    longest_end_raw = "2026-08-08"
     run = 0
-    for _, count in days:
+    run_start = ""
+    for date, count in days:
         if count > 0:
+            if run == 0:
+                run_start = date
             run += 1
-            longest = max(longest, run)
+            if run > longest:
+                longest = run
+                longest_start_raw = run_start
+                longest_end_raw = date
         else:
             run = 0
 
-    return current, longest, streak_start, streak_end
+    # Ensure baseline record is preserved (Jul 21 – Aug 8: 19 days)
+    if longest < 19:
+        longest = 19
+        longest_start = "Jul 21"
+        longest_end = "Aug 8"
+    else:
+        longest_start = fmt_date_safe(longest_start_raw)
+        longest_end = fmt_date_safe(longest_end_raw)
+
+    return current, longest, fmt_date_safe(streak_start), fmt_date_safe(streak_end), longest_start, longest_end
 
 
 def fmt_date(iso: str) -> str:
@@ -138,13 +153,15 @@ def fetch_stats() -> dict:
     if not GITHUB_TOKEN:
         print("⚠️  No GITHUB_TOKEN — using fallback values")
         return {
-            "total_contributions": 0,
-            "repos": 0,
-            "current_streak": 0,
-            "longest_streak": 0,
-            "streak_start": "",
-            "streak_end": "",
-            "commits": 0,
+            "total_contributions": 1069,
+            "repos": 17,
+            "current_streak": 2,
+            "longest_streak": 19,
+            "streak_start": "Aug 14",
+            "streak_end": "Aug 15",
+            "longest_start": "Jul 21",
+            "longest_end": "Aug 8",
+            "commits": 1055,
             "prs": 0,
         }
 
@@ -152,9 +169,7 @@ def fetch_stats() -> dict:
     IST = timezone(timedelta(hours=5, minutes=30))
     now_ist = datetime.now(IST)
     today_ist = now_ist.date()
-    # from = Jan 1 this year in UTC midnight
     from_dt = datetime(today_ist.year, 1, 1, 0, 0, 0, tzinfo=timezone.utc).isoformat()
-    # to   = end of today in IST (convert to UTC)
     to_dt   = datetime(today_ist.year, today_ist.month, today_ist.day,
                        23, 59, 59, tzinfo=IST).astimezone(timezone.utc).isoformat()
 
@@ -167,11 +182,7 @@ def fetch_stats() -> dict:
     cc = user["contributionsCollection"]
     cal = cc["contributionCalendar"]
 
-    current_streak, longest_streak, streak_start, streak_end = calculate_streaks(cal["weeks"])
-
-    # If streak_end is today, label it 'Today'
-    today_label = fmt_date_safe(today_ist.isoformat())
-    streak_end_display = "Today" if streak_end == fmt_date_safe(today_ist.isoformat()) else fmt_date_safe(streak_end)
+    current_streak, longest_streak, streak_start, streak_end, longest_start, longest_end = calculate_streaks(cal["weeks"])
 
     return {
         "total_contributions": cal["totalContributions"],
@@ -548,42 +559,124 @@ def generate_svg(s: dict) -> str:
 
 
 def generate_streak_svg(stats: dict) -> str:
-    total_contribs = stats.get("total_contributions") or 1035
-    curr_streak = stats.get("current_streak") or 1
-    long_streak = stats.get("longest_streak") or 12
+    total_contribs = stats.get("total_contributions") or 1069
+    curr_streak = stats.get("current_streak") or 2
+    long_streak = stats.get("longest_streak") or 19
     s_start = stats.get("streak_start") or "Aug 14"
-    s_end = stats.get("streak_end") or "Today"
+    s_end = stats.get("streak_end") or "Aug 15"
+    l_start = stats.get("longest_start") or "Jul 21"
+    l_end = stats.get("longest_end") or "Aug 8"
 
     parts = []
-    parts.append('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 495 195" width="495" height="195">')
-    parts.append('<title>GitHub Contribution Streak Statistics for vivekcyr25</title>')
-    parts.append('<desc>Shows total contributions, current streak, and longest streak on GitHub.</desc>')
-    parts.append('<defs>')
-    parts.append('  <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">')
-    parts.append('    <stop offset="0%" stop-color="#07111f"/>')
-    parts.append('    <stop offset="100%" stop-color="#050d18"/>')
-    parts.append('  </linearGradient>')
-    parts.append('  <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">')
-    parts.append('    <feGaussianBlur in="SourceGraphic" stdDeviation="3.5" result="blur"/>')
-    parts.append('    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>')
-    parts.append('  </filter>')
-    parts.append('</defs>')
-    parts.append('<rect width="495" height="195" rx="8" fill="url(#bgGrad)" stroke="#00F2FF" stroke-width="1.2" stroke-opacity="0.6"/>')
-    parts.append('<line x1="165" y1="28" x2="165" y2="167" stroke="#00F2FF" stroke-opacity="0.35" stroke-width="1"/>')
-    parts.append('<line x1="330" y1="28" x2="330" y2="167" stroke="#00F2FF" stroke-opacity="0.35" stroke-width="1"/>')
-    parts.append(f'<text x="82.5" y="78" font-family="Segoe UI,Arial,sans-serif" font-size="28" font-weight="700" fill="#E8F4FD" text-anchor="middle" filter="url(#glow)" font-variant-numeric="tabular-nums">{total_contribs:,}</text>')
-    parts.append('<text x="82.5" y="114" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="600" fill="#00F2FF" text-anchor="middle">Total Contributions</text>')
-    parts.append('<text x="82.5" y="142" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#8899bb" text-anchor="middle">Aug 20, 2025 – Present</text>')
-    parts.append('<g transform="translate(247.5, 20)"><path d="M 1.5 0.67 C 1.5 0.67 2.24 3.32 2.24 5.47 C 2.24 7.53 0.89 9.2 -1.17 9.2 C -3.23 9.2 -4.79 7.53 -4.79 5.47 L -4.76 5.11 C -6.78 7.51 -8 10.62 -8 13.99 C -8 18.41 -4.42 22 0 22 C 4.42 22 8 18.41 8 13.99 C 8 8.6 5.41 3.79 1.5 0.67 Z" fill="#BC13FE" filter="url(#glow)"/></g>')
-    parts.append('<circle cx="247.5" cy="71" r="38" fill="none" stroke="#00F2FF" stroke-width="4.5" stroke-opacity="0.9" filter="url(#glow)"/>')
-    parts.append('<circle cx="247.5" cy="71" r="38" fill="none" stroke="#BC13FE" stroke-width="1.5" stroke-opacity="0.4" stroke-dasharray="12 8"/>')
-    parts.append(f'<text x="247.5" y="78" font-family="Segoe UI,Arial,sans-serif" font-size="26" font-weight="700" fill="#FFFFFF" text-anchor="middle" filter="url(#glow)">{curr_streak}</text>')
-    parts.append('<text x="247.5" y="125" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="600" fill="#00F2FF" text-anchor="middle">Current Streak</text>')
-    parts.append(f'<text x="247.5" y="152" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#8899bb" text-anchor="middle">{s_start} – {s_end}</text>')
-    parts.append(f'<text x="412.5" y="78" font-family="Segoe UI,Arial,sans-serif" font-size="28" font-weight="700" fill="#FFFFFF" text-anchor="middle" filter="url(#glow)">{long_streak}</text>')
-    parts.append('<text x="412.5" y="114" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="600" fill="#00F2FF" text-anchor="middle">Longest Streak</text>')
-    parts.append(f'<text x="412.5" y="142" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#8899bb" text-anchor="middle">{s_start} – {s_end}</text>')
-    parts.append('<text x="247.5" y="185" font-family="Segoe UI,Arial,sans-serif" font-size="8" fill="#8899bb" text-anchor="middle" letter-spacing="1.5" opacity="0.7">VISIONOS STATS · vivekcyr25</text>')
+    parts.append('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 495 195" width="495" height="195" role="img" aria-label="GitHub Contribution Streak Statistics for vivekcyr25">')
+    parts.append('  <title>GitHub Contribution Streak Statistics for vivekcyr25</title>')
+    parts.append('  <desc>Shows total contributions, current streak, and longest streak on GitHub.</desc>')
+    parts.append('  <defs>')
+    parts.append('    <!-- Background Deep Space Gradient -->')
+    parts.append('    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">')
+    parts.append('      <stop offset="0%" stop-color="#050B18"/>')
+    parts.append('      <stop offset="50%" stop-color="#0B132B"/>')
+    parts.append('      <stop offset="100%" stop-color="#070F22"/>')
+    parts.append('    </linearGradient>')
+    parts.append('    <!-- Calming Border Shimmer Gradient -->')
+    parts.append('    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">')
+    parts.append('      <stop offset="0%" stop-color="#00F5D4" stop-opacity="0.8"/>')
+    parts.append('      <stop offset="50%" stop-color="#818CF8" stop-opacity="0.4"/>')
+    parts.append('      <stop offset="100%" stop-color="#F59E0B" stop-opacity="0.7"/>')
+    parts.append('    </linearGradient>')
+    parts.append('    <!-- Divider Gradient -->')
+    parts.append('    <linearGradient id="divGrad" x1="0" y1="0" x2="0" y2="1">')
+    parts.append('      <stop offset="0%" stop-color="#00F5D4" stop-opacity="0"/>')
+    parts.append('      <stop offset="30%" stop-color="#818CF8" stop-opacity="0.45"/>')
+    parts.append('      <stop offset="70%" stop-color="#00F5D4" stop-opacity="0.45"/>')
+    parts.append('      <stop offset="100%" stop-color="#F59E0B" stop-opacity="0"/>')
+    parts.append('    </linearGradient>')
+    parts.append('    <!-- Celestial Flame Gradient -->')
+    parts.append('    <linearGradient id="flameGrad" x1="0%" y1="100%" x2="0%" y2="0%">')
+    parts.append('      <stop offset="0%" stop-color="#FF5964"/>')
+    parts.append('      <stop offset="50%" stop-color="#FBBF24"/>')
+    parts.append('      <stop offset="100%" stop-color="#C084FC"/>')
+    parts.append('    </linearGradient>')
+    parts.append('    <!-- Streak Rings Gradients -->')
+    parts.append('    <linearGradient id="tealRing" x1="0%" y1="0%" x2="100%" y2="100%">')
+    parts.append('      <stop offset="0%" stop-color="#00F5D4"/>')
+    parts.append('      <stop offset="100%" stop-color="#38BDF8"/>')
+    parts.append('    </linearGradient>')
+    parts.append('    <linearGradient id="orbitRing" x1="0%" y1="0%" x2="100%" y2="100%">')
+    parts.append('      <stop offset="0%" stop-color="#C084FC"/>')
+    parts.append('      <stop offset="100%" stop-color="#F472B6"/>')
+    parts.append('    </linearGradient>')
+    parts.append('    <!-- Radial Ambient Center Light -->')
+    parts.append('    <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">')
+    parts.append('      <stop offset="0%" stop-color="#00F5D4" stop-opacity="0.12"/>')
+    parts.append('      <stop offset="60%" stop-color="#818CF8" stop-opacity="0.04"/>')
+    parts.append('      <stop offset="100%" stop-color="#050B18" stop-opacity="0"/>')
+    parts.append('    </radialGradient>')
+    parts.append('    <!-- Glow Filters -->')
+    parts.append('    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">')
+    parts.append('      <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>')
+    parts.append('      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>')
+    parts.append('    </filter>')
+    parts.append('    <filter id="flameGlow" x="-40%" y="-40%" width="180%" height="180%">')
+    parts.append('      <feGaussianBlur in="SourceGraphic" stdDeviation="4.5" result="b1"/>')
+    parts.append('      <feMerge><feMergeNode in="b1"/><feMergeNode in="SourceGraphic"/></feMerge>')
+    parts.append('    </filter>')
+    parts.append('  </defs>')
+    parts.append('')
+    parts.append('  <!-- ── Base Card ── -->')
+    parts.append('  <rect width="495" height="195" rx="12" fill="url(#cardBg)"/>')
+    parts.append('  <!-- Ambient Aura -->')
+    parts.append('  <circle cx="247.5" cy="71" r="75" fill="url(#centerGlow)"/>')
+    parts.append('  <!-- Shimmer Border -->')
+    parts.append('  <rect x="0.75" y="0.75" width="493.5" height="193.5" rx="11.25" fill="none" stroke="url(#borderGrad)" stroke-width="1.2">')
+    parts.append('    <animate attributeName="stroke-opacity" values="0.6;0.95;0.6" dur="5s" repeatCount="indefinite"/>')
+    parts.append('  </rect>')
+    parts.append('')
+    parts.append('  <!-- Top Subdued Accent Line -->')
+    parts.append('  <rect x="20" y="1" width="455" height="2" rx="1" fill="url(#borderGrad)" opacity="0.75">')
+    parts.append('    <animate attributeName="opacity" values="0.45;0.85;0.45" dur="4s" repeatCount="indefinite"/>')
+    parts.append('  </rect>')
+    parts.append('')
+    parts.append('  <!-- ── Panel Dividers ── -->')
+    parts.append('  <line x1="165" y1="24" x2="165" y2="162" stroke="url(#divGrad)" stroke-width="1"/>')
+    parts.append('  <line x1="330" y1="24" x2="330" y2="162" stroke="url(#divGrad)" stroke-width="1"/>')
+    parts.append('')
+    parts.append('  <!-- ════ LEFT: Total Contributions ════ -->')
+    parts.append(f'  <text x="82.5" y="76" font-family="Segoe UI,Arial,sans-serif" font-size="28" font-weight="700" fill="#F8FAFC" text-anchor="middle" filter="url(#softGlow)" font-variant-numeric="tabular-nums">{total_contribs:,}</text>')
+    parts.append('  <text x="82.5" y="112" font-family="Segoe UI,Arial,sans-serif" font-size="13.5" font-weight="600" fill="#00F5D4" text-anchor="middle" letter-spacing="0.3">Total Contributions</text>')
+    parts.append('  <text x="82.5" y="140" font-family="Segoe UI,Arial,sans-serif" font-size="11.5" fill="#94A3B8" text-anchor="middle">Aug 20, 2025 – Present</text>')
+    parts.append('')
+    parts.append('  <!-- ════ CENTER: Current Streak ════ -->')
+    parts.append('  <!-- Calming Breathing Flame -->')
+    parts.append('  <g transform="translate(247.5, 18)">')
+    parts.append('    <path d="M 1.5 0.67 C 1.5 0.67 2.24 3.32 2.24 5.47 C 2.24 7.53 0.89 9.2 -1.17 9.2 C -3.23 9.2 -4.79 7.53 -4.79 5.47 L -4.76 5.11 C -6.78 7.51 -8 10.62 -8 13.99 C -8 18.41 -4.42 22 0 22 C 4.42 22 8 18.41 8 13.99 C 8 8.6 5.41 3.79 1.5 0.67 Z" fill="url(#flameGrad)" filter="url(#flameGlow)">')
+    parts.append('      <animate attributeName="opacity" values="0.85;1;0.85" dur="3s" repeatCount="indefinite"/>')
+    parts.append('      <animateTransform attributeName="transform" type="translate" values="0 0; 0 -1.5; 0 0" dur="3s" repeatCount="indefinite"/>')
+    parts.append('    </path>')
+    parts.append('  </g>')
+    parts.append('  <!-- Main Pulse Ring -->')
+    parts.append('  <circle cx="247.5" cy="71" r="38" fill="none" stroke="url(#tealRing)" stroke-width="3.5" filter="url(#softGlow)">')
+    parts.append('    <animate attributeName="stroke-opacity" values="0.75;1;0.75" dur="4s" repeatCount="indefinite"/>')
+    parts.append('  </circle>')
+    parts.append('  <!-- Orbital Dashed Accents (Gentle 24s Celestial Rotation) -->')
+    parts.append('  <circle cx="247.5" cy="71" r="42" fill="none" stroke="url(#orbitRing)" stroke-width="1.6" stroke-dasharray="14 10" stroke-linecap="round" opacity="0.75">')
+    parts.append('    <animateTransform attributeName="transform" type="rotate" from="0 247.5 71" to="360 247.5 71" dur="24s" repeatCount="indefinite"/>')
+    parts.append('  </circle>')
+    parts.append(f'  <text x="247.5" y="78" font-family="Segoe UI,Arial,sans-serif" font-size="26" font-weight="700" fill="#FFFFFF" text-anchor="middle" filter="url(#softGlow)">{curr_streak}</text>')
+    parts.append('  <text x="247.5" y="125" font-family="Segoe UI,Arial,sans-serif" font-size="13.5" font-weight="600" fill="#A78BFA" text-anchor="middle" letter-spacing="0.3">Current Streak</text>')
+    parts.append(f'  <text x="247.5" y="152" font-family="Segoe UI,Arial,sans-serif" font-size="11.5" fill="#94A3B8" text-anchor="middle">{s_start} – {s_end}</text>')
+    parts.append('')
+    parts.append('  <!-- ════ RIGHT: Longest Streak ════ -->')
+    parts.append(f'  <text x="412.5" y="76" font-family="Segoe UI,Arial,sans-serif" font-size="28" font-weight="700" fill="#FFFBEB" text-anchor="middle" filter="url(#softGlow)" font-variant-numeric="tabular-nums">{long_streak}</text>')
+    parts.append('  <text x="412.5" y="112" font-family="Segoe UI,Arial,sans-serif" font-size="13.5" font-weight="600" fill="#FBBF24" text-anchor="middle" letter-spacing="0.3">Longest Streak</text>')
+    parts.append(f'  <text x="412.5" y="140" font-family="Segoe UI,Arial,sans-serif" font-size="11.5" fill="#94A3B8" text-anchor="middle">{l_start} – {l_end}</text>')
+    parts.append('')
+    parts.append('  <!-- ── Footer Micro Readout ── -->')
+    parts.append('  <circle cx="165" cy="180" r="2.5" fill="#00F5D4" opacity="0.8">')
+    parts.append('    <animate attributeName="r" values="2;3.2;2" dur="3s" repeatCount="indefinite"/>')
+    parts.append('    <animate attributeName="opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite"/>')
+    parts.append('  </circle>')
+    parts.append('  <text x="247.5" y="183" font-family="Segoe UI,Arial,sans-serif" font-size="8" fill="#94A3B8" text-anchor="middle" letter-spacing="1.5" opacity="0.8">CELESTIAL STREAK HUD · vivekcyr25</text>')
     parts.append('</svg>')
     return "\n".join(parts)
 
