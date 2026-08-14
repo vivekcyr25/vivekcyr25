@@ -1,0 +1,25 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+      - id: check-added-large-files
+        args: ['--maxkb=500']
+
+  - repo: local
+    hooks:
+      - id: validate-svgs
+        name: Validate SVG Assets
+        entry: python scripts/validate_svgs.py --strict
+        language: python
+        types: [svg]
+        pass_filenames: false
+
+      - id: pytest
+        name: Run Unit Tests
+        entry: pytest
+        language: python
+        pass_filenames: false
