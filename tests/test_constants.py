@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """Unit tests for scripts/constants.py."""
 
 import os
@@ -10,6 +10,8 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from scripts.constants import (
     DASHBOARD_WIDTH,
     DASHBOARD_HEIGHT,
+    DEFAULT_SVG_VIEWBOX,
+    SVG_XMLNS_NAMESPACE,
     MAX_SVG_SIZE_KB,
     MIN_SVG_SIZE_BYTES,
     GITHUB_API_BASE,
@@ -25,6 +27,11 @@ class TestSVGDimensions(unittest.TestCase):
 
     def test_dashboard_wider_than_tall(self):
         self.assertGreater(DASHBOARD_WIDTH, DASHBOARD_HEIGHT)
+
+    def test_svg_namespace_and_viewbox(self):
+        self.assertEqual(SVG_XMLNS_NAMESPACE, "http://www.w3.org/2000/svg")
+        self.assertIn("0 0 850 580", DEFAULT_SVG_VIEWBOX)
+
 
 
 class TestValidationThresholds(unittest.TestCase):
