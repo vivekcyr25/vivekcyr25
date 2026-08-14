@@ -118,4 +118,17 @@ def sanitize_filename(name: str) -> str:
     import re
     cleaned = re.sub(r'[^\w\.-]', '_', name.strip())
     return cleaned.lower()
-
+
+
+
+def slugify(text: str) -> str:
+    """Convert text to URL/filename-safe slug.
+
+    Examples:
+        'Hello World!' → 'hello-world'
+        'VisionOS UI v2.0' → 'visionos-ui-v20'
+    """
+    import re, unicodedata
+    text = unicodedata.normalize('NFKD', text).encode('ascii', 'ignore').decode()
+    text = re.sub(r'[^\w\s-]', '', text.lower())
+    return re.sub(r'[\s_-]+', '-', text).strip('-')
