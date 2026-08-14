@@ -42,15 +42,17 @@ def fetch_b64(name: str, url: str) -> str:
         
     return base64.b64encode(data_str.encode('utf-8')).decode('utf-8')
 
-print("Downloading authentic vector logos...")
-b64 = {}
-for name, url in LOGOS.items():
-    try:
-        b64[name] = fetch_b64(name, url)
-        print(f"  ✅ {name}")
-    except Exception as e:
-        print(f"  ❌ {name}: {e}")
-        b64[name] = ""
+def fetch_all_logos() -> dict[str, str]:
+    print("Downloading authentic vector logos...")
+    b64 = {}
+    for name, url in LOGOS.items():
+        try:
+            b64[name] = fetch_b64(name, url)
+            print(f"  ✅ {name}")
+        except Exception as e:
+            print(f"  ❌ {name}: {e}")
+            b64[name] = ""
+    return b64
 
 def img_tag(b64_data: str, x: float, y: float, size: float = 34) -> str:
     return (
@@ -83,9 +85,12 @@ ANIM_BEGIN= [0.0, 0.4, 0.8, 0.2, 1.0, 1.4]
 
 assets_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
 
-# ── 1. Build Combined core-connectivity-v4.svg Banner ──
-parts = []
-parts.append('''<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 900 100" width="900" height="100">
+def build_combined_banner_svg(b64_map: dict[str, str] | None = None) -> str:
+    if b64_map is None:
+        b64_map = {k: "" for k in LOGOS}
+
+    parts = []
+    parts.append('''<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 900 100" width="900" height="100">
 <defs>
   <linearGradient id="panelbg" x1="0" y1="0" x2="0" y2="1">
     <stop offset="0%" stop-color="#07111f"/>
@@ -99,16 +104,16 @@ parts.append('''<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.
 <rect width="900" height="100" fill="url(#panelbg)" rx="6"/>
 ''')
 
-for i, (cx, cw, stroke, label_color, label, key) in enumerate(CARDS):
-    dur   = ANIM_DUR[i]
-    begin = ANIM_BEGIN[i]
-    href  = LINK_MAP[key]
+    for i, (cx, cw, stroke, label_color, label, key) in enumerate(CARDS):
+        dur   = ANIM_DUR[i]
+        begin = ANIM_BEGIN[i]
+        href  = LINK_MAP.get(key, "#")
 
-    logo_size = 34
-    logo_x = cx + (cw - logo_size) / 2
-    logo_y = 16
+        logo_size = 34
+        logo_x = cx + (cw - logo_size) / 2
+        logo_y = 16
 
-    card_xml = f'''
+        card_xml = f'''
 <a href="{href}" target="_blank">
   <!-- Card bg -->
   <rect x="{cx}" y="4" width="{cw}" height="92" rx="8" fill="#040e1c" opacity="0.95"/>
@@ -128,7 +133,7 @@ for i, (cx, cw, stroke, label_color, label, key) in enumerate(CARDS):
   </rect>
 
   <!-- Real logo image -->
-  {img_tag(b64[key], logo_x, logo_y, logo_size)}
+  {img_tag(b64_map.get(key, ""), logo_x, logo_y, logo_size)}
 
   <!-- Platform name -->
   <text x="{cx + cw / 2}" y="75"
@@ -144,22 +149,17 @@ for i, (cx, cw, stroke, label_color, label, key) in enumerate(CARDS):
   </rect>
 </a>
 '''
-    parts.append(card_xml)
+        parts.append(card_xml)
 
-parts.append('\n</svg>')
+    parts.append('\n</svg>')
+    return "\n".join(parts)
 
-svg_content = "\n".join(parts)
-for banner_name in ["core-connectivity-v4.svg", "core-connectivity-v3.svg", "core-connectivity-v2.svg"]:
-    out_banner = os.path.join(assets_dir, banner_name)
-    with open(out_banner, "w", encoding="utf-8") as f:
-        f.write(svg_content)
-    print(f"✅ Written Banner → {out_banner}")
+def build_single_card_svg(card_tuple: tuple, b64_map: dict[str, str] | None = None, dur: float = 3.0, begin: float = 0.0) -> str:
+    if b64_map is None:
+        b64_map = {k: "" for k in LOGOS}
 
-# ── 2. Build Individual Clickable Card SVGs for GitHub README ──
-for i, (cx, cw, stroke, label_color, label, key) in enumerate(CARDS):
-    dur   = ANIM_DUR[i]
-    begin = ANIM_BEGIN[i]
-    href  = LINK_MAP[key]
+    cx, cw, stroke, label_color, label, key = card_tuple
+    href = LINK_MAP.get(key, "#")
 
     w = int(cw)
     h = 92
@@ -167,7 +167,7 @@ for i, (cx, cw, stroke, label_color, label, key) in enumerate(CARDS):
     logo_x = (w - logo_size) / 2
     logo_y = 16
 
-    single_svg = f'''<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 {w} {h}" width="{w}" height="{h}">
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 {w} {h}" width="{w}" height="{h}">
 <defs>
   <filter id="gl" x="-30%" y="-30%" width="160%" height="160%">
     <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="b"/>
@@ -182,7 +182,7 @@ for i, (cx, cw, stroke, label_color, label, key) in enumerate(CARDS):
   <rect x="2" y="2" width="0" height="2.5" rx="1" fill="{stroke}" opacity="0.7">
     <animate attributeName="width" from="0" to="{w-4}" dur="1s" fill="freeze" begin="{begin + 0.1:.1f}s" calcMode="spline" keySplines="0.4 0 0.2 1"/>
   </rect>
-  {img_tag(b64[key], logo_x, logo_y, logo_size)}
+  {img_tag(b64_map.get(key, ""), logo_x, logo_y, logo_size)}
   <text x="{w / 2}" y="73" font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="600" fill="{label_color}" text-anchor="middle" letter-spacing="0.4">{label}</text>
   <rect x="2" y="2" width="{w-4}" height="{h-4}" rx="8" fill="none" stroke="{stroke}" stroke-width="8" filter="url(#gl)" opacity="0">
     <animate attributeName="opacity" values="0;0.08;0" dur="{dur}s" repeatCount="indefinite" begin="{begin}s"/>
@@ -190,8 +190,27 @@ for i, (cx, cw, stroke, label_color, label, key) in enumerate(CARDS):
 </a>
 </svg>'''
 
-    for card_name in [f"card-{key}-v4.svg", f"card-{key}-v3.svg", f"card-{key}.svg"]:
-        card_out = os.path.join(assets_dir, card_name)
-        with open(card_out, "w", encoding="utf-8") as f:
-            f.write(single_svg)
-        print(f"  ✅ Written Card → {card_name}")
+def main() -> None:
+    b64 = fetch_all_logos()
+    
+    # 1. Combined banner
+    svg_content = build_combined_banner_svg(b64)
+    for banner_name in ["core-connectivity-v4.svg", "core-connectivity-v3.svg", "core-connectivity-v2.svg"]:
+        out_banner = os.path.join(assets_dir, banner_name)
+        with open(out_banner, "w", encoding="utf-8") as f:
+            f.write(svg_content)
+        print(f"✅ Written Banner → {out_banner}")
+
+    # 2. Individual Cards
+    for i, card_tuple in enumerate(CARDS):
+        key = card_tuple[5]
+        single_svg = build_single_card_svg(card_tuple, b64, ANIM_DUR[i], ANIM_BEGIN[i])
+        for card_name in [f"card-{key}-v4.svg", f"card-{key}-v3.svg", f"card-{key}.svg"]:
+            card_out = os.path.join(assets_dir, card_name)
+            with open(card_out, "w", encoding="utf-8") as f:
+                f.write(single_svg)
+            print(f"  ✅ Written Card → {card_name}")
+
+if __name__ == "__main__":
+    main()
+
