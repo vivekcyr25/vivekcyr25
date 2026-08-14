@@ -125,7 +125,7 @@
 </p>
 
 <p align="center">
-  <img src="https://streak-stats.demolab.com?user=vivekcyr25&theme=dark&ring=00F2FF&fire=BC13FE&currStreakLabel=00F2FF&background=050816&border=00F2FF&stroke=00F2FF&sideLabels=00F2FF&hide_border=true" alt="GitHub Streak Stats">
+  <img src="./assets/github-streak-stats.svg" alt="GitHub Streak Stats">
 </p>
 
 

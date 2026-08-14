@@ -543,24 +543,67 @@ def generate_svg(s: dict) -> str:
     return svg
 
 
+def generate_streak_svg(stats: dict) -> str:
+    total_contribs = stats.get("total_contributions") or 1035
+    curr_streak = stats.get("current_streak") or 1
+    long_streak = stats.get("longest_streak") or 12
+    s_start = stats.get("streak_start") or "Aug 14"
+    s_end = stats.get("streak_end") or "Today"
+
+    parts = []
+    parts.append('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 495 195" width="495" height="195">')
+    parts.append('<defs>')
+    parts.append('  <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">')
+    parts.append('    <stop offset="0%" stop-color="#07111f"/>')
+    parts.append('    <stop offset="100%" stop-color="#050d18"/>')
+    parts.append('  </linearGradient>')
+    parts.append('  <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">')
+    parts.append('    <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="blur"/>')
+    parts.append('    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>')
+    parts.append('  </filter>')
+    parts.append('</defs>')
+    parts.append('<rect width="495" height="195" rx="8" fill="url(#bgGrad)" stroke="#00F2FF" stroke-width="1.2" stroke-opacity="0.6"/>')
+    parts.append('<line x1="165" y1="28" x2="165" y2="167" stroke="#00F2FF" stroke-opacity="0.25" stroke-width="1"/>')
+    parts.append('<line x1="330" y1="28" x2="330" y2="167" stroke="#00F2FF" stroke-opacity="0.25" stroke-width="1"/>')
+    parts.append(f'<text x="82.5" y="78" font-family="Segoe UI,Arial,sans-serif" font-size="28" font-weight="700" fill="#FFFFFF" text-anchor="middle" filter="url(#glow)">{total_contribs:,}</text>')
+    parts.append('<text x="82.5" y="114" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="600" fill="#00F2FF" text-anchor="middle">Total Contributions</text>')
+    parts.append('<text x="82.5" y="142" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#8899bb" text-anchor="middle">Aug 20, 2025 – Present</text>')
+    parts.append('<g transform="translate(247.5, 20)"><path d="M 1.5 0.67 C 1.5 0.67 2.24 3.32 2.24 5.47 C 2.24 7.53 0.89 9.2 -1.17 9.2 C -3.23 9.2 -4.79 7.53 -4.79 5.47 L -4.76 5.11 C -6.78 7.51 -8 10.62 -8 13.99 C -8 18.41 -4.42 22 0 22 C 4.42 22 8 18.41 8 13.99 C 8 8.6 5.41 3.79 1.5 0.67 Z" fill="#BC13FE" filter="url(#glow)"/></g>')
+    parts.append('<circle cx="247.5" cy="71" r="38" fill="none" stroke="#00F2FF" stroke-width="4" filter="url(#glow)"/>')
+    parts.append(f'<text x="247.5" y="78" font-family="Segoe UI,Arial,sans-serif" font-size="26" font-weight="700" fill="#FFFFFF" text-anchor="middle" filter="url(#glow)">{curr_streak}</text>')
+    parts.append('<text x="247.5" y="125" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="600" fill="#00F2FF" text-anchor="middle">Current Streak</text>')
+    parts.append(f'<text x="247.5" y="152" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#8899bb" text-anchor="middle">{s_start} – {s_end}</text>')
+    parts.append(f'<text x="412.5" y="78" font-family="Segoe UI,Arial,sans-serif" font-size="28" font-weight="700" fill="#FFFFFF" text-anchor="middle" filter="url(#glow)">{long_streak}</text>')
+    parts.append('<text x="412.5" y="114" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="600" fill="#00F2FF" text-anchor="middle">Longest Streak</text>')
+    parts.append(f'<text x="412.5" y="142" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#8899bb" text-anchor="middle">{s_start} – {s_end}</text>')
+    parts.append('</svg>')
+    return "\n".join(parts)
+
+
 def main():
-    print(f"🔄 Fetching live stats for @{GITHUB_USERNAME}...")
+    print(f"\U0001f504 Fetching live stats for @{GITHUB_USERNAME}...")
     stats = fetch_stats()
 
-    print(f"  ✅ Total contributions : {stats['total_contributions']}")
-    print(f"  ✅ Repos               : {stats['repos']}")
-    print(f"  ✅ Current streak      : {stats['current_streak']}d  ({stats['streak_start']} – {stats['streak_end']})")
-    print(f"  ✅ Longest streak      : {stats['longest_streak']}d")
-    print(f"  ✅ Commits (year)      : {stats['commits']}")
-    print(f"  ✅ Pull requests (yr)  : {stats['prs']}")
+    print(f"  \u2705 Total contributions : {stats['total_contributions']}")
+    print(f"  \u2705 Repos               : {stats['repos']}")
+    print(f"  \u2705 Current streak      : {stats['current_streak']}d  ({stats['streak_start']} \u2013 {stats['streak_end']})")
+    print(f"  \u2705 Longest streak      : {stats['longest_streak']}d")
+    print(f"  \u2705 Commits (year)      : {stats['commits']}")
+    print(f"  \u2705 Pull requests (yr)  : {stats['prs']}")
+
+    base = os.path.dirname(os.path.dirname(__file__))
 
     svg_content = generate_svg(stats)
-
-    out_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets", "stats-dashboard.svg")
+    out_path = os.path.join(base, "assets", "stats-dashboard.svg")
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(svg_content)
+    print(f"\n\u2705 Written \u2192 {out_path}")
 
-    print(f"\n✅ Written → {out_path}")
+    streak_svg = generate_streak_svg(stats)
+    streak_out = os.path.join(base, "assets", "github-streak-stats.svg")
+    with open(streak_out, "w", encoding="utf-8") as f:
+        f.write(streak_svg)
+    print(f"\u2705 Written \u2192 {streak_out}")
 
 
 if __name__ == "__main__":
