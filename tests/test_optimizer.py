@@ -7,7 +7,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from scripts.svg_optimizer import minify_svg_string, analyze_svg
+from scripts.svg_optimizer import minify_svg_string, analyze_svg, validate_xml_string
 
 
 class TestSVGOptimizer(unittest.TestCase):
@@ -27,6 +27,11 @@ class TestSVGOptimizer(unittest.TestCase):
         self.assertEqual(lines[1], "<rect/>")
         self.assertEqual(lines[2], "</svg>")
 
+    def test_validate_xml_string(self):
+        self.assertTrue(validate_xml_string('<svg xmlns="http://www.w3.org/2000/svg"/>'))
+        self.assertFalse(validate_xml_string('<invalid_xml>'))
+
 
 if __name__ == "__main__":
     unittest.main()
+
