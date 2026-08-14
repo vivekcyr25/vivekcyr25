@@ -8,6 +8,7 @@ individual clickable platform card SVGs in assets/.
 import urllib.request
 import base64
 import os
+from colors import BRAND_COLORS, LABEL_COLORS  # noqa: F401 – available for downstream use
 
 LOGOS = {
     "linkedin":    "https://cdn.jsdelivr.net/npm/simple-icons@11.0.0/icons/linkedin.svg",
