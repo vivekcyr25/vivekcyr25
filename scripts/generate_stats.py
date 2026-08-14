@@ -9,7 +9,10 @@ import json
 import urllib.request
 import urllib.error
 from datetime import datetime, timezone, timedelta
-from constants import VISIONOS_CYAN, VISIONOS_PURPLE, VISIONOS_BG_DARK, VISIONOS_TEXT_DIM  # noqa
+try:
+    from scripts.constants import VISIONOS_CYAN, VISIONOS_PURPLE, VISIONOS_BG_DARK, VISIONOS_TEXT_DIM  # noqa
+except ImportError:
+    from constants import VISIONOS_CYAN, VISIONOS_PURPLE, VISIONOS_BG_DARK, VISIONOS_TEXT_DIM  # noqa
 
 GITHUB_USERNAME = "vivekcyr25"
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
