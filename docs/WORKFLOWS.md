@@ -11,6 +11,7 @@ This repository includes automated CI/CD pipelines to validate code, test SVG as
 | `update-stats.yml` | Update Stats | Cron (Daily 00:00 UTC) | Runs `generate_stats.py` and updates profile dashboard |
 | `snake.yml` | Snake Grid | Cron (Daily 00:00 UTC) | Renders contribution snake SVG grid |
 | `accessibility.yml` | Accessibility Audit | Push (`assets/*.svg`) | Audits accessibility metadata (title, role, aria-label) |
+| `health-check.yml` | Health Check | Push, PR, Sunday Cron | Runs health check and test suite verification |
 
 ## Running Workflows Locally
 
@@ -19,4 +20,6 @@ You can test workflow scripts locally via Makefile:
 make test          # Runs pytest suite
 make validate      # Runs SVG validator
 make access-check  # Runs accessibility audit
+make health-check  # Runs repository health check
 ```
+
