@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """Unit tests for scripts/generate_separator.py."""
 
 import os
@@ -7,7 +7,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from scripts.generate_separator import generate_separator_svg
+from scripts.generate_separator import generate_separator_svg, main
 
 
 class TestSeparatorSVG(unittest.TestCase):
@@ -36,6 +36,9 @@ class TestSeparatorSVG(unittest.TestCase):
         self.assertIn("#00F2FF", self.svg)
         self.assertIn("#BC13FE", self.svg)
 
+    def test_separator_main_cli(self):
+        main(["--minify"])
+
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main()
