@@ -9,6 +9,7 @@ import urllib.request
 import base64
 import os
 from colors import BRAND_COLORS, LABEL_COLORS  # noqa: F401 – available for downstream use
+from svg_optimizer import normalize_svg_whitespace
 
 LOGOS = {
     "linkedin":    "https://cdn.jsdelivr.net/npm/simple-icons@11.0.0/icons/linkedin.svg",
@@ -209,7 +210,7 @@ def main() -> None:
     for banner_name in ["core-connectivity-v4.svg", "core-connectivity-v3.svg", "core-connectivity-v2.svg"]:
         out_banner = os.path.join(assets_dir, banner_name)
         with open(out_banner, "w", encoding="utf-8") as f:
-            f.write(svg_content)
+            f.write(normalize_svg_whitespace(svg_content))
         print(f"✅ Written Banner → {out_banner}")
 
     # 2. Individual Cards
