@@ -73,6 +73,10 @@ def minify_svg_string(svg_content: str) -> str:
     return "\n".join(lines)
 
 
+minify_svg = minify_svg_string
+
+
+
 def validate_xml_string(svg_content: str) -> bool:
     """Validate whether an SVG string parses cleanly as XML.
 
