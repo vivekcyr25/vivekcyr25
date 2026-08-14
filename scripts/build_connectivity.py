@@ -80,6 +80,12 @@ LINK_MAP = {
     "orcid":       "https://orcid.org/0009-0006-5078-9881",
 }
 
+CARD_SUBTITLES = {
+    "linkedin": "Profile", "gmail": "Contact",
+    "github": "Projects", "hackerrank": "Coding",
+    "hackerearth": "Compete", "orcid": "Research",
+}
+
 ANIM_DUR  = [3.0, 2.8, 3.2, 3.4, 2.6, 3.0]
 ANIM_BEGIN= [0.0, 0.4, 0.8, 0.2, 1.0, 1.4]
 
