@@ -59,3 +59,5 @@ if __name__ == "__main__":
 
 
 # ui: separator gradient end color refined to neon purple #BC13FE
+
+# separator height increased to 6
