@@ -67,3 +67,24 @@ def get_contrast_ratio(hex1: str, hex2: str) -> float:
     return round((lighter + 0.05) / (darker + 0.05), 2)
 
 
+
+
+# Connectivity card brand palette
+BRAND_COLORS = {
+    "linkedin":    "#0A66C2",
+    "gmail":       "#EA4335",
+    "github":      "#58a6ff",
+    "hackerrank":  "#00EA64",
+    "hackerearth": "#44BCFF",
+    "orcid":       "#A6CE39",
+}
+
+# Label display colors (slightly lighter for readability)
+LABEL_COLORS = {
+    "linkedin":    "#4da8ff",
+    "gmail":       "#ff7060",
+    "github":      "#c9d1d9",
+    "hackerrank":  "#00EA64",
+    "hackerearth": "#44BCFF",
+    "orcid":       "#b8e04a",
+}
