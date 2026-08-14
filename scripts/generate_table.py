@@ -8,12 +8,13 @@ Formats structured dictionaries into aligned Markdown tables for READMEs.
 from typing import List, Dict, Any
 
 
-def generate_markdown_table(headers: List[str], rows: List[List[Any]]) -> str:
+def generate_markdown_table(headers: List[str], rows: List[List[Any]], bold_headers: bool = False) -> str:
     """Generate a formatted GFM Markdown table.
 
     Args:
         headers: List of column header strings.
         rows: List of row data lists.
+        bold_headers: If True, wraps header texts in bold syntax (**header**).
 
     Returns:
         Formatted Markdown table string.
@@ -21,14 +22,16 @@ def generate_markdown_table(headers: List[str], rows: List[List[Any]]) -> str:
     if not headers or not rows:
         return ""
 
+    display_headers = [f"**{h}**" if bold_headers else h for h in headers]
+
     # Calculate column widths
-    widths = [len(h) for h in headers]
+    widths = [len(h) for h in display_headers]
     for row in rows:
         for i, cell in enumerate(row):
             widths[i] = max(widths[i], len(str(cell)))
 
     # Header line
-    header_line = "| " + " | ".join(h.ljust(widths[i]) for i, h in enumerate(headers)) + " |"
+    header_line = "| " + " | ".join(h.ljust(widths[i]) for i, h in enumerate(display_headers)) + " |"
     # Separator line
     separator_line = "|-" + "-|-".join("-" * widths[i] for i in range(len(headers))) + "-|"
 
@@ -39,6 +42,7 @@ def generate_markdown_table(headers: List[str], rows: List[List[Any]]) -> str:
         row_lines.append("| " + " | ".join(formatted_cells) + " |")
 
     return "\n".join([header_line, separator_line] + row_lines)
+
 
 
 def main() -> None:
