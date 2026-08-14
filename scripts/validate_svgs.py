@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Validates all SVG files in the assets/ directory.
 Checks for:
@@ -42,16 +42,34 @@ def validate_svg(filepath):
     return issues
 
 
-def main():
-    assets_dir = os.path.join(
-        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-        "assets"
-    )
+import argparse
+import sys
+
+
+def main(args=None):
+    parser = argparse.ArgumentParser(description="Validate SVG asset files for structure and standards.")
+    parser.add_argument("--dir", type=str, default=None, help="Directory containing SVG files")
+    parser.add_argument("--strict", action="store_true", help="Exit with non-zero status if issues found")
+    parsed = parser.parse_args(args)
+
+    if parsed.dir:
+        assets_dir = os.path.abspath(parsed.dir)
+    else:
+        assets_dir = os.path.join(
+            os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+            "assets"
+        )
+
+    if not os.path.exists(assets_dir):
+        print(f"❌ Assets directory not found: {assets_dir}")
+        if parsed.strict:
+            sys.exit(1)
+        return 1
 
     svg_files = [f for f in os.listdir(assets_dir) if f.endswith(".svg")]
     svg_files.sort()
 
-    print(f"🔍 Validating {len(svg_files)} SVG files...\n")
+    print(f"🔍 Validating {len(svg_files)} SVG files in '{assets_dir}'...\n")
 
     total_issues = 0
     for svg_file in svg_files:
@@ -68,9 +86,14 @@ def main():
     print(f"\n{'='*50}")
     if total_issues == 0:
         print("✅ All SVG files are valid!")
+        return 0
     else:
         print(f"⚠️  Found {total_issues} issue(s) across {len(svg_files)} files")
+        if parsed.strict:
+            sys.exit(1)
+        return 1
 
 
 if __name__ == "__main__":
     main()
+
